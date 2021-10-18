@@ -1,0 +1,71 @@
+#Author - Prashit Patel
+
+image: gradle:4.6-jdk8-alpine
+
+#Disabling gradle daemon as we want to use fresh copy of runtime for each build.
+#git strategy clone is used as we want to ensure that commands are executed on fresh copy of project.
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  GIT_STRATEGY: clone
+
+before_script:
+  - echo "Pipeline created for" ${CI_COMMIT_REF_NAME}
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - ugrad
+  script:
+    - ./gradlew build
+  only:
+    refs:
+      - branches
+
+test:
+  stage: test
+  tags:
+    - ugrad
+  script:
+    - ./gradlew test
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
+  only:
+    refs:
+      - branches
+
+deploy_dev:
+  stage: deploy
+  tags:
+    - ugrad
+  script:
+    - ./gradlew build
+    - chmod og-rwx "${DEV_SSH_KEY}"
+    - zip -r ${CI_COMMIT_REF_NAME}.zip *
+    - scp -r -o StrictHostKeyChecking=no -i "${DEV_SSH_KEY}" "${CI_COMMIT_REF_NAME}.zip" "${DEV_USER}@${HOST_SERVER}:${DEV_DIR_NAME}/${CI_COMMIT_REF_NAME}.zip"
+  only:
+    refs:
+      - develop
+
+deploy_prod:
+  stage: deploy
+  tags:
+    - ugrad
+  script:
+    - ./gradlew build
+    - chmod og-rwx ${PROD_SSH_KEY}
+    - zip -r ${CI_COMMIT_REF_NAME}.zip *
+    - scp -r -o StrictHostKeyChecking=no -i "${PROD_SSH_KEY}" "${CI_COMMIT_REF_NAME}.zip" "${PROD_USER}@${HOST_SERVER}:${PROD_DIR_NAME}/${CI_COMMIT_REF_NAME}.zip"
+  only:
+    refs:
+      - release
+
+after_script:
+  - echo "Pipeline completed for" ${CI_COMMIT_REF_NAME}
