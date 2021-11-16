@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Jay Patel
  */
-public class OutputStreamTest {
+public class StandardOutputStreamTest {
 
 	@Test
-	public void testOutputStream() {
+	public void outputStreamTest() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(baos);
 		System.setOut(printStream);
 
-		OutputStream outputStream = StandardOutputStream.getInstance();
+		IOutputStream outputStream = StandardOutputStream.getInstance();
 
 		outputStream.println("hello");
 		outputStream.print("world");

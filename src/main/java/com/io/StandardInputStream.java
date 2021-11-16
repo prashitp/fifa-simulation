@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author Jay Patel
  */
-public class StandardInputStream implements InputStream {
+public class StandardInputStream implements IInputStream {
 
 	private Scanner scanner;
 	private static StandardInputStream inputStream;
@@ -14,7 +14,7 @@ public class StandardInputStream implements InputStream {
 		this.scanner = scanner;
 	}
 
-	public static InputStream getInstance() {
+	public static IInputStream getInstance() {
 		if (inputStream == null) {
 			inputStream = new StandardInputStream(new Scanner(System.in));
 		}

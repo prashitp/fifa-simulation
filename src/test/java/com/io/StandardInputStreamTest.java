@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Jay Patel
  */
-public class InputStreamTest {
+public class StandardInputStreamTest {
 
 	@Test
-	public void stringInputTestCase() {
+	public void inputStreamTest() {
 		String userInput = String.format("hello world\n150\n10000000000\n1.25", System.lineSeparator());
 
 		ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
@@ -21,7 +21,7 @@ public class InputStreamTest {
 		Long expectedLong = 10000000000L;
 		Double expectedDouble = 1.25D;
 
-		InputStream inputStream = StandardInputStream.getInstance();
+		IInputStream inputStream = StandardInputStream.getInstance();
 
 		String actualString = inputStream.readLine();
 		Integer actualInteger = inputStream.readInteger();

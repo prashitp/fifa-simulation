@@ -1,6 +1,9 @@
 package com.io;
 
-public interface InputStream {
+/**
+ * @author Jay Patel
+ */
+public interface IInputStream {
 
 	public String readLine();
 	

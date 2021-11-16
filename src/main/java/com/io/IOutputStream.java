@@ -1,6 +1,9 @@
 package com.io;
 
-public interface OutputStream {
+/**
+ * @author Jay Patel
+ */
+public interface IOutputStream {
 
 	public void print(Object o);
 	

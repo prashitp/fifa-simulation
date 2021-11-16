@@ -5,7 +5,7 @@ import java.io.PrintStream;
 /**
  * @author Jay Patel
  */
-public class StandardOutputStream implements OutputStream {
+public class StandardOutputStream implements IOutputStream {
 
 	private PrintStream printStream;
 	private static StandardOutputStream outputStream;
