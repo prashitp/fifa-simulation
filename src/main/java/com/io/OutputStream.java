@@ -1,4 +1,4 @@
-package com;
+package com.io;
 
 public interface OutputStream {
 
