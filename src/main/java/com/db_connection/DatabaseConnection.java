@@ -13,7 +13,7 @@ public class DatabaseConnection {
 
     public static Connection setConnectionWithDatabase() {
         LogService logService = new LogService();
-        logService.initializeLogger();
+        FileHandler fileHandler = logService.initializeLogger();
         Connection connection = null;
         try {
             Class.forName(Constants.JDBC_CLASS_INITIALIZATION);

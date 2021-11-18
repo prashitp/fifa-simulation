@@ -10,8 +10,8 @@ public class LogService {
         logs.log(logType, logMessage);
     }
 
-    public void initializeLogger() {
-        FileHandler fileHandler;
+    public FileHandler initializeLogger() {
+        FileHandler fileHandler = null;
         try {
             fileHandler = new FileHandler(Constants.LOGGER_FILE_PATH, true);
             logs.addHandler(fileHandler);
@@ -20,5 +20,6 @@ public class LogService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return fileHandler;
     }
 }
