@@ -1,0 +1,48 @@
+package com.models;
+
+/**
+ * @author prashitpatel
+ */
+public enum PlayerAttributes {
+	Pace,
+	Shooting,
+	Passing,
+	Dribbling,
+	Defending,
+	Physic,
+	AttackingCrossing,
+	AttackingFinishing,
+	AttackingHeadingAccuracy,
+	AttackingShortPassing,
+	AttackingVolleys,
+	SkillDribbling,
+	SkillCurve,
+	SkillFkAccuracy,
+	SkillLongPassing,
+	SkillBallControl,
+	MovementAcceleration,
+	MovementSprintSpeed,
+	MovementReactions,
+	MovementAgility,
+	MovementBalance,
+	PowerShotPower,
+	PowerJumping,
+	PowerStamina,
+	PowerStrength,
+	PowerLongShots,
+	MentalityAggression,
+	MentalityInterceptions,
+	MentalityPositioning,
+	MentalityVision,
+	MentalityPenalties,
+	MentalityComposure,
+	DefendingMarkingAwareness,
+	DefendingStandingTackle,
+	DefendingSlidingTackle,
+	GoalkeepingDiving,
+	GoalkeepingHandling,
+	GoalkeepingKicking,
+	GoalkeepingPositioning,
+	GoalkeepingReflexes,
+	GoalkeepingSpeed
+}
