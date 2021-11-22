@@ -1,8 +1,9 @@
-package com.db_connection;
+package com.database_operations;
 import java.util.logging.*;
 import com.Constants;
 import com.LogService;
 import java.sql.*;
+
 /**
  * @author Mayank Sareen
  */
