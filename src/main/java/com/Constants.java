@@ -1,7 +1,10 @@
 package com;
 
+import com.database_operations.DatabaseImport;
+import com.models.*;
+
 /**
- * @authors: Mayank Sareen and Prashit Patel
+ * @authors: Mayank Sareen, Prashit Patel, and Vasu Gamdha
  */
 public class Constants {
 	public static final int DEFENDERS_MIN = 3;
@@ -20,4 +23,6 @@ public class Constants {
 	public static final String CONNECTION_USERNAME = "CSCI5308_25_DEVINT_USER";
 	public static final String CONNECTION_PASSWORD = "uhahMae3oonguNei";
 	public static final String LOGGER_FILE_PATH = "src/main/java/log.log";
+	public static final PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
+	public static final ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
 }

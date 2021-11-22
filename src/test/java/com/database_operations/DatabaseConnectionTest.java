@@ -1,4 +1,4 @@
-package com.db_connection;
+package com.database_operations;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
