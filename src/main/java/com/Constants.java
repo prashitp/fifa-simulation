@@ -23,6 +23,6 @@ public class Constants {
 	public static final String CONNECTION_USERNAME = "CSCI5308_25_DEVINT_USER";
 	public static final String CONNECTION_PASSWORD = "uhahMae3oonguNei";
 	public static final String LOGGER_FILE_PATH = "src/main/java/log.log";
-	public static final PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
-	public static final ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
+	public static PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
+	public static ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
 }

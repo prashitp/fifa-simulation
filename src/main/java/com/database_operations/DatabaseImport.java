@@ -14,7 +14,7 @@ import java.util.logging.Level;
  */
 
 public class DatabaseImport {
-    final private static Connection con = new DatabaseConnection().setConnectionWithDatabase();
+    final private static Connection con = DatabaseConnection.getInstance().getConnection();
     private static final PlayerModel[] players = new PlayerModel[651];
     private static final ClubModel[] clubs = new ClubModel[20];
     static Map<String, List<Object>> table_clubs = new TreeMap<>();
