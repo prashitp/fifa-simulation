@@ -1,20 +1,21 @@
-//Author - Prashit Patel
-package com.models;
+package com.models.gameplay.TeamSelection;
 
 import com.exceptions.FormationInvalidException;
+import com.models.gameplay.TeamSelection.FormationModel;
+import com.models.gameplay.TeamSelection.FormationType;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author prashitpatel
+ */
 class FormationModelTest {
 
-	FormationModel formation = new FormationModel(4,4,2);
-	FormationModel formationExtended = new FormationModel(4,1,4,1);
-
-	FormationModelTest() throws FormationInvalidException {}
+	FormationModel formation = new FormationModel(4,4,2, FormationType.Neutral);
+	FormationModel formationExtended = new FormationModel(4,1,4,1, FormationType.Attacking);
 
 	@Test
 	void testToStringTest() {
@@ -37,18 +38,16 @@ class FormationModelTest {
 	}
 
 	@Test
-	void invalidFormationTest() {
-		Exception exp = assertThrows(FormationInvalidException.class, () ->
-				new FormationModel(3,6,1)
-		);
-		assertEquals("Invalid Formation", exp.getMessage());
+	void InvalidFormationTest() {
+		FormationModel formationModel = new FormationModel(5,2,3,FormationType.Neutral);
+		String nullFormation = "0-0-0";
+		assertEquals(nullFormation,formationModel.toString());
 	}
 
 	@Test
-	void invalidFormationExtendedTest() {
-		Exception exp = assertThrows(FormationInvalidException.class, () ->
-				new FormationModel(4,3,2,2)
-		);
-		assertEquals("Invalid Formation", exp.getMessage());
+	void InvalidFormationExtendedTest() {
+		FormationModel formationModel = new FormationModel(4,2,3, 2,FormationType.Neutral);
+		String nullFormation = "0-0-0";
+		assertEquals(nullFormation,formationModel.toString());
 	}
 }

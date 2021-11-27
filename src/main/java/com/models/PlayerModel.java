@@ -1,23 +1,24 @@
 package com.models;
-import java.util.HashMap;
 
+import java.util.HashMap;
 /**
  * @author prashitpatel
  */
+
 public class PlayerModel {
 	private int playerId;
 	private String playerName;
 	private PlayerPositions[] positions;
-	int potential;
-	int overall;
-	int age;
+	public int potential;
+	public int overall;
+	public int age;
 	private int height;
 	private int weight;
-	String club;
-	long value;
+	public String club;
+	public long value;
 	private PlayerPositions clubPosition;
-	int clubJerseyNo;
-	int clubContractUntilYear;
+	public int clubJerseyNo;
+	public int clubContractUntilYear;
 	private String nationality;
 	private String preferredFoot;
 	private int skillMoves;
