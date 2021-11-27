@@ -31,4 +31,10 @@ class ClubModelTest {
 		String clubName = club.getClubName();
 		assertEquals("Arsenal",clubName);
 	}
+
+	@Test
+	void getPlayersTest() {
+		PlayerModel[] players = club.getPlayers();
+		assertEquals("Arsenal",players[0].club);
+	}
 }

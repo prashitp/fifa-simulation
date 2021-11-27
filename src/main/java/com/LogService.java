@@ -46,7 +46,7 @@ public class LogService {
             logWriter.write("\n");
             logWriter.close();
         } catch (IOException e) {
-            System.out.println("An error occurred." + e.getStackTrace());
+//            System.out.println("An error occurred." + e.getStackTrace());
         }
     }
 

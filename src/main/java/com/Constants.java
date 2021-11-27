@@ -6,6 +6,13 @@ import com.models.*;
 /**
  * @authors: Mayank Sareen, Prashit Patel, and Vasu Gamdha
  */
+
+import com.models.ClubModel;
+import com.models.PlayerModel;
+import com.models.PlayerPositions;
+import com.models.PlayerWorkRate;
+
+
 public class Constants {
 	public static final int DEFENDERS_MIN = 3;
 	public static final int DEFENDERS_MAX = 5;
@@ -23,6 +30,24 @@ public class Constants {
 	public static final String CONNECTION_USERNAME = "CSCI5308_25_DEVINT_USER";
 	public static final String CONNECTION_PASSWORD = "uhahMae3oonguNei";
 	public static final String LOGGER_FILE_PATH = "src/main/java/log.log";
-	public static PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
-	public static ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
+	public static final PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
+	public static final ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
+	public static final PlayerPositions[] forwardPositions = {
+		PlayerPositions.ST,PlayerPositions.LW,PlayerPositions.RW,PlayerPositions.CF,PlayerPositions.LS,PlayerPositions.RS
+	};
+	public static final PlayerPositions[] midfielderPositions = {
+		PlayerPositions.CM,PlayerPositions.CAM,PlayerPositions.CDM,PlayerPositions.LM,PlayerPositions.RM,
+			PlayerPositions.LWB,PlayerPositions.RWB,PlayerPositions.LCM,PlayerPositions.RCM,PlayerPositions.LDM,
+			PlayerPositions.RDM
+	};
+	public static final PlayerPositions[] defenderPositions = {
+		PlayerPositions.CB,PlayerPositions.RCB,PlayerPositions.LCB,PlayerPositions.LB,PlayerPositions.RB
+	};
+	public static final PlayerPositions[] goalkeeperPositions = {
+			PlayerPositions.GK
+	};
+	public static final int MATCH_READY_STAMINA_FORWARDS = 50;
+	public static final int MATCH_READY_STAMINA_MIDFIELDERS = 60;
+	public static final int MATCH_READY_STAMINA_DEFENDERS = 40;
+	public static final int MATCH_READY_STAMINA_GOALKEEPER = 10;
 }

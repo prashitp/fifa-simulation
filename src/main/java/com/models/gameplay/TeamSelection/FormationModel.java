@@ -1,36 +1,49 @@
-//Author - Prashit Patel
-package com.models;
+package com.models.gameplay.TeamSelection;
 
 import com.Constants;
+import com.LogService;
 import com.exceptions.FormationInvalidException;
-
 import java.util.List;
+import java.util.logging.Level;
 
+/**
+ * @author prashitpatel
+ */
 public class FormationModel {
 	int defenders;
 	int midfielders;
 	int defensiveMidfielders;
 	int attackingMidfielders;
 	int forwards;
-	private boolean extendedFormation;
-
-	public FormationModel(int defenders, int midfielders, int forwards) throws FormationInvalidException {
-		checkFormationValidity(defenders, midfielders, forwards);
-
-		this.extendedFormation = false;
-		this.defenders = defenders;
-		this.midfielders = midfielders;
-		this.forwards = forwards;
+	public FormationType type;
+	public boolean extendedFormation;
+	LogService logService = new LogService();
+	public FormationModel(int defenders, int midfielders, int forwards, FormationType type) {
+		try{
+			checkFormationValidity(defenders, midfielders, forwards);
+			this.extendedFormation = false;
+			this.defenders = defenders;
+			this.midfielders = midfielders;
+			this.forwards = forwards;
+			this.type = type;
+		} catch (FormationInvalidException e) {
+			logService.log(Level.SEVERE, "ERROR! " + e);
+		}
 	}
 
-	public FormationModel(int defenders, int defensiveMidfielders, int attackingMidfielders, int forwards) throws FormationInvalidException {
-		checkFormationValidity(defenders, defensiveMidfielders, attackingMidfielders, forwards);
+	public FormationModel(int defenders, int defensiveMidfielders, int attackingMidfielders, int forwards, FormationType type) {
+		try{
+			checkFormationValidity(defenders, defensiveMidfielders, attackingMidfielders, forwards);
 
-		this.extendedFormation = true;
-		this.defenders = defenders;
-		this.defensiveMidfielders = defensiveMidfielders;
-		this.attackingMidfielders = attackingMidfielders;
-		this.forwards = forwards;
+			this.extendedFormation = true;
+			this.defenders = defenders;
+			this.defensiveMidfielders = defensiveMidfielders;
+			this.attackingMidfielders = attackingMidfielders;
+			this.forwards = forwards;
+			this.type = type;
+		} catch (FormationInvalidException e) {
+			logService.log(Level.SEVERE, "ERROR! " + e);
+		}
 	}
 
 	private void checkFormationValidity(int defenders, int midfielders, int forwards) throws FormationInvalidException {
