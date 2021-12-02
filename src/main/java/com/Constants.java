@@ -50,4 +50,32 @@ public class Constants {
 	public static final int MATCH_READY_STAMINA_MIDFIELDERS = 60;
 	public static final int MATCH_READY_STAMINA_DEFENDERS = 40;
 	public static final int MATCH_READY_STAMINA_GOALKEEPER = 10;
+
+	public static final PlayerAttributes[] attackingSkills = {
+			PlayerAttributes.AttackingCrossing, PlayerAttributes.AttackingFinishing, PlayerAttributes.MentalityVision,
+			PlayerAttributes.AttackingVolleys, PlayerAttributes.AttackingShortPassing,  PlayerAttributes.MentalityPenalties,
+			PlayerAttributes.AttackingHeadingAccuracy, PlayerAttributes.Pace, PlayerAttributes.Shooting,
+			PlayerAttributes.MovementSprintSpeed, PlayerAttributes.PowerShotPower, PlayerAttributes.MovementReactions
+	};
+
+	public static final PlayerAttributes[] midfieldSkills = {
+			PlayerAttributes.SkillBallControl, PlayerAttributes.SkillDribbling, PlayerAttributes.Passing,
+			PlayerAttributes.SkillFkAccuracy, PlayerAttributes.SkillCurve, PlayerAttributes.Dribbling,
+			PlayerAttributes.SkillLongPassing, PlayerAttributes.MovementAcceleration, PlayerAttributes.MovementAgility,
+			PlayerAttributes.PowerStamina, PlayerAttributes.PowerLongShots, PlayerAttributes.MentalityVision
+	};
+
+	public static final PlayerAttributes[] defendingSkills = {
+			PlayerAttributes.DefendingMarkingAwareness, PlayerAttributes.DefendingStandingTackle, PlayerAttributes.Defending,
+			PlayerAttributes.DefendingSlidingTackle, PlayerAttributes.MovementBalance, PlayerAttributes.PowerJumping,
+			PlayerAttributes.PowerStrength, PlayerAttributes.MentalityAggression, PlayerAttributes.MentalityComposure,
+			PlayerAttributes.MentalityInterceptions, PlayerAttributes.MentalityPositioning, PlayerAttributes.Physic
+	};
+
+	public static final PlayerAttributes[] goalkeepingSkills = {
+			PlayerAttributes.GoalkeepingDiving, PlayerAttributes.GoalkeepingHandling, PlayerAttributes.PowerJumping,
+			PlayerAttributes.GoalkeepingSpeed, PlayerAttributes.GoalkeepingKicking, PlayerAttributes.MovementReactions,
+			PlayerAttributes.GoalkeepingPositioning, PlayerAttributes.GoalkeepingReflexes,PlayerAttributes.MentalityVision,
+			PlayerAttributes.MentalityPositioning, PlayerAttributes.SkillLongPassing, PlayerAttributes.MentalityComposure
+	};
 }

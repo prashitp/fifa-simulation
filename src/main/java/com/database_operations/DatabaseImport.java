@@ -25,21 +25,23 @@ public class DatabaseImport {
 
     static String[] empty_array = {};
 
-    private static final DatabaseImport instance = new DatabaseImport();
+    private static DatabaseImport instance;
 
     private DatabaseImport() {
         try {
             fetchClubs();
             logService.log(Level.INFO, "Clubs fetched!");
         } catch (Exception e) {
-            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table" + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table"
+                    + e.getStackTrace());
         }
 
         try {
             fetchNationality();
             logService.log(Level.INFO, "Nationalities fetched!");
         } catch (Exception e) {
-            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table" + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table"
+                    + e.getStackTrace());
         }
             setClubs();
 
@@ -47,11 +49,15 @@ public class DatabaseImport {
             setPlayers();
             logService.log(Level.INFO, "Players table imported successfully!");
         } catch (Exception e) {
-            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable" + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable"
+                    + e.getStackTrace());
         }
     }
 
     public static DatabaseImport getInstance() {
+        if(instance == null){
+            instance = new DatabaseImport();
+        }
         return instance;
     }
 
