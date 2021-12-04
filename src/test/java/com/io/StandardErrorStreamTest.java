@@ -6,6 +6,9 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Jay Patel
+ */
 public class StandardErrorStreamTest {
 	public static IErrorStream errorStream;
 	public static ByteArrayOutputStream baos;

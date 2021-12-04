@@ -2,6 +2,9 @@ package com.io;
 
 import java.io.PrintStream;
 
+/**
+ * @author Jay Patel
+ */
 public class StandardErrorStream implements IErrorStream {
 
 	private PrintStream printStream;
