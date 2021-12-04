@@ -1,5 +1,7 @@
 package com.gameplay.SetPiece;
 
+import com.models.SetPieceType;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,5 +11,5 @@ import java.util.List;
 
 public interface ISetPieceController {
 
-    HashMap<String, List<Integer>> getSetPieces();
+    HashMap<SetPieceType, List<Integer>> getSetPieces();
 }

@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ISetPiece {
 
-     void setup();
+    void setup();
 
-     List<Integer> getSetPiece();
+    List<Integer> getSetPiece();
 
 }
