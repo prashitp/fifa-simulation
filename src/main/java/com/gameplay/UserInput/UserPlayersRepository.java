@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 
+import com.Constants.DatabaseConstants;
 import com.LogService;
 import com.database_operations.DatabaseConnection;
+import com.utils.Converter;
 
 /**
  * @author Jay Patel
@@ -27,6 +29,14 @@ public class UserPlayersRepository implements IUserPlayersRepository {
 
 	@Override
 	public Boolean selectPlayer(Integer playerId) {
-		return null;
+		try {
+			statement = databaseConnection.prepareStatement(DatabaseConstants.ADD_PLAYER_QUERY);
+			statement.setString(1, Converter.convertToPlayerIdString(playerId));
+			statement.executeUpdate();
+			return Boolean.TRUE;
+		} catch (Exception e) {
+			logService.log(Level.SEVERE, e.getMessage());
+		}
+		return Boolean.FALSE;
 	}
 }
