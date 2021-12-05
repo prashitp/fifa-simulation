@@ -5,6 +5,9 @@ import com.gameplay.UserInput.UserInputController;
 import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 
+/**
+ * @author Jay Patel
+ */
 public class Game implements IGame {
 
 	private IUserInputController userInputController = new UserInputController();

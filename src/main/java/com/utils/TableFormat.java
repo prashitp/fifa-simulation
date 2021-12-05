@@ -12,6 +12,9 @@ import com.entity.PlayerEntity;
 import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 
+/**
+ * @author Jay Patel
+ */
 public class TableFormat {
 
 	private static IOutputStream outputStream;
