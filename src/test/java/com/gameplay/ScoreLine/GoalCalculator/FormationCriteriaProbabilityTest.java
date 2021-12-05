@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author prashitpatel
  */
 class FormationCriteriaProbabilityTest {
-	FormationModel homeFormation = new FormationModel(4,4,2, FormationType.Neutral);
-	FormationModel awayFormation = new FormationModel(4,4,2, FormationType.Neutral);
+	FormationModel homeFormation = new FormationModel(4,4,2, FormationType.NEUTRAL);
+	FormationModel awayFormation = new FormationModel(4,4,2, FormationType.NEUTRAL);
 	FormationCriteriaProbability formationCriteriaProbability = new FormationCriteriaProbability(homeFormation,awayFormation);
 
 	@Test
