@@ -13,7 +13,7 @@ public class ForwardCategory implements IPlayerCategory{
 	List<PlayerModel> forwards;
 
 	public ForwardCategory(List<PlayerModel> players) {
-		this.forwards = playerSelectionService.groupPlayers(players,Constants.forwardPositions);
+		this.forwards = playerSelectionService.groupPlayers(players,Constants.FORWARD_POSITIONS);
 	}
 
 	public void selectPlayers(int required) {

@@ -21,13 +21,13 @@ public class CommonFunctions {
 	};
 
 	public static FormationType mapClubAttributeToFormationType(ClubAttributes key) {
-		FormationType type = FormationType.Neutral;
-		if(key.toString().equals("Attack")) {
-			type = FormationType.Attacking;
-		} else if(key.toString().equals("Midfield")) {
-			type = FormationType.Neutral;
-		} else if(key.toString().equals(("Defence"))){
-			type = FormationType.Defensive;
+		FormationType type = FormationType.NEUTRAL;
+		if(key.toString().equals("ATTACK")) {
+			type = FormationType.ATTACKING;
+		} else if(key.toString().equals("MIDFIELD")) {
+			type = FormationType.NEUTRAL;
+		} else if(key.toString().equals(("DEFENCE"))){
+			type = FormationType.DEFENSIVE;
 		}
 		return type;
 	}

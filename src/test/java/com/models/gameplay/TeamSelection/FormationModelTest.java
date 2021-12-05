@@ -1,8 +1,5 @@
 package com.models.gameplay.TeamSelection;
 
-import com.exceptions.FormationInvalidException;
-import com.models.gameplay.TeamSelection.FormationModel;
-import com.models.gameplay.TeamSelection.FormationType;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class FormationModelTest {
 
-	FormationModel formation = new FormationModel(4,4,2, FormationType.Neutral);
-	FormationModel formationExtended = new FormationModel(4,1,4,1, FormationType.Attacking);
+	FormationModel formation = new FormationModel(4,4,2, FormationType.NEUTRAL);
+	FormationModel formationExtended = new FormationModel(4,1,4,1, FormationType.ATTACKING);
 
 	@Test
 	void testToStringTest() {
@@ -39,14 +36,14 @@ class FormationModelTest {
 
 	@Test
 	void InvalidFormationTest() {
-		FormationModel formationModel = new FormationModel(5,2,3,FormationType.Neutral);
+		FormationModel formationModel = new FormationModel(5,2,3,FormationType.NEUTRAL);
 		String nullFormation = "0-0-0";
 		assertEquals(nullFormation,formationModel.toString());
 	}
 
 	@Test
 	void InvalidFormationExtendedTest() {
-		FormationModel formationModel = new FormationModel(4,2,3, 2,FormationType.Neutral);
+		FormationModel formationModel = new FormationModel(4,2,3, 2,FormationType.NEUTRAL);
 		String nullFormation = "0-0-0";
 		assertEquals(nullFormation,formationModel.toString());
 	}

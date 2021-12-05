@@ -5,7 +5,7 @@ package com.models;
  */
 public enum PlayingPosition {
 	FORWARD,
-	MIDFIEDLER,
+	MIDFIELDER,
 	DEFENDER,
 	GOALKEEPER
 }

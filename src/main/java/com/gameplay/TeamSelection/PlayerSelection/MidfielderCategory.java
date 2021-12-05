@@ -14,13 +14,13 @@ public class MidfielderCategory implements IPlayerCategory{
 	List<PlayerModel> midfielders;
 
 	public MidfielderCategory(List<PlayerModel> players) {
-		this.midfielders = playerSelectionService.groupPlayers(players,Constants.midfielderPositions);
+		this.midfielders = playerSelectionService.groupPlayers(players,Constants.MIDFIELDER_POSITIONS);
 	}
 
 	public void selectPlayers(int required) {
 		midfielders = playerSelectionService.getMatchReadyPlayers(midfielders, Constants.MATCH_READY_STAMINA_MIDFIELDERS);
 		midfielders = playerSelectionService.sortPlayers(midfielders);
 		PlayerSelectionService playerSelectionServiceInstance = PlayerSelectionService.getInstance();
-		playerSelectionServiceInstance.selectSquadPlayers(midfielders, required, PlayingPosition.MIDFIEDLER);
+		playerSelectionServiceInstance.selectSquadPlayers(midfielders, required, PlayingPosition.MIDFIELDER);
 	}
 }

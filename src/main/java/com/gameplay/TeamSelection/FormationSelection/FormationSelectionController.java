@@ -47,7 +47,7 @@ public class FormationSelectionController implements IFormationSelectionControll
 		}
 
 		if(maxEntry.getValue() == 1) {
-			formationType = FormationType.Neutral;
+			formationType = FormationType.NEUTRAL;
 		} else {
 			formationType = maxEntry.getKey();
 		}

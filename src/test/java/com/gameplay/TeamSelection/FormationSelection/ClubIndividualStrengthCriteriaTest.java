@@ -14,7 +14,7 @@ class ClubIndividualStrengthCriteriaTest {
 	@Test
 	void getResultsTest() {
 		FormationType formationType= clubIndividualStrengthCriteria.getResults(Constants.CLUBS[0],Constants.CLUBS[1] );
-		assertEquals("Attacking",formationType.toString());
+		assertEquals("ATTACKING",formationType.toString());
 	}
 
 }

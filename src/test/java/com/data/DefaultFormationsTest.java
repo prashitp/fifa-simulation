@@ -1,6 +1,5 @@
 package com.data;
 
-import com.exceptions.FormationInvalidException;
 import com.models.gameplay.TeamSelection.FormationModel;
 import com.models.gameplay.TeamSelection.FormationType;
 import com.models.gameplay.TeamSelection.DefaultFormations;
@@ -16,7 +15,7 @@ class DefaultFormationsTest {
 	@Test
 	public void getFormationsTest() {
 		FormationModel[] formations = DefaultFormations.getFormations();
-		FormationModel formationModel = new FormationModel(4,4,2, FormationType.Neutral);
+		FormationModel formationModel = new FormationModel(4,4,2, FormationType.NEUTRAL);
 		assertEquals(formationModel.getFormation(), formations[0].getFormation());
 	}
 

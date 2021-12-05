@@ -12,9 +12,9 @@ import java.util.Map;
 public class ClubRelativeStrengthCriteria implements IFormationCriteriaCategory{
 	public FormationType getResults(ClubModel club, ClubModel opposingClub) {
 		HashMap<ClubAttributes,Integer> attributeDiff = new HashMap<>();
-		attributeDiff.put(ClubAttributes.Attack,Math.abs(club.attributes.get(ClubAttributes.Attack) - opposingClub.attributes.get(ClubAttributes.Attack)));
-		attributeDiff.put(ClubAttributes.Midfield,Math.abs(club.attributes.get(ClubAttributes.Midfield) - opposingClub.attributes.get(ClubAttributes.Midfield)));
-		attributeDiff.put(ClubAttributes.Defence,Math.abs(club.attributes.get(ClubAttributes.Defence) - opposingClub.attributes.get(ClubAttributes.Defence)));
+		attributeDiff.put(ClubAttributes.ATTACK,Math.abs(club.attributes.get(ClubAttributes.ATTACK) - opposingClub.attributes.get(ClubAttributes.ATTACK)));
+		attributeDiff.put(ClubAttributes.MIDFIELD,Math.abs(club.attributes.get(ClubAttributes.MIDFIELD) - opposingClub.attributes.get(ClubAttributes.MIDFIELD)));
+		attributeDiff.put(ClubAttributes.DEFENCE,Math.abs(club.attributes.get(ClubAttributes.DEFENCE) - opposingClub.attributes.get(ClubAttributes.DEFENCE)));
 
 		Map.Entry<ClubAttributes,Integer> maxAttribute = CommonFunctions.maxClubAttribute(attributeDiff);
 		return CommonFunctions.mapClubAttributeToFormationType(maxAttribute.getKey());

@@ -25,21 +25,23 @@ public class DatabaseImport {
 
     static String[] empty_array = {};
 
-    private static final DatabaseImport instance = new DatabaseImport();
+    private static DatabaseImport instance;
 
     private DatabaseImport() {
         try {
             fetchClubs();
             logService.log(Level.INFO, "Clubs fetched!");
         } catch (Exception e) {
-            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table" + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table"
+                    + e.getStackTrace());
         }
 
         try {
             fetchNationality();
             logService.log(Level.INFO, "Nationalities fetched!");
         } catch (Exception e) {
-            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table" + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table"
+                    + e.getStackTrace());
         }
             setClubs();
 
@@ -47,11 +49,15 @@ public class DatabaseImport {
             setPlayers();
             logService.log(Level.INFO, "Players table imported successfully!");
         } catch (Exception e) {
-            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable" + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable"
+                    + e.getStackTrace());
         }
     }
 
     public static DatabaseImport getInstance() {
+        if(instance == null){
+            instance = new DatabaseImport();
+        }
         return instance;
     }
 
@@ -77,10 +83,10 @@ public class DatabaseImport {
 
     private static void setClubAttributes(ResultSet rs) throws SQLException {
         club_attributes = new HashMap<>();
-        club_attributes.put(ClubAttributes.Overall, rs.getInt("overall"));
-        club_attributes.put(ClubAttributes.Attack, rs.getInt("attack"));
-        club_attributes.put(ClubAttributes.Midfield, rs.getInt("midfield"));
-        club_attributes.put(ClubAttributes.Defence, rs.getInt("defence"));
+        club_attributes.put(ClubAttributes.OVERALL, rs.getInt("overall"));
+        club_attributes.put(ClubAttributes.ATTACK, rs.getInt("attack"));
+        club_attributes.put(ClubAttributes.MIDFIELD, rs.getInt("midfield"));
+        club_attributes.put(ClubAttributes.DEFENCE, rs.getInt("defence"));
     }
 
     private static void fetchClubs() throws Exception {
@@ -123,47 +129,47 @@ public class DatabaseImport {
 
     private static void setPlayerAttributes(ResultSet rs) throws SQLException {
         player_attributes = new HashMap<>();
-        player_attributes.put(PlayerAttributes.Pace, rs.getInt("pace"));
-        player_attributes.put(PlayerAttributes.Shooting, rs.getInt("shooting"));
-        player_attributes.put(PlayerAttributes.Passing, rs.getInt("passing"));
-        player_attributes.put(PlayerAttributes.Dribbling, rs.getInt("dribbling"));
-        player_attributes.put(PlayerAttributes.Defending, rs.getInt("defending"));
-        player_attributes.put(PlayerAttributes.Physic, rs.getInt("physic"));
-        player_attributes.put(PlayerAttributes.AttackingCrossing, rs.getInt("attacking_crossing"));
-        player_attributes.put(PlayerAttributes.AttackingFinishing, rs.getInt("attacking_finishing"));
-        player_attributes.put(PlayerAttributes.AttackingHeadingAccuracy, rs.getInt("attacking_heading_accuracy"));
-        player_attributes.put(PlayerAttributes.AttackingShortPassing, rs.getInt("attacking_short_passing"));
-        player_attributes.put(PlayerAttributes.AttackingVolleys, rs.getInt("attacking_volleys"));
-        player_attributes.put(PlayerAttributes.SkillDribbling, rs.getInt("skill_dribbling"));
-        player_attributes.put(PlayerAttributes.SkillCurve, rs.getInt("skill_curve"));
-        player_attributes.put(PlayerAttributes.SkillFkAccuracy, rs.getInt("skill_fk_accuracy"));
-        player_attributes.put(PlayerAttributes.SkillLongPassing, rs.getInt("skill_long_passing"));
-        player_attributes.put(PlayerAttributes.SkillBallControl, rs.getInt("skill_ball_control"));
-        player_attributes.put(PlayerAttributes.MovementAcceleration, rs.getInt("movement_acceleration"));
-        player_attributes.put(PlayerAttributes.MovementSprintSpeed, rs.getInt("movement_sprint_speed"));
-        player_attributes.put(PlayerAttributes.MovementReactions, rs.getInt("movement_reactions"));
-        player_attributes.put(PlayerAttributes.MovementAgility, rs.getInt("movement_agility"));
-        player_attributes.put(PlayerAttributes.MovementBalance, rs.getInt("movement_balance"));
-        player_attributes.put(PlayerAttributes.PowerShotPower, rs.getInt("power_shot_power"));
-        player_attributes.put(PlayerAttributes.PowerJumping, rs.getInt("power_jumping"));
-        player_attributes.put(PlayerAttributes.PowerStamina, rs.getInt("power_stamina"));
-        player_attributes.put(PlayerAttributes.PowerStrength, rs.getInt("power_strength"));
-        player_attributes.put(PlayerAttributes.PowerLongShots, rs.getInt("power_long_shots"));
-        player_attributes.put(PlayerAttributes.MentalityAggression, rs.getInt("mentality_aggression"));
-        player_attributes.put(PlayerAttributes.MentalityInterceptions, rs.getInt("mentality_interceptions"));
-        player_attributes.put(PlayerAttributes.MentalityPositioning, rs.getInt("mentality_positioning"));
-        player_attributes.put(PlayerAttributes.MentalityVision, rs.getInt("mentality_vision"));
-        player_attributes.put(PlayerAttributes.MentalityPenalties, rs.getInt("mentality_penalties"));
-        player_attributes.put(PlayerAttributes.MentalityComposure, rs.getInt("mentality_composure"));
-        player_attributes.put(PlayerAttributes.DefendingMarkingAwareness, rs.getInt("defending_marking_awareness"));
-        player_attributes.put(PlayerAttributes.DefendingStandingTackle, rs.getInt("defending_standing_tackle"));
-        player_attributes.put(PlayerAttributes.DefendingSlidingTackle, rs.getInt("defending_sliding_tackle"));
-        player_attributes.put(PlayerAttributes.GoalkeepingDiving, rs.getInt("goalkeeping_diving"));
-        player_attributes.put(PlayerAttributes.GoalkeepingHandling, rs.getInt("goalkeeping_handling"));
-        player_attributes.put(PlayerAttributes.GoalkeepingKicking, rs.getInt("goalkeeping_kicking"));
-        player_attributes.put(PlayerAttributes.GoalkeepingPositioning, rs.getInt("goalkeeping_positioning"));
-        player_attributes.put(PlayerAttributes.GoalkeepingReflexes, rs.getInt("goalkeeping_reflexes"));
-        player_attributes.put(PlayerAttributes.GoalkeepingSpeed, rs.getInt("goalkeeping_speed"));
+        player_attributes.put(PlayerAttributes.PACE, rs.getInt("pace"));
+        player_attributes.put(PlayerAttributes.SHOOTING, rs.getInt("shooting"));
+        player_attributes.put(PlayerAttributes.PASSING, rs.getInt("passing"));
+        player_attributes.put(PlayerAttributes.DRIBBLING, rs.getInt("dribbling"));
+        player_attributes.put(PlayerAttributes.DEFENDING, rs.getInt("defending"));
+        player_attributes.put(PlayerAttributes.PHYSIC, rs.getInt("physic"));
+        player_attributes.put(PlayerAttributes.ATTACKING_CROSSING, rs.getInt("attacking_crossing"));
+        player_attributes.put(PlayerAttributes.ATTACKING_FINISHING, rs.getInt("attacking_finishing"));
+        player_attributes.put(PlayerAttributes.ATTACKING_HEADING_ACCURACY, rs.getInt("attacking_heading_accuracy"));
+        player_attributes.put(PlayerAttributes.ATTACKING_SHORT_PASSING, rs.getInt("attacking_short_passing"));
+        player_attributes.put(PlayerAttributes.ATTACKING_VOLLEYS, rs.getInt("attacking_volleys"));
+        player_attributes.put(PlayerAttributes.SKILL_DRIBBLING, rs.getInt("skill_dribbling"));
+        player_attributes.put(PlayerAttributes.SKILL_CURVE, rs.getInt("skill_curve"));
+        player_attributes.put(PlayerAttributes.SKILL_FK_ACCURACY, rs.getInt("skill_fk_accuracy"));
+        player_attributes.put(PlayerAttributes.SKILL_LONG_PASSING, rs.getInt("skill_long_passing"));
+        player_attributes.put(PlayerAttributes.SKILL_BALL_CONTROL, rs.getInt("skill_ball_control"));
+        player_attributes.put(PlayerAttributes.MOVEMENT_ACCELERATION, rs.getInt("movement_acceleration"));
+        player_attributes.put(PlayerAttributes.MOVEMENT_SPRINT_SPEED, rs.getInt("movement_sprint_speed"));
+        player_attributes.put(PlayerAttributes.MOVEMENT_REACTIONS, rs.getInt("movement_reactions"));
+        player_attributes.put(PlayerAttributes.MOVEMENT_AGILITY, rs.getInt("movement_agility"));
+        player_attributes.put(PlayerAttributes.MOVEMENT_BALANCE, rs.getInt("movement_balance"));
+        player_attributes.put(PlayerAttributes.POWER_SHOT_POWER, rs.getInt("power_shot_power"));
+        player_attributes.put(PlayerAttributes.POWER_JUMPING, rs.getInt("power_jumping"));
+        player_attributes.put(PlayerAttributes.POWER_STAMINA, rs.getInt("power_stamina"));
+        player_attributes.put(PlayerAttributes.POWER_STRENGTH, rs.getInt("power_strength"));
+        player_attributes.put(PlayerAttributes.POWER_LONG_SHOTS, rs.getInt("power_long_shots"));
+        player_attributes.put(PlayerAttributes.MENTALITY_AGGRESSION, rs.getInt("mentality_aggression"));
+        player_attributes.put(PlayerAttributes.MENTALITY_INTERCEPTIONS, rs.getInt("mentality_interceptions"));
+        player_attributes.put(PlayerAttributes.MENTALITY_POSITIONING, rs.getInt("mentality_positioning"));
+        player_attributes.put(PlayerAttributes.MENTALITY_VISION, rs.getInt("mentality_vision"));
+        player_attributes.put(PlayerAttributes.MENTALITY_PENALTIES, rs.getInt("mentality_penalties"));
+        player_attributes.put(PlayerAttributes.MENTALITY_COMPOSURE, rs.getInt("mentality_composure"));
+        player_attributes.put(PlayerAttributes.DEFENDING_MARKING_AWARENESS, rs.getInt("defending_marking_awareness"));
+        player_attributes.put(PlayerAttributes.DEFENDING_STANDING_TACKLE, rs.getInt("defending_standing_tackle"));
+        player_attributes.put(PlayerAttributes.DEFENDING_SLIDING_TACKLE, rs.getInt("defending_sliding_tackle"));
+        player_attributes.put(PlayerAttributes.GOALKEEPING_DIVING, rs.getInt("goalkeeping_diving"));
+        player_attributes.put(PlayerAttributes.GOALKEEPING_HANDLING, rs.getInt("goalkeeping_handling"));
+        player_attributes.put(PlayerAttributes.GOALKEEPING_KICKING, rs.getInt("goalkeeping_kicking"));
+        player_attributes.put(PlayerAttributes.GOALKEEPING_POSITIONING, rs.getInt("goalkeeping_positioning"));
+        player_attributes.put(PlayerAttributes.GOALKEEPING_REFLEXES, rs.getInt("goalkeeping_reflexes"));
+        player_attributes.put(PlayerAttributes.GOALKEEPING_SPEED, rs.getInt("goalkeeping_speed"));
     }
 
     private static void setPlayers() throws Exception {

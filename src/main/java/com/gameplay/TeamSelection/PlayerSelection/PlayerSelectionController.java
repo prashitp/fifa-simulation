@@ -37,11 +37,11 @@ public class PlayerSelectionController implements IPlayerSelectionController{
 		IPlayerCategory goalkeepers = new GoalkeeperCategory(players);
 
 		//give priority for player selection based on formation type
-		if(formationType.equals(FormationType.Defensive)) {
+		if(formationType.equals(FormationType.DEFENSIVE)) {
 			defenders.selectPlayers(totalDefendersRequired);
 			midfielders.selectPlayers(totalMidfieldersRequired);
 			forwards.selectPlayers(totalForwardsRequired);
-		} else if(formationType.equals(FormationType.Neutral)) {
+		} else if(formationType.equals(FormationType.NEUTRAL)) {
 			midfielders.selectPlayers(totalMidfieldersRequired);
 			forwards.selectPlayers(totalForwardsRequired);
 			defenders.selectPlayers(totalDefendersRequired);

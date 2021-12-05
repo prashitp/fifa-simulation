@@ -9,11 +9,11 @@ import com.models.gameplay.TeamSelection.FormationType;
 public class ClubOverallCriteria implements IFormationCriteriaCategory{
 	public FormationType getResults(ClubModel club, ClubModel opposingClub) {
 		FormationType result;
-		int overallDifference = club.attributes.get(ClubAttributes.Overall) - opposingClub.attributes.get(ClubAttributes.Overall);
+		int overallDifference = club.attributes.get(ClubAttributes.OVERALL) - opposingClub.attributes.get(ClubAttributes.OVERALL);
 		if(overallDifference < 0) {
-			result = overallDifference < -4 ? FormationType.Defensive : FormationType.Neutral;
+			result = overallDifference < -4 ? FormationType.DEFENSIVE : FormationType.NEUTRAL;
 		} else {
-			result = overallDifference > 4 ? FormationType.Attacking : FormationType.Neutral;
+			result = overallDifference > 4 ? FormationType.ATTACKING : FormationType.NEUTRAL;
 		}
 		return result;
 	}

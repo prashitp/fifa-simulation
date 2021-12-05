@@ -15,7 +15,7 @@ class PlayerSelectionControllerTest {
 
 	@Test
 	void getSquadNeutralTest() {
-		FormationModel formationModel = new FormationModel(4,4,2, FormationType.Neutral);
+		FormationModel formationModel = new FormationModel(4,4,2, FormationType.NEUTRAL);
 		PlayerSelectionController playerSelectionController = new PlayerSelectionController(Arrays.asList(Constants.PLAYERS),formationModel);
 
 		HashMap<PlayerModel, PlayingPosition> playing11 = playerSelectionController.getSquad();

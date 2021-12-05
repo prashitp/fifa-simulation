@@ -37,7 +37,7 @@ public class PlayerSelectionService implements IPlayerSelectionService {
 	public List<PlayerModel> getMatchReadyPlayers(List<PlayerModel> players, int stamina) {
 		List<PlayerModel> matchReadyPlayers = new ArrayList<>();
 		for (PlayerModel player: players) {
-			if(player.skills.get(PlayerAttributes.PowerStamina) > stamina) {
+			if(player.skills.get(PlayerAttributes.POWER_STAMINA) > stamina) {
 				matchReadyPlayers.add(player);
 			}
 		}
