@@ -8,7 +8,6 @@ import com.gameplay.TeamSelection.PlayerSelection.PlayerSelectionController;
 import com.models.*;
 import com.models.gameplay.TeamSelection.FormationModel;
 import com.models.gameplay.TeamSelection.Lineup;
-
 import java.util.*;
 
 /**
@@ -25,13 +24,24 @@ public class TeamSelectionController implements ITeamSelectionController {
 		opposingClubDetails = Arrays.stream(Constants.CLUBS).filter(club -> club.getClubName().equals(opposingClubName)).toArray(ClubModel[]::new)[0];
 	}
 
-	public Lineup getTeam() {
+	public List<Lineup> getSquads() {
+		List<Lineup> squads = new ArrayList<>();
+		Lineup homeLineup = getPlaying11(clubDetails, opposingClubDetails);
+		squads.add(homeLineup);
+
+		Lineup awayLineup = getPlaying11(opposingClubDetails, clubDetails);
+		squads.add(awayLineup);
+
+		return squads;
+	}
+
+	private Lineup getPlaying11(ClubModel club, ClubModel opposingClub) {
 		//getFormation
-		IFormationSelectionController formationSelectionController = new FormationSelectionController(clubDetails,opposingClubDetails);
+		IFormationSelectionController formationSelectionController = new FormationSelectionController(club,opposingClub);
 		FormationModel formationModel = formationSelectionController.getFormation();
 
 		//get playing11
-		IPlayerSelectionController playerSelectionController = new PlayerSelectionController(Arrays.asList(clubDetails.getPlayers()),formationModel);
+		IPlayerSelectionController playerSelectionController = new PlayerSelectionController(Arrays.asList(club.getPlayers()),formationModel);
 		return new Lineup(formationModel, playerSelectionController.getSquad());
 	}
 }
