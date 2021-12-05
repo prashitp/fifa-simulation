@@ -1,7 +1,10 @@
 package com.gameplay.ScoreLine.GoalCalculator;
 
+import com.models.SetPieceType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,15 +16,16 @@ class SetPieceProbabilityTest {
 
 	@BeforeAll
 	public static void init() {
-		HashMap<String, Integer> homeSetPieces = new HashMap<>();
-		homeSetPieces.put("FREEKICK",13);
-		homeSetPieces.put("CORNER",9);
-		homeSetPieces.put("PENALTY",0);
+		HashMap<SetPieceType, Integer> homeSetPieces = new HashMap<>();
+		homeSetPieces.put(SetPieceType.FREE_KICK,13);
+		homeSetPieces.put(SetPieceType.CORNER_KICK,9);
+		homeSetPieces.put(SetPieceType.PENALTY_KICK,1);
 
-		HashMap<String, Integer> awaySetPieces = new HashMap<>();
-		awaySetPieces.put("FREEKICK",4);
-		awaySetPieces.put("CORNER",5);
-		awaySetPieces.put("PENALTY",0);
+		HashMap<SetPieceType, Integer> awaySetPieces = new HashMap<>();
+		awaySetPieces.put(SetPieceType.FREE_KICK,4);
+		awaySetPieces.put(SetPieceType.CORNER_KICK,5);
+		awaySetPieces.put(SetPieceType.PENALTY_KICK,1);
+
 		setPieceProbability = new SetPieceProbability(homeSetPieces,awaySetPieces);
 	}
 
