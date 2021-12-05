@@ -30,7 +30,7 @@ class LineupTest {
 
 	@Test
 	void getPlaying11Test() {
-		HashMap<PlayerModel, PlayingPosition> playing11 = lineup.getplaying11();
+		HashMap<PlayerModel, PlayingPosition> playing11 = lineup.getPlaying11();
 		assertEquals(PlayingPosition.FORWARD,playing11.get(Constants.PLAYERS[0]));
 	}
 }

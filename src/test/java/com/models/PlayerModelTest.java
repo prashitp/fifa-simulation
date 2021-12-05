@@ -20,7 +20,6 @@ class PlayerModelTest {
 
 	@BeforeAll
 	static void initialize() {
-		System.out.println("Before called");
 		skills = new HashMap<>();
 		skills.put(PlayerAttributes.PACE, 80);
 		skills.put(PlayerAttributes.SHOOTING, 80);

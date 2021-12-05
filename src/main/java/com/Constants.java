@@ -77,4 +77,5 @@ public class Constants {
             PlayerAttributes.GOALKEEPING_POSITIONING, PlayerAttributes.GOALKEEPING_REFLEXES, PlayerAttributes.MENTALITY_VISION,
             PlayerAttributes.MENTALITY_POSITIONING, PlayerAttributes.SKILL_LONG_PASSING, PlayerAttributes.MENTALITY_COMPOSURE
     };
+    public static final double STARTING_PROBABILITY = 0.5;
 }

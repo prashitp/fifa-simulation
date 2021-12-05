@@ -11,7 +11,7 @@ public class DefaultFormations {
 		formations = new FormationModel[]{
 				new FormationModel(4, 4, 2, FormationType.NEUTRAL),
 				new FormationModel(3, 5, 2, FormationType.NEUTRAL),
-				new FormationModel(5, 3, 2, FormationType.NEUTRAL),
+				new FormationModel(4, 3, 3, FormationType.NEUTRAL),
 				new FormationModel(4, 2, 2,2, FormationType.NEUTRAL),
 				new FormationModel(4, 3, 2, 1, FormationType.NEUTRAL),
 				new FormationModel(3, 4, 1,2, FormationType.NEUTRAL),

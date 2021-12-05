@@ -21,7 +21,7 @@ public class Lineup {
 		return formation;
 	}
 
-	public HashMap<PlayerModel, PlayingPosition> getplaying11() {
+	public HashMap<PlayerModel, PlayingPosition> getPlaying11() {
 		return playing11;
 	}
 }
