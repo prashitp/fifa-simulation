@@ -12,7 +12,6 @@ class ClubModelTest {
 	ClubModel club = new ClubModel(1,"Arsenal",attributes,80000000);
 	@BeforeAll
 	static void initialize() {
-		System.out.println("Before called");
 		attributes = new HashMap<>();
 		attributes.put(ClubAttributes.OVERALL,79);
 		attributes.put(ClubAttributes.ATTACK,79);
