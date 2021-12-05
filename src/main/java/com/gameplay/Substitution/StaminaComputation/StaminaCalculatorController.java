@@ -35,7 +35,7 @@ public class StaminaCalculatorController implements IStaminaCalculatorController
             }
             powerStamina = (int)((sum / (playerMap.keySet().size())) *
                     StaminaFactors.getPercentageReducedByPosition().get(playingEleven.get(player)));
-            player.skills.put(PlayerAttributes.PowerStamina, powerStamina);
+            player.skills.put(PlayerAttributes.POWER_STAMINA, powerStamina);
         }
         notifyAllObservers();
     }

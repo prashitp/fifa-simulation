@@ -37,11 +37,11 @@ public class CommonFunctions {
 	 * @author Mayank Sareen
 	 */
 	public static Double generateRandomDoubleBetweenRange(int min, int max) {
-		return  min + (Math.random() * ((max - min) + 1));
+		return  min + (Math.random() * (max - min));
 	}
 
 	public static Integer generateRandomIntegerBetweenRange(int min, int max) {
-		return(randomFactor(min,max));
+		return(randomInteger(min,max));
 	}
 
 	public static Double generateRandomDouble() {
@@ -54,8 +54,7 @@ public class CommonFunctions {
 		return Integer.valueOf(r.nextInt());
 	}
 
-	private static Integer randomFactor(int min, int max) {
-		return  min + (int)(Math.random() * ((max - min) + 1));
-
+	private static Integer randomInteger(int min, int max) {
+		return  min + (int)(Math.random() * (max - min));
 	}
 }
