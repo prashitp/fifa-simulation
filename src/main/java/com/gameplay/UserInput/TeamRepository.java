@@ -14,12 +14,12 @@ public class TeamRepository implements ITeamRepository {
 
 	@Override
 	public List<ClubModel> fetchAllTeams() {
-		return Arrays.asList(DatabaseImport.getClubs());
+		return Arrays.asList(DatabaseImport.getInstance().getClubs());
 	}
 
 	@Override
 	public Boolean isTeamIdExists(Integer teamId) {
-		return Arrays.asList(DatabaseImport.getClubs()).stream().map(club -> club.getClubId())
+		return Arrays.asList(DatabaseImport.getInstance().getClubs()).stream().map(club -> club.getClubId())
 				.collect(Collectors.toList()).contains(teamId);
 	}
 }
