@@ -43,7 +43,6 @@ public class PlayerStatusRepositoryTest {
 	@Order(3)
 	public void fetchPlayerValidTest() {
 		PlayerEntity player = playerStatusRepository.fetchPlayer(1);
-		System.out.println(player);
 		assertTrue(player != null, "fetchPlayer(playerId) method is not working as expected!");
 	}
 

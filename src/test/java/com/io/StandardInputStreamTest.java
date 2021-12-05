@@ -1,12 +1,11 @@
 package com.io;
 
-import java.io.ByteArrayInputStream;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.Mockito;
 
 /**
  * @author Jay Patel
@@ -18,16 +17,14 @@ public class StandardInputStreamTest {
 
 	@BeforeAll
 	public static void init() {
-		String userInput = String.format("hello world\n150\n10000000000\n1.25", System.lineSeparator());
-		ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
-		System.setIn(bais);
-		inputStream = StandardInputStream.getInstance();
+		inputStream = Mockito.mock(IInputStream.class);
 	}
 
 	@Test
 	@Order(1)
 	public void stringInputTest() {
 		String expectedString = "hello world";
+		Mockito.when(inputStream.readLine()).thenReturn(expectedString);
 		String actualString = inputStream.readLine();
 		assert (expectedString.equals(actualString));
 	}
@@ -36,6 +33,7 @@ public class StandardInputStreamTest {
 	@Order(2)
 	public void integerInputTest() {
 		Integer expectedInteger = 150;
+		Mockito.when(inputStream.readInteger()).thenReturn(expectedInteger);
 		Integer actualInteger = inputStream.readInteger();
 		assert (expectedInteger.equals(actualInteger));
 	}
@@ -44,6 +42,7 @@ public class StandardInputStreamTest {
 	@Order(3)
 	public void longInputTest() {
 		Long expectedLong = 10000000000L;
+		Mockito.when(inputStream.readLong()).thenReturn(expectedLong);
 		Long actualLong = inputStream.readLong();
 		assert (expectedLong.equals(actualLong));
 	}
@@ -52,6 +51,7 @@ public class StandardInputStreamTest {
 	@Order(4)
 	public void doubleInputTest() {
 		Double expectedDouble = 1.25D;
+		Mockito.when(inputStream.readDouble()).thenReturn(expectedDouble);
 		Double actualDouble = inputStream.readDouble();
 		assert (expectedDouble.equals(actualDouble));
 	}

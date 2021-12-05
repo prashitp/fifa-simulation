@@ -3,11 +3,12 @@ package com.io;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.internal.util.reflection.FieldSetter;
 
 /**
  * @author Jay Patel
@@ -15,32 +16,28 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(OrderAnnotation.class)
 public class StandardOutputStreamTest {
 
-	public static IOutputStream outputStream;
-	public static ByteArrayOutputStream baos;
+	private IOutputStream outputStream = StandardOutputStream.getInstance();
+	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-	@BeforeAll
-	public static void init() {
-		baos = new ByteArrayOutputStream();
-		PrintStream printStream = new PrintStream(baos);
-		System.setOut(printStream);
-		outputStream = StandardOutputStream.getInstance();
+	@BeforeEach
+	public void setUp() throws Exception {
+		FieldSetter teamService = new FieldSetter(outputStream,
+				StandardOutputStream.class.getDeclaredField("printStream"));
+		teamService.set(new PrintStream(outputStreamCaptor));
 	}
 
 	@Test
 	@Order(1)
 	public void printlnOutputTest() {
 		outputStream.println("hello");
-		String[] output = baos.toString().split(System.lineSeparator());
-		String firstLine = "hello";
-		assert (output.length == 1 && output[0].equals(firstLine));
+		String[] output = outputStreamCaptor.toString().split(System.lineSeparator());
+		assert (output[0].equals("hello"));
 	}
 
 	@Test
 	@Order(2)
 	public void printOutputTest() {
-		outputStream.print("world");
-		String[] output = baos.toString().split(System.lineSeparator());
-		String secondLine = "world";
-		assert (output.length == 2 && output[1].equals(secondLine));
+		outputStream.print("hello");
+		assert (outputStreamCaptor.toString().equals("hello"));
 	}
 }
