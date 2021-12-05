@@ -54,10 +54,10 @@ public class TeamValidation {
 		}
 		for (PlayerPositions position : CommonFunctions
 				.fetchPlayerPositions(players.get(parameters.getCurPlayerIndex()))) {
-			Boolean isDefender = Arrays.asList(Constants.defenderPositions).contains(position);
-			Boolean isMidFielder = Arrays.asList(Constants.midfielderPositions).contains(position);
-			Boolean isForward = Arrays.asList(Constants.forwardPositions).contains(position);
-			Boolean isGoalKeeper = Arrays.asList(Constants.goalkeeperPositions).contains(position);
+			Boolean isDefender = Arrays.asList(Constants.DEFENDER_POSITIONS).contains(position);
+			Boolean isMidFielder = Arrays.asList(Constants.MIDFIELDER_POSITIONS).contains(position);
+			Boolean isForward = Arrays.asList(Constants.FORWARD_POSITIONS).contains(position);
+			Boolean isGoalKeeper = Arrays.asList(Constants.GOALKEEPER_POSITIONS).contains(position);
 
 			TeamValidationParameters newParameters = new Builder().setCurPlayerIndex(parameters.getCurPlayerIndex() + 1)
 					.setTeamSize(parameters.getTeamSize() + 1)
