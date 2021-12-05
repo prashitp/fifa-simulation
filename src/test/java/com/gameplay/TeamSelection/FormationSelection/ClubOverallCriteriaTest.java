@@ -13,7 +13,7 @@ class ClubOverallCriteriaTest {
 	@Test
 	void getResultsTest() {
 		FormationType formationType = clubOverallCriteria.getResults(Constants.CLUBS[1], Constants.CLUBS[0]);
-		assertEquals("Neutral",formationType.toString());
+		assertEquals("NEUTRAL",formationType.toString());
 	}
 
 }

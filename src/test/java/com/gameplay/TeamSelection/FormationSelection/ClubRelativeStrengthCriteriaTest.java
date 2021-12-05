@@ -13,7 +13,7 @@ class ClubRelativeStrengthCriteriaTest {
 	@Test
 	void getResults() {
 		FormationType formationType = clubRelativeStrengthCriteria.getResults(Constants.CLUBS[0], Constants.CLUBS[1]);
-		assertEquals("Attacking",formationType.toString());
+		assertEquals("ATTACKING",formationType.toString());
 	}
 
 }

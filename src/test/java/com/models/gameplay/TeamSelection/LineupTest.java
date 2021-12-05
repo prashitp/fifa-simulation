@@ -16,7 +16,7 @@ class LineupTest {
 
 	@BeforeAll
 	public static void init() {
-		FormationModel formationModel = new FormationModel(4,5,1,FormationType.Defensive);
+		FormationModel formationModel = new FormationModel(4,5,1,FormationType.DEFENSIVE);
 		HashMap<PlayerModel,PlayingPosition> playing11 = new HashMap<>();
 		playing11.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
 		lineup = new Lineup(formationModel,playing11);

@@ -20,6 +20,6 @@ class FormationSelectionControllerTest {
 	@Test
 	void getFormationTest() {
 		FormationModel formationModel = formationSelectionController.getFormation();
-		assertEquals(FormationType.Attacking, formationModel.type);
+		assertEquals(FormationType.ATTACKING, formationModel.type);
 	}
 }

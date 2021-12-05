@@ -1,6 +1,8 @@
 package com.database_operations;
 
 import com.models.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
@@ -31,19 +33,19 @@ class DatabaseImportTest {
 
     @Mock
     HashMap<PlayerAttributes, Integer> mock_playerAttributes = new HashMap<PlayerAttributes, Integer>() {{
-        put(PlayerAttributes.Pace, 87);
-        put(PlayerAttributes.Shooting, 87);
-        put(PlayerAttributes.AttackingCrossing, 87);
-        put(PlayerAttributes.SkillBallControl, 88);
-        put(PlayerAttributes.MovementAcceleration, 85);
+        put(PlayerAttributes.PACE, 87);
+        put(PlayerAttributes.SHOOTING, 87);
+        put(PlayerAttributes.ATTACKING_CROSSING, 87);
+        put(PlayerAttributes.SKILL_BALL_CONTROL, 88);
+        put(PlayerAttributes.MOVEMENT_ACCELERATION, 85);
     }};
 
     @Mock
     static HashMap<ClubAttributes, Integer> mock_clubAttributes = new HashMap<ClubAttributes, Integer>() {{
-        put(ClubAttributes.Overall, 79);
-        put(ClubAttributes.Attack, 83);
-        put(ClubAttributes.Midfield, 79);
-        put(ClubAttributes.Defence, 77);
+        put(ClubAttributes.OVERALL, 79);
+        put(ClubAttributes.ATTACK, 83);
+        put(ClubAttributes.MIDFIELD, 79);
+        put(ClubAttributes.DEFENCE, 77);
     }};
 
     @Mock
@@ -59,6 +61,7 @@ class DatabaseImportTest {
             )
     };
 
+    @BeforeEach
     @Test
     void getInstanceTest() {
         mock_instance = DatabaseImport.getInstance();
@@ -81,8 +84,8 @@ class DatabaseImportTest {
 
     @Test
     void getPlayersTestInstanceAttributes() {
-        int expected = mock_players[0].skills.get(PlayerAttributes.Pace);
-        int actual = mock_instance.getPlayers()[0].skills.get(PlayerAttributes.Pace);
+        int expected = mock_players[0].skills.get(PlayerAttributes.PACE);
+        int actual = mock_instance.getPlayers()[0].skills.get(PlayerAttributes.PACE);
         assertEquals(expected, actual);
     }
 
@@ -102,8 +105,8 @@ class DatabaseImportTest {
 
     @Test
     void getClubsTestInstanceAttributes() {
-        int expected = mock_clubs[0].attributes.get(ClubAttributes.Attack);
-        int actual = mock_instance.getClubs()[0].attributes.get(ClubAttributes.Attack);
+        int expected = mock_clubs[0].attributes.get(ClubAttributes.ATTACK);
+        int actual = mock_instance.getClubs()[0].attributes.get(ClubAttributes.ATTACK);
         assertEquals(expected, actual);
     }
 }

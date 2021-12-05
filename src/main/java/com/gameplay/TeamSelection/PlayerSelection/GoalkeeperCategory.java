@@ -13,7 +13,7 @@ public class GoalkeeperCategory implements IPlayerCategory{
 	List<PlayerModel> goalkeepers;
 
 	public GoalkeeperCategory(List<PlayerModel> players) {
-		this.goalkeepers = playerSelectionService.groupPlayers(players,Constants.goalkeeperPositions);
+		this.goalkeepers = playerSelectionService.groupPlayers(players,Constants.GOALKEEPER_POSITIONS);
 	}
 
 	public void selectPlayers(int required) {

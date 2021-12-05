@@ -14,7 +14,7 @@ public class DefenderCategory implements IPlayerCategory{
 	List<PlayerModel> defenders;
 
 	public DefenderCategory(List<PlayerModel> players) {
-		this.defenders = playerSelectionService.groupPlayers(players,Constants.defenderPositions);
+		this.defenders = playerSelectionService.groupPlayers(players,Constants.DEFENDER_POSITIONS);
 	}
 
 	public void selectPlayers(int required) {

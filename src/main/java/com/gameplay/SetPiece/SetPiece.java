@@ -41,13 +41,13 @@ public abstract class SetPiece implements ISetPiece {
         String club1 = team1.entrySet().stream().findFirst().get().getKey().club;
         String club2 = team2.entrySet().stream().findFirst().get().getKey().club;
 
-        // Fetch respective "Overall" Club attribute value
+        // Fetch respective "OVERALL" Club attribute value
         for (ClubModel club : Constants.CLUBS) {
             if (club.getClubName().equals(club1)) {
-                club1overall = club.attributes.get(ClubAttributes.Overall);
+                club1overall = club.attributes.get(ClubAttributes.OVERALL);
             }
             if (club.getClubName().equals(club2)) {
-                club2overall = club.attributes.get(ClubAttributes.Overall);
+                club2overall = club.attributes.get(ClubAttributes.OVERALL);
             }
             if (club1overall != 0 && club2overall != 0) {
                 break;
@@ -59,7 +59,7 @@ public abstract class SetPiece implements ISetPiece {
             for (Map.Entry<PlayerModel, PlayingPosition> player : team.entrySet()) {
                 if (player.getValue() == PlayingPosition.FORWARD) {
                     forward.add(List.of(player.getKey()));
-                } else if (player.getValue() == PlayingPosition.MIDFIEDLER) {
+                } else if (player.getValue() == PlayingPosition.MIDFIELDER) {
                     midfielder.add(List.of(player.getKey()));
                 } else if (player.getValue() == PlayingPosition.DEFENDER) {
                     defender.add(List.of(player.getKey()));

@@ -30,19 +30,19 @@ public class Constants {
     public static final String LOGGER_FILE_PATH = "src/main/java/log.log";
     public static final PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
     public static final ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
-    public static final PlayerPositions[] forwardPositions = {
+    public static final PlayerPositions[] FORWARD_POSITIONS = {
             PlayerPositions.ST, PlayerPositions.LW, PlayerPositions.RW, PlayerPositions.CF, PlayerPositions.LS,
 			PlayerPositions.RS
     };
-    public static final PlayerPositions[] midfielderPositions = {
+    public static final PlayerPositions[] MIDFIELDER_POSITIONS = {
             PlayerPositions.CM, PlayerPositions.CAM, PlayerPositions.CDM, PlayerPositions.LM, PlayerPositions.RM,
             PlayerPositions.LWB, PlayerPositions.RWB, PlayerPositions.LCM, PlayerPositions.RCM, PlayerPositions.LDM,
             PlayerPositions.RDM
     };
-    public static final PlayerPositions[] defenderPositions = {
+    public static final PlayerPositions[] DEFENDER_POSITIONS = {
             PlayerPositions.CB, PlayerPositions.RCB, PlayerPositions.LCB, PlayerPositions.LB, PlayerPositions.RB
     };
-    public static final PlayerPositions[] goalkeeperPositions = {
+    public static final PlayerPositions[] GOALKEEPER_POSITIONS = {
             PlayerPositions.GK
     };
     public static final int MATCH_READY_STAMINA_FORWARDS = 50;
@@ -50,31 +50,31 @@ public class Constants {
     public static final int MATCH_READY_STAMINA_DEFENDERS = 40;
     public static final int MATCH_READY_STAMINA_GOALKEEPER = 10;
 
-    public static final PlayerAttributes[] attackingSkills = {
-            PlayerAttributes.AttackingCrossing, PlayerAttributes.AttackingFinishing, PlayerAttributes.MentalityVision,
-            PlayerAttributes.AttackingVolleys, PlayerAttributes.AttackingShortPassing, PlayerAttributes.MentalityPenalties,
-            PlayerAttributes.AttackingHeadingAccuracy, PlayerAttributes.Pace, PlayerAttributes.Shooting,
-            PlayerAttributes.MovementSprintSpeed, PlayerAttributes.PowerShotPower, PlayerAttributes.MovementReactions
+    public static final PlayerAttributes[] ATTACKING_SKILLS = {
+            PlayerAttributes.ATTACKING_CROSSING, PlayerAttributes.ATTACKING_FINISHING, PlayerAttributes.MENTALITY_VISION,
+            PlayerAttributes.ATTACKING_VOLLEYS, PlayerAttributes.ATTACKING_SHORT_PASSING, PlayerAttributes.MENTALITY_PENALTIES,
+            PlayerAttributes.ATTACKING_HEADING_ACCURACY, PlayerAttributes.PACE, PlayerAttributes.SHOOTING,
+            PlayerAttributes.MOVEMENT_SPRINT_SPEED, PlayerAttributes.POWER_SHOT_POWER, PlayerAttributes.MOVEMENT_REACTIONS
     };
 
-    public static final PlayerAttributes[] midfieldSkills = {
-            PlayerAttributes.SkillBallControl, PlayerAttributes.SkillDribbling, PlayerAttributes.Passing,
-            PlayerAttributes.SkillFkAccuracy, PlayerAttributes.SkillCurve, PlayerAttributes.Dribbling,
-            PlayerAttributes.SkillLongPassing, PlayerAttributes.MovementAcceleration, PlayerAttributes.MovementAgility,
-            PlayerAttributes.PowerStamina, PlayerAttributes.PowerLongShots, PlayerAttributes.MentalityVision
+    public static final PlayerAttributes[] MIDFIELD_SKILLS = {
+            PlayerAttributes.SKILL_BALL_CONTROL, PlayerAttributes.SKILL_DRIBBLING, PlayerAttributes.PASSING,
+            PlayerAttributes.SKILL_FK_ACCURACY, PlayerAttributes.SKILL_CURVE, PlayerAttributes.DRIBBLING,
+            PlayerAttributes.SKILL_LONG_PASSING, PlayerAttributes.MOVEMENT_ACCELERATION, PlayerAttributes.MOVEMENT_AGILITY,
+            PlayerAttributes.POWER_STAMINA, PlayerAttributes.POWER_LONG_SHOTS, PlayerAttributes.MENTALITY_VISION
     };
 
-    public static final PlayerAttributes[] defendingSkills = {
-            PlayerAttributes.DefendingMarkingAwareness, PlayerAttributes.DefendingStandingTackle, PlayerAttributes.Defending,
-            PlayerAttributes.DefendingSlidingTackle, PlayerAttributes.MovementBalance, PlayerAttributes.PowerJumping,
-            PlayerAttributes.PowerStrength, PlayerAttributes.MentalityAggression, PlayerAttributes.MentalityComposure,
-            PlayerAttributes.MentalityInterceptions, PlayerAttributes.MentalityPositioning, PlayerAttributes.Physic
+    public static final PlayerAttributes[] DEFENDING_SKILLS = {
+            PlayerAttributes.DEFENDING_MARKING_AWARENESS, PlayerAttributes.DEFENDING_STANDING_TACKLE, PlayerAttributes.DEFENDING,
+            PlayerAttributes.DEFENDING_SLIDING_TACKLE, PlayerAttributes.MOVEMENT_BALANCE, PlayerAttributes.POWER_JUMPING,
+            PlayerAttributes.POWER_STRENGTH, PlayerAttributes.MENTALITY_AGGRESSION, PlayerAttributes.MENTALITY_COMPOSURE,
+            PlayerAttributes.MENTALITY_INTERCEPTIONS, PlayerAttributes.MENTALITY_POSITIONING, PlayerAttributes.PHYSIC
     };
 
-    public static final PlayerAttributes[] goalkeepingSkills = {
-            PlayerAttributes.GoalkeepingDiving, PlayerAttributes.GoalkeepingHandling, PlayerAttributes.PowerJumping,
-            PlayerAttributes.GoalkeepingSpeed, PlayerAttributes.GoalkeepingKicking, PlayerAttributes.MovementReactions,
-            PlayerAttributes.GoalkeepingPositioning, PlayerAttributes.GoalkeepingReflexes, PlayerAttributes.MentalityVision,
-            PlayerAttributes.MentalityPositioning, PlayerAttributes.SkillLongPassing, PlayerAttributes.MentalityComposure
+    public static final PlayerAttributes[] GOALKEEPING_SKILLS = {
+            PlayerAttributes.GOALKEEPING_DIVING, PlayerAttributes.GOALKEEPING_HANDLING, PlayerAttributes.POWER_JUMPING,
+            PlayerAttributes.GOALKEEPING_SPEED, PlayerAttributes.GOALKEEPING_KICKING, PlayerAttributes.MOVEMENT_REACTIONS,
+            PlayerAttributes.GOALKEEPING_POSITIONING, PlayerAttributes.GOALKEEPING_REFLEXES, PlayerAttributes.MENTALITY_VISION,
+            PlayerAttributes.MENTALITY_POSITIONING, PlayerAttributes.SKILL_LONG_PASSING, PlayerAttributes.MENTALITY_COMPOSURE
     };
 }

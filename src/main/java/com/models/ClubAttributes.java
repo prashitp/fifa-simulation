@@ -4,8 +4,8 @@ package com.models;
  * @author prashitpatel
  */
 public enum ClubAttributes {
-	Overall,
-	Attack,
-	Midfield,
-	Defence
+	OVERALL,
+	ATTACK,
+	MIDFIELD,
+	DEFENCE
 }

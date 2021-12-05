@@ -30,17 +30,17 @@ public class FreeKick extends SetPiece {
         double t2forward, t2midfielder, t1defender, t1goalkeeper, t2sum;
 
         // Team 1
-        t1forward = calculateProbableSkillValue(forward.get(0), Constants.attackingSkills);
-        t1midfielder = calculateProbableSkillValue(midfielder.get(0), Constants.midfieldSkills);
-        t1defender = calculateProbableSkillValue(defender.get(0), Constants.defendingSkills);
-        t1goalkeeper = calculateProbableSkillValue(goalkeeper.get(0), Constants.goalkeepingSkills);
+        t1forward = calculateProbableSkillValue(forward.get(0), Constants.ATTACKING_SKILLS);
+        t1midfielder = calculateProbableSkillValue(midfielder.get(0), Constants.MIDFIELD_SKILLS);
+        t1defender = calculateProbableSkillValue(defender.get(0), Constants.DEFENDING_SKILLS);
+        t1goalkeeper = calculateProbableSkillValue(goalkeeper.get(0), Constants.GOALKEEPING_SKILLS);
         t1sum = (t1forward + t1midfielder + t1defender + t1goalkeeper) / 4;
 
         // Team 2
-        t2defender = calculateProbableSkillValue(defender.get(1), Constants.defendingSkills);
-        t2goalkeeper = calculateProbableSkillValue(goalkeeper.get(1), Constants.goalkeepingSkills);
-        t2forward = calculateProbableSkillValue(forward.get(1), Constants.attackingSkills);
-        t2midfielder = calculateProbableSkillValue(midfielder.get(1), Constants.midfieldSkills);
+        t2defender = calculateProbableSkillValue(defender.get(1), Constants.DEFENDING_SKILLS);
+        t2goalkeeper = calculateProbableSkillValue(goalkeeper.get(1), Constants.GOALKEEPING_SKILLS);
+        t2forward = calculateProbableSkillValue(forward.get(1), Constants.ATTACKING_SKILLS);
+        t2midfielder = calculateProbableSkillValue(midfielder.get(1), Constants.MIDFIELD_SKILLS);
         t2sum = (t2forward + t2midfielder + t2defender + t2goalkeeper) / 4;
 
         calculateKicks(t1sum, t2sum);

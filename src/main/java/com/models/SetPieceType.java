@@ -5,7 +5,7 @@ package com.models;
  */
 
 public enum SetPieceType {
-    CornerKick,
-    FreeKick,
-    PenaltyKick
+    CORNER_KICK,
+    FREE_KICK,
+    PENALTY_KICK
 }

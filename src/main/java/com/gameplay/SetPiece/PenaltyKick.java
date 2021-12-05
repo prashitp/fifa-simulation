@@ -31,16 +31,16 @@ public class PenaltyKick extends SetPiece {
         double t1threshold, t2threshold;
 
         // Combination 1
-        t1forward = calculateProbableSkillValue(forward.get(0), Constants.attackingSkills);
-        t2defender = calculateProbableSkillValue(defender.get(1), Constants.defendingSkills);
+        t1forward = calculateProbableSkillValue(forward.get(0), Constants.ATTACKING_SKILLS);
+        t2defender = calculateProbableSkillValue(defender.get(1), Constants.DEFENDING_SKILLS);
 
         t1threshold = (t1forward) / (t1forward + t2defender);
         t2threshold = (t2defender) / (t1forward + t2defender);
         calculateKicks(t1threshold, t2threshold);
 
         // Combination 2
-        t2forward = calculateProbableSkillValue(forward.get(1), Constants.attackingSkills);
-        t1defender = calculateProbableSkillValue(defender.get(0), Constants.defendingSkills);
+        t2forward = calculateProbableSkillValue(forward.get(1), Constants.ATTACKING_SKILLS);
+        t1defender = calculateProbableSkillValue(defender.get(0), Constants.DEFENDING_SKILLS);
 
         t1threshold = (t2forward) / (t2forward + t1defender);
         t2threshold = (t1defender) / (t2forward + t1defender);

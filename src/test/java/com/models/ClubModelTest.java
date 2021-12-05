@@ -14,10 +14,10 @@ class ClubModelTest {
 	static void initialize() {
 		System.out.println("Before called");
 		attributes = new HashMap<>();
-		attributes.put(ClubAttributes.Overall,79);
-		attributes.put(ClubAttributes.Attack,79);
-		attributes.put(ClubAttributes.Midfield,79);
-		attributes.put(ClubAttributes.Defence,79);
+		attributes.put(ClubAttributes.OVERALL,79);
+		attributes.put(ClubAttributes.ATTACK,79);
+		attributes.put(ClubAttributes.MIDFIELD,79);
+		attributes.put(ClubAttributes.DEFENCE,79);
 	}
 
 	@Test

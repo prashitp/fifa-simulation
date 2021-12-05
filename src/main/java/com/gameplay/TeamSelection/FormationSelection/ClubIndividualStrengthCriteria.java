@@ -13,9 +13,9 @@ import java.util.Map;
 public class ClubIndividualStrengthCriteria implements IFormationCriteriaCategory{
 	public FormationType getResults(ClubModel club, ClubModel opposingClub) {
 		HashMap<ClubAttributes,Integer> attributes = new HashMap<>();
-		attributes.put(ClubAttributes.Attack, club.attributes.get(ClubAttributes.Attack));
-		attributes.put(ClubAttributes.Midfield, club.attributes.get(ClubAttributes.Midfield));
-		attributes.put(ClubAttributes.Defence, club.attributes.get(ClubAttributes.Defence));
+		attributes.put(ClubAttributes.ATTACK, club.attributes.get(ClubAttributes.ATTACK));
+		attributes.put(ClubAttributes.MIDFIELD, club.attributes.get(ClubAttributes.MIDFIELD));
+		attributes.put(ClubAttributes.DEFENCE, club.attributes.get(ClubAttributes.DEFENCE));
 		Map.Entry<ClubAttributes,Integer> maxAttribute = CommonFunctions.maxClubAttribute(attributes);
 		return CommonFunctions.mapClubAttributeToFormationType(maxAttribute.getKey());
 	}

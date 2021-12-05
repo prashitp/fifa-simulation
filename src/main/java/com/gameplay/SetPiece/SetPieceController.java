@@ -29,9 +29,9 @@ public class SetPieceController implements ISetPieceController {
         SetPiece freeKicks = new FreeKick(team1, team2);
         SetPiece penaltyKicks = new PenaltyKick(team1, team2);
 
-        setPieces.put(SetPieceType.CornerKick, cornerKicks.getSetPiece());
-        setPieces.put(SetPieceType.FreeKick, freeKicks.getSetPiece());
-        setPieces.put(SetPieceType.PenaltyKick, penaltyKicks.getSetPiece());
+        setPieces.put(SetPieceType.CORNER_KICK, cornerKicks.getSetPiece());
+        setPieces.put(SetPieceType.FREE_KICK, freeKicks.getSetPiece());
+        setPieces.put(SetPieceType.PENALTY_KICK, penaltyKicks.getSetPiece());
 
         return setPieces;
     }
