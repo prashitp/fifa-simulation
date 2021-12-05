@@ -176,7 +176,7 @@ public class UserInputServiceTest {
 	@Test
 	@Order(10)
 	public void selectPlayingXITest() {
-		List<PlayerEntity> players = teamSelectionController.getTeam().getplaying11().entrySet().stream()
+		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
 				.collect(Collectors.toList());
 		Mockito.when(inputStreamMock.readInteger()).thenReturn(3,
