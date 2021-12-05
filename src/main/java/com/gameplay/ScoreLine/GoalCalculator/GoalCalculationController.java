@@ -1,6 +1,7 @@
 package com.gameplay.ScoreLine.GoalCalculator;
 
 import com.models.ClubModel;
+import com.models.SetPieceType;
 import com.models.gameplay.TeamSelection.Lineup;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -12,13 +13,13 @@ public class GoalCalculationController implements IGoalCalculationController {
 	ClubModel homeClub;
 	ClubModel awayClub;
 	List<Lineup> lineups;
-	List<HashMap<String, Integer>> setPieces;
+	List<HashMap<SetPieceType, Integer>> setPieces;
 
-	public GoalCalculationController(ClubModel homeClub, ClubModel awayClub, List<Lineup> lineups, List<HashMap<String, Integer>> setPieces) {
+	public GoalCalculationController(ClubModel homeClub, ClubModel awayClub, List<Lineup> lineups, HashMap<SetPieceType,List<Integer>> setPiecesInput) {
 		this.homeClub = homeClub;
 		this.awayClub = awayClub;
-		this.setPieces = setPieces;
 		this.lineups = lineups;
+		this.setPieces = prepareSetPieceInput(setPiecesInput);;
 	}
 
 	public HashMap<ClubModel, Integer> getScoreLine() {
@@ -71,8 +72,8 @@ public class GoalCalculationController implements IGoalCalculationController {
 			}
 		}
 
-		int homePenalties = setPieces.get(0).get("PENALTY");
-		int awayPenalties = setPieces.get(1).get("PENALTY");
+		int homePenalties = setPieces.get(0).get(SetPieceType.PENALTY_KICK);
+		int awayPenalties = setPieces.get(1).get(SetPieceType.PENALTY_KICK);
 		if(homePenalties > 0) {
 			homeGoals += getPenaltyGoals(homePenalties);
 		}
@@ -107,5 +108,21 @@ public class GoalCalculationController implements IGoalCalculationController {
 	private int generateRandomDouble(int lowerBound, int upperBound) {
 		Random random = new Random();
 		return (int) Math.round(random.nextDouble() * (upperBound - lowerBound) + lowerBound);
+	}
+
+	private List<HashMap<SetPieceType, Integer>> prepareSetPieceInput(HashMap<SetPieceType,List<Integer>> setPieces) {
+		HashMap<SetPieceType, Integer> homeSetPieces = new HashMap<>();
+		HashMap<SetPieceType, Integer> awaySetPieces = new HashMap<>();
+
+		for (SetPieceType setPieceType: setPieces.keySet()) {
+			homeSetPieces.put(setPieceType, setPieces.get(setPieceType).get(0));
+			awaySetPieces.put(setPieceType, setPieces.get(setPieceType).get(1));
+		}
+
+		List<HashMap<SetPieceType, Integer>> setPieceInput = new ArrayList<>();
+		setPieceInput.add(homeSetPieces);
+		setPieceInput.add(awaySetPieces);
+
+		return setPieceInput;
 	}
 }

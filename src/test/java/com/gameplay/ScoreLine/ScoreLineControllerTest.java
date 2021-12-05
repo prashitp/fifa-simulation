@@ -3,6 +3,7 @@ package com.gameplay.ScoreLine;
 import com.Constants;
 import com.gameplay.TeamSelection.TeamSelectionController;
 import com.models.ClubModel;
+import com.models.SetPieceType;
 import com.models.gameplay.TeamSelection.Lineup;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,25 +21,26 @@ class ScoreLineControllerTest {
 
 	@BeforeAll
 	public static void init() {
-		ClubModel homeClub = Constants.CLUBS[0];
-		ClubModel awayClub = Constants.CLUBS[1];
-
 		TeamSelectionController teamSelectionController = new TeamSelectionController("Arsenal", "Aston Villa");
 		List<Lineup> lineups = teamSelectionController.getSquads();
 
-		HashMap<String, Integer> homeSetPieces = new HashMap<>();
-		homeSetPieces.put("FREEKICK",13);
-		homeSetPieces.put("CORNER",9);
-		homeSetPieces.put("PENALTY",1);
+		HashMap<SetPieceType, List<Integer>> setPieces = new HashMap<>();
+		List<Integer> freeKicks = new ArrayList<>();
+		List<Integer> corners = new ArrayList<>();
+		List<Integer> penalty = new ArrayList<>();
 
-		HashMap<String, Integer> awaySetPieces = new HashMap<>();
-		awaySetPieces.put("FREEKICK",4);
-		awaySetPieces.put("CORNER",5);
-		awaySetPieces.put("PENALTY",1);
+		freeKicks.add(15);
+		freeKicks.add(10);
 
-		List<HashMap<String, Integer>> setPieces= new ArrayList<>();
-		setPieces.add(homeSetPieces);
-		setPieces.add(awaySetPieces);
+		corners.add(12);
+		corners.add(7);
+
+		penalty.add(0);
+		penalty.add(1);
+
+		setPieces.put(SetPieceType.FREE_KICK,freeKicks);
+		setPieces.put(SetPieceType.CORNER_KICK,corners);
+		setPieces.put(SetPieceType.PENALTY_KICK,penalty);
 
 		scoreLineController = new ScoreLineController("Arsenal", "Aston Villa", lineups, setPieces);
 	}
