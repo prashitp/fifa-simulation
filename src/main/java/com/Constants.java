@@ -1,15 +1,13 @@
 package com;
 
 import com.database_operations.DatabaseImport;
+import com.models.BooleanOptions;
 import com.models.ClubModel;
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;
 import com.models.PlayerPositions;
-
-/**
- * @authors: Mayank Sareen, Prashit Patel, and Vasu Gamdha
- */
-
+import com.models.PlayerSelectionOptions;
+import com.models.StartOrResumeOptions;
 
 public class Constants {
     public static final int DEFENDERS_MIN = 3;
@@ -79,4 +77,42 @@ public class Constants {
     };
     
 	public static final int TOTAL_SEASONS_PLAYED_IN_SIMULATION = 10;
+
+	public static class DatabaseConstants {
+
+		// player status constants
+		public static final String FETCH_ALL_PLAYER_IN_TEAM_QUERY = "SELECT * FROM player_status p WHERE p.club_id = ?";
+		public static final String FETCH_PLAYER_BY_ID_QUERY = "SELECT * FROM player_status WHERE player_id = ?";
+		public static final String DELETE_ALL_PLAYERS_QUERY = "DELETE FROM player_status";
+		public static final String COPY_PLAYERS_DATA_QUERY = "INSERT INTO player_status (SELECT * FROM players)";
+
+		// user player constants
+		public static final String ADD_PLAYER_QUERY = "INSERT INTO user_players VALUES (?)";
+
+		// user team constants
+		public static final String INSERT_USER_TEAM_QUERY = "INSERT INTO user_team (`TEAM_ID`) VALUES (?)";
+		public static final String UPDATE_CUSTOMIZED_PLAYING_XI_QUERY = "UPDATE user_team SET CUSTOMIZED_PLAYER = ?";
+		public static final String UPDATE_SEASON_PLAYED_QUERY = "UPDATE user_team SET season_played = ?";
+		public static final String FETCH_USER_TEAM_QUERY = "SELECT * FROM user_team";
+		public static final String DELETE_ALL_USER_TEAM_QUERY = "DELETE FROM user_team";
+	}
+
+	public static class UserInput {
+
+		public static final String PRINT_TEAM_ID_SELECTION_MSG = "Select team id of any one of the above listed teams.";
+		public static final String PRINT_AVAILABLE_TEAM_MSG = "[AVAILABLE TEAMS]:";
+		public static final String PRINT_PLAYER_SELECTION_OPTIONS = "Please select 11 players.\n"
+				+ PlayerSelectionOptions.AVAILABLE_PLAYERS.getMessage() + "\n"
+				+ PlayerSelectionOptions.SELECTED_PLAYERS.getMessage() + "\n" + PlayerSelectionOptions.ADD_PLAYER.getMessage()
+				+ "\n" + PlayerSelectionOptions.REMOVE_PLAYER.getMessage() + "\n" + PlayerSelectionOptions.DONE.getMessage();
+		public static final String PRINT_CUSTOMIZATION_OPTIONS = "Do you want to select playing 11?\n"
+				+ BooleanOptions.YES.getMessage() + "\n" + BooleanOptions.NO.getMessage();
+		public static final String AVAILABLE_PLAYERS = "[AVAILABLE PLAYERS]: ";
+		public static final String SELECTED_PLAYERS = "[SELECTED PLAYERS]: ";
+		public static final String OPTION_TO_RESUME_OR_START_OVER = "Do you want to resume the previous game or start a new Game?\n"
+				+ StartOrResumeOptions.START_NEW_GAME.getMessage() + "\n"
+				+ StartOrResumeOptions.RESUME_PREVIOUS_GAME.getMessage();
+		public static final String INPUT_PLAYER_ID_MSG = "Please enter player id.";
+
+	}
 }

@@ -1,10 +1,15 @@
 package com;
 
-import com.models.ClubAttributes;
-import com.models.gameplay.TeamSelection.FormationType;
 import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import com.entity.PlayerEntity;
+import com.models.ClubAttributes;
+import com.models.PlayerPositions;
+import com.models.gameplay.TeamSelection.FormationType;
 /**
  * @author prashitpatel
  */
@@ -31,4 +36,17 @@ public class CommonFunctions {
 		}
 		return type;
 	}
+		
+	public static String convertIntegerToString(Integer i) {
+		return i.toString();
+	}
+
+    public static List<PlayerPositions> fetchPlayerPositions(PlayerEntity player) {
+        List<PlayerPositions> playerPositions = new ArrayList<>(List.of());
+        String[] positions = player.getPlayerPositions().split("(, )");
+        for (String position : positions) {
+        	playerPositions.add(PlayerPositions.valueOf(PlayerPositions.class, position));
+        }
+        return playerPositions;
+    }
 }

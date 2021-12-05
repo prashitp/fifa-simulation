@@ -1,9 +1,11 @@
 package com.gameplay.UserInput;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import com.LogService;
 import com.entity.PlayerEntity;
+import com.utils.Converter;
 
 /**
  * @author Jay Patel
@@ -18,7 +20,7 @@ public class UserPlayersService implements IUserPlayersService {
 		userPlayerRepository = new UserPlayersRepository();
 		logService = new LogService();
 	}
-
+	
 	@Override
 	public Boolean selectPlayer(Integer playerId) {
 		return userPlayerRepository.selectPlayer(playerId);
@@ -26,6 +28,13 @@ public class UserPlayersService implements IUserPlayersService {
 
 	@Override
 	public Boolean setUsersPlayingXI(List<PlayerEntity> selectedPlayers) {
-		return null;
+		try {
+			selectedPlayers.forEach(player -> userPlayerRepository
+					.selectPlayer(Converter.convertToPlayerIdInteger(player.getPlayerId())));
+			return Boolean.TRUE;
+		} catch (Exception e) {
+			logService.log(Level.SEVERE, e.getMessage());
+		}
+		return Boolean.FALSE;
 	}
 }

@@ -13,16 +13,28 @@ public class UserInputController implements IUserInputController {
 
 	@Override
 	public Integer selectTeamId() {
-		return null;
+		Integer teamSelected = null;
+		while (teamSelected == null) {
+			teamSelected = userInputService.selectTeamId();
+		}
+		return teamSelected;
 	}
 
 	@Override
 	public void selectPlayingXI(Integer teamId) {
+		Boolean playingXiSelected = Boolean.FALSE;
+		while (Boolean.FALSE.equals(playingXiSelected)) {
+			playingXiSelected = userInputService.selectPlayingXI(teamId);
+		}
 	}
 
 	@Override
 	public Boolean customizePlayingXI() {
-		return null;
+		Boolean customizePlayingXI = null;
+		while (customizePlayingXI == null) {
+			customizePlayingXI = userInputService.customizePlayingXI();
+		}
+		return customizePlayingXI;
 	}
 
 	@Override
