@@ -5,8 +5,10 @@ import com.models.gameplay.TeamSelection.FormationType;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
 /**
- * @author prashitpatel
+ * @author prashitpatel and Mayank Sareen
  */
 public class CommonFunctions {
 	public static HashMap.Entry<ClubAttributes, Integer> maxClubAttribute(HashMap<ClubAttributes, Integer> attributeSet){
@@ -30,5 +32,29 @@ public class CommonFunctions {
 			type = FormationType.DEFENSIVE;
 		}
 		return type;
+	}
+	/**
+	 * @author Mayank Sareen
+	 */
+	public static Double generateRandomDoubleBetweenRange(int min, int max) {
+		return  min + (Math.random() * (max - min));
+	}
+
+	public static Integer generateRandomIntegerBetweenRange(int min, int max) {
+		return(randomInteger(min,max));
+	}
+
+	public static Double generateRandomDouble() {
+		Random r = new Random();
+		return r.nextDouble();
+	}
+
+	public static Integer generateRandomInteger() {
+		Random r = new Random();
+		return Integer.valueOf(r.nextInt());
+	}
+
+	private static Integer randomInteger(int min, int max) {
+		return  min + (int)(Math.random() * (max - min));
 	}
 }

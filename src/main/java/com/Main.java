@@ -1,4 +1,4 @@
-//Author - Prashit Patel
+
 package com;
 
 public class Main {
