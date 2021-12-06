@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.entity.PlayerEntity;
+import com.gameplay.entity.PlayerEntity;
 import com.models.ClubAttributes;
 import com.models.PlayerPositions;
 import com.models.gameplay.TeamSelection.FormationType;
