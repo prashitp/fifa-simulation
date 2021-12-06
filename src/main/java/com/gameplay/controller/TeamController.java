@@ -6,6 +6,9 @@ import com.gameplay.service.ITeamService;
 import com.gameplay.service.TeamService;
 import com.models.ClubModel;
 
+/**
+ * @author Jay Patel
+ */
 public class TeamController implements ITeamController {
 
 	private ITeamService teamService;

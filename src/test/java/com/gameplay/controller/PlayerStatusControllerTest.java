@@ -13,6 +13,9 @@ import com.gameplay.entity.PlayerEntity;
 import com.gameplay.service.IPlayerStatusService;
 import com.gameplay.service.PlayerStatusService;
 
+/**
+ * @author Jay Patel
+ */
 public class PlayerStatusControllerTest {
 
 	private IPlayerStatusService playerStatusServiceMock = Mockito.mock(PlayerStatusService.class);
