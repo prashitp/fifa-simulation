@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import com.LogService;
-import com.entity.Column;
+import com.gameplay.entity.Column;
 
 /**
  * @author Jay Patel

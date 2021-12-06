@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.CommonFunctions;
 import com.Constants;
-import com.entity.PlayerEntity;
+import com.gameplay.entity.PlayerEntity;
 import com.models.PlayerPositions;
 import com.models.TeamValidationParameters;
 import com.models.TeamValidationParameters.Builder;

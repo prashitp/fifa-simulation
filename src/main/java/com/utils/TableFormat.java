@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import com.entity.PlayerEntity;
+import com.gameplay.entity.PlayerEntity;
 import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 
@@ -134,11 +134,11 @@ public class TableFormat {
 	private static void printFinalTable(final String lineBreak, String[][] finalTable, String formatString) {
 		outputStream.print(lineBreak);
 		Arrays.stream(finalTable).limit(1)
-				.forEach(a -> outputStream.print(new Formatter().format(formatString, a).toString()));
+				.forEach(a -> outputStream.print(new Formatter().format(formatString, (Object[]) a).toString()));
 		outputStream.print(lineBreak);
 
-		Stream.iterate(1, (i -> i < finalTable.length), (i -> ++i)).forEach(
-				a -> outputStream.print(new Formatter().format(formatString.toString(), finalTable[a]).toString()));
+		Stream.iterate(1, (i -> i < finalTable.length), (i -> ++i)).forEach(a -> outputStream
+				.print(new Formatter().format(formatString.toString(), (Object[]) finalTable[a]).toString()));
 
 		outputStream.print(lineBreak);
 	}
