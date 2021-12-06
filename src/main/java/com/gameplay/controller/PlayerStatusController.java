@@ -6,6 +6,9 @@ import com.gameplay.entity.PlayerEntity;
 import com.gameplay.service.IPlayerStatusService;
 import com.gameplay.service.PlayerStatusService;
 
+/**
+ * @author Jay Patel
+ */
 public class PlayerStatusController implements IPlayerStatusController {
 
 	private IPlayerStatusService playerStatusService;

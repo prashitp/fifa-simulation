@@ -11,6 +11,9 @@ import com.gameplay.service.IUserTeamService;
 import com.gameplay.service.UserTeamService;
 import com.models.UserTeamModel;
 
+/**
+ * @author Jay Patel
+ */
 public class UserTeamControllerTest {
 
 	private IUserTeamService userTeamServiceMock = Mockito.mock(UserTeamService.class);

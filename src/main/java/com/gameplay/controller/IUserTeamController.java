@@ -2,6 +2,9 @@ package com.gameplay.controller;
 
 import com.models.UserTeamModel;
 
+/**
+ * @author Jay Patel
+ */
 public interface IUserTeamController {
 
 	public Boolean setUserTeam(Integer teamId);

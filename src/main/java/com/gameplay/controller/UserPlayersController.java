@@ -6,6 +6,9 @@ import com.gameplay.entity.PlayerEntity;
 import com.gameplay.service.IUserPlayersService;
 import com.gameplay.service.UserPlayersService;
 
+/**
+ * @author Jay Patel
+ */
 public class UserPlayersController implements IUserPlayersController {
 
 	private IUserPlayersService userPlayersService;
