@@ -2,6 +2,10 @@ package com.gameplay.Injury.constants;
 
 import com.models.PlayerAttributes;
 
+/**
+ * @author vasugamdha
+ */
+
 public class InjuryConstants {
     public static final PlayerAttributes[] INJURY_SKILLS = {
             PlayerAttributes.PHYSIC,PlayerAttributes.MOVEMENT_ACCELERATION,PlayerAttributes.MOVEMENT_SPRINT_SPEED,
