@@ -5,6 +5,10 @@ import com.models.*;
 
 import java.util.*;
 
+/**
+ * @author vasugamdha
+ */
+
 public abstract class Cards implements ICards {
 
     protected static final List<PlayerModel> players = new ArrayList<>();

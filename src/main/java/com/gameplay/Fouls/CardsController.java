@@ -8,6 +8,10 @@ import com.models.gameplay.CardType;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author vasugamdha
+ */
+
 public class CardsController implements ICardsController{
 
     private final HashMap<PlayerModel, PlayingPosition> team1;

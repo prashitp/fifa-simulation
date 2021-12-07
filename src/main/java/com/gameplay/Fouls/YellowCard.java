@@ -1,10 +1,13 @@
 package com.gameplay.Fouls;
 
-import com.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 
 import java.util.*;
+
+/**
+ * @author vasugamdha
+ */
 
 public class YellowCard extends Cards{
 
