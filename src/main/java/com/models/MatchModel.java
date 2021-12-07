@@ -1,5 +1,8 @@
 package com.models;
 
+/**
+ * @author Jay Patel
+ */
 public class MatchModel {
 
 	private String homeTeamId;
