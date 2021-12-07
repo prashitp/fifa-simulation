@@ -1,8 +1,6 @@
 package com.gameplay.Fouls;
 
 import com.Constants;
-import com.gameplay.SetPiece.ISetPieceController;
-import com.gameplay.SetPiece.SetPieceController;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;
@@ -34,6 +32,6 @@ public class CardsControllerTest {
     @Test
     public void getFoulsTypeTest(){
         ICardsController cardsController = new CardsController(team1, team2);
-        assertEquals("HashMap",cardsController.getFouls().getClass().getSimpleName());
+        assertEquals("HashMap",cardsController.fetchFouls().getClass().getSimpleName());
     }
 }
