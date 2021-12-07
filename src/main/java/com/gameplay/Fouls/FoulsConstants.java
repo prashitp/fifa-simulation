@@ -2,6 +2,10 @@ package com.gameplay.Fouls;
 
 import com.models.PlayerAttributes;
 
+/**
+ * @author vasugamdha
+ */
+
 public class FoulsConstants {
 
     public static final PlayerAttributes[] POSITIVE_SKILLS = {
