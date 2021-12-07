@@ -19,7 +19,7 @@ public abstract class SetPiece implements ISetPiece {
     protected int kick2 = 0;
     protected double club1overall = 0;
     protected double club2overall = 0;
-    protected Random random = new Random();
+    protected final Random random = new Random();
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
 

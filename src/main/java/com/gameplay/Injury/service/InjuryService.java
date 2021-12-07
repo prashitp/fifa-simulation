@@ -1,17 +1,16 @@
-package com.gameplay.Fouls;
+package com.gameplay.Injury.service;
 
 import com.Constants;
+import com.gameplay.Injury.constants.InjuryConstants;
 import com.models.*;
 
 import java.util.*;
 
-/**
- * @author vasugamdha
- */
-
-public abstract class Cards implements ICards {
+public class InjuryService implements IInjuryService {
 
     protected final List<PlayerModel> players;
+    protected final List<PlayerModel> candidates;
+    protected HashMap<PlayerModel, Integer> injuredPlayers;
     protected double club1overall;
     protected double club2overall;
     protected final Random random;
@@ -20,22 +19,23 @@ public abstract class Cards implements ICards {
     String homeClub;
     String awayClub;
 
-    protected Cards(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+    public InjuryService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+
         this.team1 = team1;
         this.team2 = team2;
         players = new ArrayList<>();
+        candidates = new ArrayList<>();
+        random = new Random();
         club1overall = 0;
         club2overall = 0;
-        random = new Random();
+
         setup();
+        updateInjuries();
     }
-
-    protected abstract void assignCards();
-
-    public abstract List<PlayerModel> getPlayers();
 
     @Override
     public void setup(){
+
         // Fetch Club names
         Set<Map.Entry<PlayerModel, PlayingPosition>> homeTeam = team1.entrySet();
         Map.Entry<PlayerModel, PlayingPosition> homePlayer = homeTeam.stream().findFirst().get();
@@ -60,19 +60,41 @@ public abstract class Cards implements ICards {
 
         for (HashMap<PlayerModel, PlayingPosition> team : List.of(team1, team2)) {
             for (Map.Entry<PlayerModel, PlayingPosition> player : team.entrySet()) {
-                if(player.getValue().equals(PlayingPosition.GOALKEEPER) && random.nextDouble()>0.1){
-                    continue;
-                }
-                if(player.getValue().equals(PlayingPosition.FORWARD) && random.nextDouble()>0.3){
+                if(player.getValue().equals(PlayingPosition.GOALKEEPER) && random.nextDouble()>0.05){
                     continue;
                 }
                 players.add(player.getKey());
             }
         }
 
+        assignInjuries();
     }
 
-    protected List<Map.Entry<PlayerModel, Double>> getAverage(List<PlayerModel> players) {
+    @Override
+    public HashMap<PlayerModel, Integer> getInjuredPlayers(){
+        return injuredPlayers;
+    }
+
+    private void updateInjuries(){
+        for(Map.Entry<PlayerModel, Integer> entry: injuredPlayers.entrySet()){
+            PlayerModel player = entry.getKey();
+            int days = entry.getValue();
+            player.injuredForMatches = days;
+            player.availability = false;
+        }
+    }
+
+    private void calculateDays(){
+        injuredPlayers = new HashMap<>();
+
+        for(PlayerModel player: candidates){
+            int stamina = player.skills.get(PlayerAttributes.POWER_STAMINA);
+            int days = (int) Math.ceil((random.nextDouble()*5) * (1-(stamina/100.0)));
+            injuredPlayers.put(player,days);
+        }
+    }
+
+    private List<Map.Entry<PlayerModel, Double>> calculateInjuryFactors(List<PlayerModel> players){
         HashMap<PlayerModel, Double> map = new HashMap<>();
         List<Map.Entry<PlayerModel, Double>> mapList;
         double overall;
@@ -82,16 +104,12 @@ public abstract class Cards implements ICards {
             }else{
                 overall = club2overall;
             }
-            double positiveAverage = 0, negativeAverage = 0;
-            for (PlayerAttributes skill : FoulsConstants.POSITIVE_SKILLS) {
+            double injuryFactor = 0;
+            for (PlayerAttributes skill : InjuryConstants.INJURY_SKILLS) {
                 double value = player.skills.get(skill);
-                positiveAverage = positiveAverage + (value / (double) FoulsConstants.POSITIVE_SKILLS.length);
+                injuryFactor = injuryFactor + (value / (double) InjuryConstants.INJURY_SKILLS.length);
             }
-            for (PlayerAttributes skill : FoulsConstants.NEGATIVE_SKILLS) {
-                double value = player.skills.get(skill);
-                negativeAverage = negativeAverage + (value / (double) FoulsConstants.NEGATIVE_SKILLS.length);
-            }
-            map.put(player, (positiveAverage - negativeAverage) * overall / 100);
+            map.put(player, injuryFactor * overall / 100);
         }
         mapList = sortHashMap(map);
         return mapList;
@@ -104,7 +122,7 @@ public abstract class Cards implements ICards {
         return mapList;
     }
 
-    protected int getProbablePlayerCount(int size){
+    protected int getIndex(int size){
         double[] array = new double[size];
         int index=size-1;
         double probConstant = 1.35;
@@ -116,7 +134,20 @@ public abstract class Cards implements ICards {
                 break;
             }
         }
-        return index;
+        return index%3;
     }
 
+    private void assignInjuries(){
+        List<Map.Entry<PlayerModel, Double>> injuryMap = calculateInjuryFactors(players);
+        int breakIndex = getIndex(injuryMap.size());
+        int itr = 0;
+        for(Map.Entry<PlayerModel, Double> player : injuryMap){
+            if(breakIndex>itr++) {
+                candidates.add(player.getKey());
+            }else{
+                break;
+            }
+        }
+        calculateDays();
+    }
 }
