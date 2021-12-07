@@ -2,6 +2,8 @@ package com.gameplay.UserInput;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +23,8 @@ import com.gameplay.repository.PlayerStatusRepository;
 import com.io.IErrorStream;
 import com.io.IInputStream;
 import com.io.IOutputStream;
+import com.io.StandardErrorStream;
+import com.io.StandardOutputStream;
 import com.models.ClubModel;
 import com.models.StartOrResumeOptions;
 import com.models.UserTeamModel;
@@ -31,13 +35,14 @@ import com.utils.Converter;
  */
 public class UserInputFunctionTest {
 
-	private IOutputStream outputStreamMock = Mockito.mock(IOutputStream.class);
+	private IOutputStream outputStreamMock = StandardOutputStream.getInstance();
 	private IInputStream inputStreamMock = Mockito.mock(IInputStream.class);
-	private IErrorStream errorStreamMock = Mockito.mock(IErrorStream.class);
+	private IErrorStream errorStreamMock = StandardErrorStream.getInstance();
 	private IUserTeamController userTeamControllerMock = Mockito.mock(IUserTeamController.class);
 	private ITeamController teamControllerMock = Mockito.mock(ITeamController.class);
 	private IPlayerStatusController playerStatusControllerMock = Mockito.mock(IPlayerStatusController.class);
 	private IUserPlayersController userPlayersControllerMock = Mockito.mock(IUserPlayersController.class);
+	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 	private IUserInputFunction userInputFunction = new UserInputFunction();
 
@@ -59,6 +64,10 @@ public class UserInputFunctionTest {
 				UserInputFunction.class.getDeclaredField("userPlayersController"));
 		userPlayerController.set(userPlayersControllerMock);
 
+		FieldSetter outputStreamNew = new FieldSetter(outputStreamMock,
+				StandardOutputStream.class.getDeclaredField("printStream"));
+		outputStreamNew.set(new PrintStream(outputStreamCaptor));
+
 		FieldSetter outputStream = new FieldSetter(userInputFunction,
 				UserInputFunction.class.getDeclaredField("outputStream"));
 		outputStream.set(outputStreamMock);
@@ -66,6 +75,10 @@ public class UserInputFunctionTest {
 		FieldSetter inputStream = new FieldSetter(userInputFunction,
 				UserInputFunction.class.getDeclaredField("inputStream"));
 		inputStream.set(inputStreamMock);
+
+		FieldSetter errorStreamNew = new FieldSetter(errorStreamMock,
+				StandardErrorStream.class.getDeclaredField("printStream"));
+		errorStreamNew.set(new PrintStream(outputStreamCaptor));
 
 		FieldSetter errorStream = new FieldSetter(userInputFunction,
 				UserInputFunction.class.getDeclaredField("errorStream"));
