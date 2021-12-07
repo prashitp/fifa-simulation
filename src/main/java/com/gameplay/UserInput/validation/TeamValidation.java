@@ -13,13 +13,17 @@ import com.models.TeamValidationParameters.Builder;
 /**
  * @author Jay Patel
  */
-public class TeamValidation {
+public class TeamValidation implements ITeamValidation {
 
-	private static final Integer TEAM_SIZE = 11;
+	private final Integer TEAM_SIZE = 11;
 
-	private static Boolean[][][][][] isVisited;
+	private Boolean[][][][][] isVisited;
 
-	private static void init() {
+	public TeamValidation() {
+		
+	}
+	
+	public void init() {
 		isVisited = new Boolean[TEAM_SIZE + 1][TEAM_SIZE + 1][TEAM_SIZE + 1][TEAM_SIZE + 1][TEAM_SIZE + 1];
 		for (Boolean[][][][] a : isVisited) {
 			Arrays.fill(a, new Boolean[TEAM_SIZE + 1][TEAM_SIZE + 1][TEAM_SIZE + 1]);
@@ -35,7 +39,8 @@ public class TeamValidation {
 		}
 	}
 
-	public static Boolean isTeamValid(List<PlayerEntity> players) {
+	@Override
+	public Boolean isTeamValid(List<PlayerEntity> players) {
 		if (players == null || players.size() != TEAM_SIZE) {
 			return Boolean.FALSE;
 		}
@@ -45,7 +50,7 @@ public class TeamValidation {
 		return checkTeamIsValid(players, parameters);
 	}
 
-	private static Boolean checkTeamIsValid(List<PlayerEntity> players, TeamValidationParameters parameters) {
+	private Boolean checkTeamIsValid(List<PlayerEntity> players, TeamValidationParameters parameters) {
 		if (parameters.getTeamSize() == TEAM_SIZE) {
 			return isValidSelection(parameters);
 		}
@@ -75,37 +80,37 @@ public class TeamValidation {
 		return Boolean.FALSE;
 	}
 
-	private static Boolean isVisitedState(TeamValidationParameters parameters) {
+	private Boolean isVisitedState(TeamValidationParameters parameters) {
 		return (isVisited[parameters.getCurPlayerIndex()][parameters.getNumberOfDefenders()][parameters
 				.getNumberOfMidFielders()][parameters.getNumberOfForwards()][parameters.getNumberOfGoalKeep()]);
 	}
 
-	private static void setVisitedState(TeamValidationParameters parameters) {
+	private void setVisitedState(TeamValidationParameters parameters) {
 		isVisited[parameters.getCurPlayerIndex()][parameters.getNumberOfDefenders()][parameters
 				.getNumberOfMidFielders()][parameters.getNumberOfForwards()][parameters
 						.getNumberOfGoalKeep()] = Boolean.TRUE;
 	}
 
-	private static Boolean isValidSelection(TeamValidationParameters parameters) {
+	private Boolean isValidSelection(TeamValidationParameters parameters) {
 		return (isValidDefenders(parameters.getNumberOfDefenders())
 				&& isValidMidFielders(parameters.getNumberOfMidFielders())
 				&& isValidForwards(parameters.getNumberOfForwards())
 				&& isValidGoalKeeper(parameters.getNumberOfGoalKeep()));
 	}
 
-	private static Boolean isValidDefenders(Integer defenders) {
+	private Boolean isValidDefenders(Integer defenders) {
 		return (Constants.DEFENDERS_MIN <= defenders && defenders <= Constants.DEFENDERS_MAX);
 	}
 
-	private static Boolean isValidMidFielders(Integer midFielders) {
+	private Boolean isValidMidFielders(Integer midFielders) {
 		return (Constants.MIDFIELDERS_MIN <= midFielders && midFielders <= Constants.MIDFIELDERS_MAX);
 	}
 
-	private static Boolean isValidForwards(Integer forwards) {
+	private Boolean isValidForwards(Integer forwards) {
 		return (Constants.FORWARDS_MIN <= forwards && forwards <= Constants.FORWARDS_MAX);
 	}
 
-	private static Boolean isValidGoalKeeper(Integer goalKeeper) {
+	private Boolean isValidGoalKeeper(Integer goalKeeper) {
 		return goalKeeper == 1;
 	}
 }

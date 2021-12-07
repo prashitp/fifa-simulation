@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
 import com.gameplay.TeamSelection.TeamSelectionController;
+import com.gameplay.UserInput.validation.TeamValidation;
 import com.gameplay.controller.IPlayerStatusController;
 import com.gameplay.controller.ITeamController;
 import com.gameplay.controller.IUserPlayersController;
@@ -28,7 +29,6 @@ import com.io.StandardOutputStream;
 import com.models.ClubModel;
 import com.models.StartOrResumeOptions;
 import com.models.UserTeamModel;
-import com.utils.Converter;
 
 /**
  * @author Jay Patel
@@ -43,6 +43,7 @@ public class UserInputFunctionTest {
 	private IPlayerStatusController playerStatusControllerMock = Mockito.mock(IPlayerStatusController.class);
 	private IUserPlayersController userPlayersControllerMock = Mockito.mock(IUserPlayersController.class);
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+	private TeamValidation teamValidationMock = Mockito.mock(TeamValidation.class);
 
 	private IUserInputFunction userInputFunction = new UserInputFunction();
 
@@ -83,6 +84,10 @@ public class UserInputFunctionTest {
 		FieldSetter errorStream = new FieldSetter(userInputFunction,
 				UserInputFunction.class.getDeclaredField("errorStream"));
 		errorStream.set(errorStreamMock);
+
+		FieldSetter teamValidation = new FieldSetter(userInputFunction,
+				UserInputFunction.class.getDeclaredField("teamValidation"));
+		teamValidation.set(teamValidationMock);
 	}
 
 	@Test
@@ -122,20 +127,7 @@ public class UserInputFunctionTest {
 				.collect(Collectors.toList());
 		Mockito.when(userTeamControllerMock.fetchUserTeamModel()).thenReturn(userTeamModel);
 		Mockito.when(teamControllerMock.fetchAllTeams()).thenReturn(Arrays.asList(club));
-		Mockito.when(inputStreamMock.readInteger()).thenReturn(1, 1, 1, 1, 2, 3,
-				Converter.convertToPlayerIdInteger(players.get(0).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(1).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(2).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(3).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(4).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(5).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(6).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(7).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(8).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(9).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(10).getPlayerId()), 4,
-				Converter.convertToPlayerIdInteger(players.get(0).getPlayerId()), 3,
-				Converter.convertToPlayerIdInteger(players.get(0).getPlayerId()), 5);
+		Mockito.when(inputStreamMock.readInteger()).thenReturn(1, 1, 1, 1, 2, 5);
 		Mockito.when(userTeamControllerMock.deleteUserTeamModel()).thenReturn(Boolean.TRUE);
 		Mockito.when(userTeamControllerMock.setUserTeam(Mockito.any())).thenReturn(Boolean.TRUE);
 		Mockito.when(teamControllerMock.isTeamIdExists(Mockito.any())).thenReturn(Boolean.TRUE);
@@ -143,6 +135,7 @@ public class UserInputFunctionTest {
 		Mockito.when(playerStatusControllerMock.fetchPlayer(Mockito.any())).thenReturn(players.get(0), players.get(1),
 				players.get(2), players.get(3), players.get(4), players.get(5), players.get(6), players.get(7),
 				players.get(8), players.get(9), players.get(10), players.get(0));
+		Mockito.when(teamValidationMock.isTeamValid(Mockito.any())).thenReturn(Boolean.TRUE);
 		assertTrue(userInputFunction.teamSelection(), "teamSelection() method is not working as expected.");
 	}
 }

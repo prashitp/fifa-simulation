@@ -26,21 +26,23 @@ public class TeamValidationTest {
 	private static final String opposingClubName = "Manchester United";
 	private ITeamSelectionController teamSelectionController = new TeamSelectionController(clubName, opposingClubName);
 
+	private TeamValidation teamValidation = new TeamValidation();
+	
 	@Test
 	public void nullParameterTest() {
-		assertFalse(TeamValidation.isTeamValid(null),
+		assertFalse(teamValidation.isTeamValid(null),
 				"isTeamValid() method is not working as expected for null parameter.");
 	}
 
 	@Test
 	public void teamSizeLessThanActualSizeTest() {
-		assertFalse(TeamValidation.isTeamValid(Arrays.asList()),
+		assertFalse(teamValidation.isTeamValid(Arrays.asList()),
 				"isTeamValid() method is not working as expected for input size less than the actual team size.");
 	}
 
 	@Test
 	public void teamSizeGreaterThanActualSizeTest() {
-		assertFalse(TeamValidation.isTeamValid(playerStatusRepository.fetchAllPlayers(1)),
+		assertFalse(teamValidation.isTeamValid(playerStatusRepository.fetchAllPlayers(1)),
 				"isTeamValid() method is not working as expected for input size greater than the actual team size.");
 	}
 
@@ -49,7 +51,7 @@ public class TeamValidationTest {
 		List<PlayerEntity> selectedPlayerList = teamSelectionController.getSquads().get(0).getPlaying11().entrySet()
 				.stream().map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
 				.collect(Collectors.toList());
-		assertTrue(TeamValidation.isTeamValid(selectedPlayerList),
+		assertTrue(teamValidation.isTeamValid(selectedPlayerList),
 				"isTeamValid() method is not working as expected for valid team.");
 	}
 }

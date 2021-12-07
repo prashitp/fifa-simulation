@@ -2,14 +2,12 @@ package com.gameplay.UserInput;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.CommonFunctions;
 import com.exceptions.InvalidInputException;
 import com.exceptions.InvalidPlayingXISelectionException;
-import com.exceptions.PlayerAlreadySelectedException;
-import com.exceptions.PlayerNotFoundException;
 import com.exceptions.TeamNotFoundException;
+import com.gameplay.UserInput.validation.ITeamValidation;
 import com.gameplay.UserInput.validation.TeamValidation;
 import com.gameplay.controller.IPlayerStatusController;
 import com.gameplay.controller.ITeamController;
@@ -31,7 +29,6 @@ import com.models.ClubModel;
 import com.models.PlayerSelectionOptions;
 import com.models.StartOrResumeOptions;
 import com.models.UserTeamModel;
-import com.utils.Converter;
 import com.utils.TableFormat;
 
 /**
@@ -51,12 +48,9 @@ public class UserInputFunction implements IUserInputFunction {
 			+ "\n" + PlayerSelectionOptions.DONE.getMessage();
 	public static final String PRINT_CUSTOMIZATION_OPTIONS = "Do you want to select playing 11?\n"
 			+ BooleanOptions.YES.getMessage() + "\n" + BooleanOptions.NO.getMessage();
-	public static final String AVAILABLE_PLAYERS = "[AVAILABLE PLAYERS]: ";
-	public static final String SELECTED_PLAYERS = "[SELECTED PLAYERS]: ";
 	public static final String OPTION_TO_RESUME_OR_START_OVER = "Do you want to resume the previous game or start a new Game?\n"
 			+ StartOrResumeOptions.START_NEW_GAME.getMessage() + "\n"
 			+ StartOrResumeOptions.RESUME_PREVIOUS_GAME.getMessage();
-	public static final String INPUT_PLAYER_ID_MSG = "Please enter player id.";
 
 	private IOutputStream outputStream;
 	private IInputStream inputStream;
@@ -65,6 +59,7 @@ public class UserInputFunction implements IUserInputFunction {
 	private ITeamController teamController;
 	private IPlayerStatusController playerStatusController;
 	private IUserPlayersController userPlayersController;
+	private ITeamValidation teamValidation;
 
 	public UserInputFunction() {
 		outputStream = StandardOutputStream.getInstance();
@@ -74,6 +69,7 @@ public class UserInputFunction implements IUserInputFunction {
 		teamController = new TeamController();
 		playerStatusController = new PlayerStatusController();
 		userPlayersController = new UserPlayersController();
+		teamValidation = new TeamValidation();
 	}
 
 	@Override
@@ -150,7 +146,7 @@ public class UserInputFunction implements IUserInputFunction {
 
 	private Boolean validateTeamSelection(List<PlayerEntity> players) {
 		try {
-			if (TeamValidation.isTeamValid(players)) {
+			if (teamValidation.isTeamValid(players)) {
 				return Boolean.TRUE;
 			} else {
 				throw new InvalidPlayingXISelectionException();
@@ -210,33 +206,24 @@ public class UserInputFunction implements IUserInputFunction {
 	private List<PlayerEntity> selectPlayers(Integer teamId) {
 		Boolean exit = Boolean.FALSE;
 		List<PlayerEntity> selectedPlayerList = new ArrayList<>();
+		List<PlayerEntity> availablePlayerList = playerStatusController.fetchAllPlayers(teamId);
 		while (Boolean.FALSE.equals(exit)) {
 			outputStream.println(PRINT_PLAYER_SELECTION_OPTIONS);
 			try {
 				Integer optionSelected = inputStream.readInteger();
-				if (optionSelected.equals(PlayerSelectionOptions.AVAILABLE_PLAYERS.getOption())) {
-					displayAvailablePlayers(teamId, selectedPlayerList);
-				} else if (optionSelected.equals(PlayerSelectionOptions.SELECTED_PLAYERS.getOption())) {
-					displaySelectedPlayers(selectedPlayerList);
-				} else if (optionSelected.equals(PlayerSelectionOptions.ADD_PLAYER.getOption())) {
-					PlayerEntity player = selectPlayer(selectedPlayerList);
-					if (player == null) {
-						continue;
-					}
-					selectedPlayerList.add(player);
-					outputStream.println("[Player with id " + Converter.convertToPlayerIdInteger(player.getPlayerId())
-							+ " added.]\n");
-				} else if (optionSelected.equals(PlayerSelectionOptions.REMOVE_PLAYER.getOption())) {
-					PlayerEntity player = removePlayer(selectedPlayerList);
-					if (player == null) {
-						continue;
-					}
-					selectedPlayerList.remove(player);
-					outputStream.println("[Player with id " + Converter.convertToPlayerIdInteger(player.getPlayerId())
-							+ " removed.]\n");
-				} else if (optionSelected == PlayerSelectionOptions.DONE.getOption()) { // exit
+				if (optionSelected == PlayerSelectionOptions.DONE.getOption()) { // exit
 					exit = Boolean.TRUE;
-				} else {
+					break;
+				}
+				Boolean invalidOption = Boolean.TRUE;
+				for (PlayerSelectionOptions playerSelection : PlayerSelectionOptions.values()) {
+					if (optionSelected.equals(playerSelection.getOption())) {
+						invalidOption = Boolean.FALSE;
+						playerSelection.getPlayerXISelection().executeSelection(selectedPlayerList,
+								availablePlayerList);
+					}
+				}
+				if (invalidOption) {
 					throw new InvalidInputException();
 				}
 			} catch (Exception e) {
@@ -244,59 +231,5 @@ public class UserInputFunction implements IUserInputFunction {
 			}
 		}
 		return selectedPlayerList;
-	}
-
-	private void displayAvailablePlayers(Integer teamId, List<PlayerEntity> selectedPlayerList) {
-		outputStream.println(AVAILABLE_PLAYERS);
-		List<PlayerEntity> allPlayers = playerStatusController.fetchAllPlayers(teamId);
-		List<PlayerEntity> availablePlayerList = allPlayers.stream()
-				.filter(player -> Boolean.FALSE.equals(isPlayerAlreadySelected(player, selectedPlayerList)))
-				.collect(Collectors.toList());
-		TableFormat.displayPlayers(availablePlayerList);
-	}
-
-	private Boolean isPlayerAlreadySelected(PlayerEntity player, List<PlayerEntity> selectedPlayers) {
-		return Boolean.FALSE.equals(selectedPlayers.stream().filter(p -> p.getPlayerId().equals(player.getPlayerId()))
-				.collect(Collectors.toList()).isEmpty());
-	}
-
-	private void displaySelectedPlayers(List<PlayerEntity> selectedPlayerList) {
-		outputStream.println(SELECTED_PLAYERS);
-		TableFormat.displayPlayers(selectedPlayerList);
-	}
-
-	private PlayerEntity selectPlayer(List<PlayerEntity> selectedPlayers) {
-		try {
-			outputStream.println(INPUT_PLAYER_ID_MSG);
-			Integer playerId = inputStream.readInteger();
-			PlayerEntity player = playerStatusController.fetchPlayer(playerId);
-			if (player == null) {
-				throw new PlayerNotFoundException();
-			} else if (isPlayerAlreadySelected(player, selectedPlayers)) {
-				throw new PlayerAlreadySelectedException();
-			} else {
-				return player;
-			}
-		} catch (Exception e) {
-			errorStream.printError(e.getMessage());
-		}
-		return null;
-	}
-
-	private PlayerEntity removePlayer(List<PlayerEntity> selectedPlayerList) {
-		try {
-			outputStream.println(INPUT_PLAYER_ID_MSG);
-			Integer playerId = inputStream.readInteger();
-			List<PlayerEntity> matchedPlayers = selectedPlayerList.stream()
-					.filter(player -> (Converter.convertToPlayerIdInteger(player.getPlayerId())).equals(playerId))
-					.collect(Collectors.toList());
-			if (matchedPlayers.isEmpty()) {
-				throw new PlayerNotFoundException();
-			}
-			return matchedPlayers.get(0);
-		} catch (Exception e) {
-			errorStream.printError(e.getMessage());
-		}
-		return null;
 	}
 }
