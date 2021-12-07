@@ -32,12 +32,29 @@ public class ScheduleRepository implements IScheduleRepository {
 
 	@Override
 	public Boolean deleteSchedule() {
+		try {
+			statement = databaseConnection.prepareStatement(DELETE_SCHEDULE_QUERY);
+			statement.executeUpdate();
+			return Boolean.TRUE;
+		} catch (Exception e) {
+			logService.log(Level.SEVERE, e.getMessage());
+		}
 		return Boolean.FALSE;
 	}
 
 	@Override
 	public Boolean saveSchedule(List<MatchModel> matches) {
-
+		try {
+			statement = databaseConnection.prepareStatement(ADD_SCHEDULE_QUERY);
+			for (MatchModel match : matches) {
+				statement.setString(1, match.getHomeTeamId());
+				statement.setString(2, match.getAwayTeamId());
+				statement.executeUpdate();
+			}
+			return Boolean.TRUE;
+		} catch (Exception e) {
+			logService.log(Level.SEVERE, e.getMessage());
+		}
 		return Boolean.FALSE;
 	}
 

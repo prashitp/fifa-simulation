@@ -21,7 +21,7 @@ public class Game implements IGame {
 
 	@Override
 	public void startGame() {
-		userInputFunction.teamSelection();
+//		userInputFunction.teamSelection();
 		scheduleController.createMatchSchedule();
 	}
 }
