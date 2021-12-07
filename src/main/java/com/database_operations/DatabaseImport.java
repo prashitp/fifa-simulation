@@ -69,7 +69,6 @@ public class DatabaseImport {
         return clubs;
     }
 
-
     private static void fetchNationality() throws Exception {
         String query = "SELECT * FROM nationality";
         ResultSet rs = con.createStatement().executeQuery(query);
@@ -197,7 +196,10 @@ public class DatabaseImport {
                     rs.getInt("skill_moves"),
                     PlayerWorkRate.valueOf(PlayerWorkRate.class, Arrays.asList(rs.getString("work_rate").split("/")).get(0).toUpperCase()),
                     (rs.getString("player_traits").equals("NA") ? List.of().toArray(empty_array) : Arrays.asList(rs.getString("player_traits").split("(, )")).toArray(empty_array)),
-                    player_attributes
+                    player_attributes,
+                    false,
+                    0,
+                    true
             );
             i++;
         }

@@ -1,6 +1,5 @@
 package com.gameplay.Fouls;
 
-import com.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import com.models.gameplay.CardType;
@@ -16,14 +15,34 @@ public class CardsController implements ICardsController{
 
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
+    HashMap<CardType, List<PlayerModel>> fouls;
 
     protected CardsController(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         this.team1 = team1;
         this.team2 = team2;
+        fouls = fetchFouls();
+        updateFouls();
     }
+
+    private void updateFouls(){
+        for(PlayerModel player: fouls.get(CardType.RED)){
+            player.availability = false;
+            player.yellowCard = false;
+        }
+        for(PlayerModel player: fouls.get(CardType.YELLOW)){
+            if(player.yellowCard){
+                player.availability = false;
+                player.yellowCard = false;
+            }else{
+                player.availability = true;
+                player.yellowCard = true;
+            }
+        }
+    }
+
     @Override
-    public HashMap<CardType, List<PlayerModel>> getFouls() {
-        HashMap<CardType, List<PlayerModel>> fouls = new HashMap<>();
+    public HashMap<CardType, List<PlayerModel>> fetchFouls() {
+        fouls = new HashMap<>();
 
         ICards redCard = new RedCard(team1, team2);
         ICards yellowCard = new YellowCard(team1, team2);

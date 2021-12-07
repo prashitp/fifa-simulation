@@ -12,5 +12,5 @@ import java.util.List;
 
 public interface ICardsController {
 
-    HashMap<CardType, List<PlayerModel>> getFouls();
+    HashMap<CardType, List<PlayerModel>> fetchFouls();
 }

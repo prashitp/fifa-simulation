@@ -5,7 +5,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author prashitpatel
+ * @author prashitpatel and vasugamdha
  */
 class PlayerModelTest {
 	static HashMap<PlayerAttributes,Integer> skills;
@@ -15,7 +15,7 @@ class PlayerModelTest {
 			91,91,45000000,36,187,83,"Manchester United",
 			PlayerPositions.ST,7,23,"Portugal","Right",5,
 			PlayerWorkRate.HIGH, new String[]{"Power Free-Kick", "Flair", "Long Shot Taker (AI)", "Speed Dribbler (AI)", "Outside Foot Shot"},
-			skills
+			skills, false , 0, true
 	);
 
 	@BeforeAll
@@ -130,5 +130,11 @@ class PlayerModelTest {
 		String[] traits = player.getPlayerTraits();
 		String[] expectedTraits = new String[]{"Power Free-Kick", "Flair", "Long Shot Taker (AI)", "Speed Dribbler (AI)", "Outside Foot Shot"};
 		assertArrayEquals(expectedTraits,traits);
+	}
+
+	@Test
+	void isAvailable() {
+		Boolean availability = player.isAvailable();
+		assertEquals(true,availability);
 	}
 }
