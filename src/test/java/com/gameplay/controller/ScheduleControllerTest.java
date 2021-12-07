@@ -10,6 +10,9 @@ import org.mockito.internal.util.reflection.FieldSetter;
 import com.gameplay.service.IScheduleService;
 import com.gameplay.service.ScheduleService;
 
+/**
+ * @author Jay Patel
+ */
 public class ScheduleControllerTest {
 
 	private IScheduleController scheduleController = new ScheduleController();

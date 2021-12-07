@@ -13,6 +13,9 @@ import org.mockito.internal.util.reflection.FieldSetter;
 
 import com.models.MatchModel;
 
+/**
+ * @author Jay Patel
+ */
 public class ScheduleRepositoryTest {
 
 	private IScheduleRepository scheduleRepository = new ScheduleRepository();

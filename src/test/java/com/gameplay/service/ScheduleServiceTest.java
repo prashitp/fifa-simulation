@@ -13,6 +13,9 @@ import com.gameplay.repository.IScheduleRepository;
 import com.gameplay.repository.ScheduleRepository;
 import com.models.MatchModel;
 
+/**
+ * @author Jay Patel
+ */
 public class ScheduleServiceTest {
 
 	private IScheduleService scheduleService = new ScheduleService();
