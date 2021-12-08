@@ -19,11 +19,11 @@ public abstract class SetPiece implements ISetPiece {
     protected int kick2 = 0;
     protected double club1overall = 0;
     protected double club2overall = 0;
-    protected Random random = new Random();
+    protected final Random random = new Random();
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
 
-    public SetPiece(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+    protected SetPiece(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         this.team1 = team1;
         this.team2 = team2;
         setup();
@@ -38,15 +38,20 @@ public abstract class SetPiece implements ISetPiece {
     @Override
     public void setup() {
         // Fetch Club names
-        String club1 = team1.entrySet().stream().findFirst().get().getKey().club;
-        String club2 = team2.entrySet().stream().findFirst().get().getKey().club;
+        Set<Map.Entry<PlayerModel, PlayingPosition>> homeTeam = team1.entrySet();
+        Map.Entry<PlayerModel, PlayingPosition> homePlayer = homeTeam.stream().findFirst().get();
+        String homeClub = homePlayer.getKey().club;
+
+        Set<Map.Entry<PlayerModel, PlayingPosition>> awayTeam = team1.entrySet();
+        Map.Entry<PlayerModel, PlayingPosition> awayPlayer = awayTeam.stream().findFirst().get();
+        String awayClub = awayPlayer.getKey().club;
 
         // Fetch respective "OVERALL" Club attribute value
         for (ClubModel club : Constants.CLUBS) {
-            if (club.getClubName().equals(club1)) {
+            if (club.getClubName().equals(homeClub)) {
                 club1overall = club.attributes.get(ClubAttributes.OVERALL);
             }
-            if (club.getClubName().equals(club2)) {
+            if (club.getClubName().equals(awayClub)) {
                 club2overall = club.attributes.get(ClubAttributes.OVERALL);
             }
             if (club1overall != 0 && club2overall != 0) {
