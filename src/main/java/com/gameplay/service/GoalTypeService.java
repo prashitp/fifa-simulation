@@ -10,27 +10,23 @@ import java.util.*;
 public class GoalTypeService implements IGoalTypeService {
 	public GoalType mapCriteriaToGoalType(Criteria criteria) {
 		switch (criteria) {
-			case PENALTY -> {
+			case PENALTY:
 				return GoalType.PENALTY;
-			}
-			case PLAYER_ATTRIBUTES -> {
+			case PLAYER_ATTRIBUTES:
 				if(Math.random() > 0.9) {
 					return  GoalType.OWN_GOAL;
 				}
 				return GoalType.OPEN_PLAY;
-			}
 		}
 		return GoalType.OPEN_PLAY;
 	}
 
 	public GoalType mapSetPieceToGoalType(SetPieceType setPieceType) {
 		switch (setPieceType) {
-			case FREE_KICK -> {
+			case FREE_KICK:
 				return GoalType.FREE_KICK;
-			}
-			case CORNER_KICK -> {
+			case CORNER_KICK:
 				return GoalType.CORNER;
-			}
 		}
 		return GoalType.CORNER;
 	}
