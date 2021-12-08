@@ -1,7 +1,6 @@
 package com.gameplay.controller;
 
 import com.gameplay.TeamSelection.TeamSelectionController;
-import com.gameplay.controller.ScoreLineController;
 import com.models.ClubModel;
 import com.models.SetPieceType;
 import com.models.Goal;
@@ -47,8 +46,9 @@ class ScoreLineControllerTest {
 	}
 
 	@Test
-	void getProbabilityTest() {
+	void getScoreLineTest() {
 		HashMap<ClubModel, List<Goal>> goals = scoreLineController.getScoreLine();
+		System.out.println(goals.size());
 		assertEquals(2, goals.size());
 	}
 }
