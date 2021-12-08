@@ -8,6 +8,9 @@ import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 import com.utils.TableFormat;
 
+/**
+ * @author Jay Patel
+ */
 public class ViewAvailablePlayers extends PlayingXISelection {
 
 	public static final String AVAILABLE_PLAYERS = "[AVAILABLE PLAYERS]: ";

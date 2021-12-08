@@ -14,6 +14,9 @@ import com.io.StandardInputStream;
 import com.io.StandardOutputStream;
 import com.utils.Converter;
 
+/**
+ * @author Jay Patel
+ */
 public class AddPlayer extends PlayingXISelection {
 
 	public static final String INPUT_PLAYER_ID_MSG = "Please enter player id.";

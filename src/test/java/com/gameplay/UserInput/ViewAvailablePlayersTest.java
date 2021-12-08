@@ -1,6 +1,5 @@
 package com.gameplay.UserInput;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -11,7 +10,6 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
 import com.gameplay.TeamSelection.TeamSelectionController;
@@ -20,6 +18,9 @@ import com.gameplay.repository.PlayerStatusRepository;
 import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 
+/**
+ * @author Jay Patel
+ */
 public class ViewAvailablePlayersTest {
 
 	private IOutputStream outputStreamMock = StandardOutputStream.getInstance();

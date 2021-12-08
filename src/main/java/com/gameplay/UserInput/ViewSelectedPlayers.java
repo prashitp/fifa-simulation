@@ -7,6 +7,9 @@ import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 import com.utils.TableFormat;
 
+/**
+ * @author Jay Patel
+ */
 public class ViewSelectedPlayers extends PlayingXISelection {
 
 	public static final String SELECTED_PLAYERS = "[SELECTED PLAYERS]: ";
