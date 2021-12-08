@@ -2,6 +2,7 @@ package com.gameplay.service;
 
 import com.models.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author prashitpatel
@@ -37,7 +38,7 @@ public class GoalScorerService implements IGoalScorerService {
 		}
 
 		int selectedIndex = generateRandom(0,possibleScorers.size()-1);
-		return possibleScorers.keySet().stream().toList().get(selectedIndex);
+		return possibleScorers.keySet().stream().collect(Collectors.toList()).get(selectedIndex);
 	}
 
 	private int countSkills(PlayerModel player, PlayerAttributes[] attributes) {

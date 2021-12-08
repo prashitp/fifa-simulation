@@ -7,6 +7,8 @@ import com.models.ClubModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author prashitpatel
@@ -24,7 +26,7 @@ class GoalCalculationServiceTest {
 		GoalCalculationService.resetScoreLine();
 		goalCalculationService.addPenaltyGoals(club,2);
 		HashMap<ClubModel, Integer> scoreLine = GoalCalculationService.getScoreLine();
-		int scoreLineSize =  scoreLine.keySet().stream().toList().size();
+		int scoreLineSize =  scoreLine.keySet().stream().collect(Collectors.toList()).size();
 		assertEquals(1, scoreLineSize);
 	}
 
@@ -33,7 +35,7 @@ class GoalCalculationServiceTest {
 		GoalCalculationService.resetScoreLine();
 		goalCalculationService.calculateNoOfGoals(club,0.5);
 		HashMap<ClubModel, Integer> scoreLine = GoalCalculationService.getScoreLine();
-		int scoreLineSize =  scoreLine.keySet().stream().toList().size();
+		int scoreLineSize =  scoreLine.keySet().stream().collect(Collectors.toList()).size();
 		assertEquals(1, scoreLineSize);
 	}
 
@@ -58,7 +60,7 @@ class GoalCalculationServiceTest {
 		goalCalculationService.calculateNoOfGoals(awayClub,0.9);
 		goalCalculationService.addUpset(club,awayClub);
 		HashMap<ClubModel, Integer> scoreLine = GoalCalculationService.getScoreLine();
-		int scoreLineSize =  scoreLine.keySet().stream().toList().size();
+		int scoreLineSize =  scoreLine.keySet().stream().collect(Collectors.toList()).size();
 		assertEquals(2, scoreLineSize);
 	}
 }

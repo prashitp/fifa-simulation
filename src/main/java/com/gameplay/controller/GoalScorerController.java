@@ -12,6 +12,8 @@ import com.models.Lineup;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author prashitpatel
  */
@@ -28,9 +30,9 @@ public class GoalScorerController implements IGoalScorerController {
 		Scorer scorer = scorerFactory.getScorerType(goalType);
 		Lineup clubLineup;
 		if(goalType.equals(GoalType.OWN_GOAL)) {
-			clubLineup = lineups.stream().filter(lineup -> lineup.club.equals(awayClub)).toList().get(0);
+			clubLineup = lineups.stream().filter(lineup -> lineup.club.equals(awayClub)).collect(Collectors.toList()).get(0);
 		} else {
-			clubLineup = lineups.stream().filter(lineup -> lineup.club.equals(club)).toList().get(0);
+			clubLineup = lineups.stream().filter(lineup -> lineup.club.equals(club)).collect(Collectors.toList()).get(0);
 		}
 
 		HashMap<PlayerModel, PlayingPosition> clubPlaying11 = clubLineup.getPlaying11();
