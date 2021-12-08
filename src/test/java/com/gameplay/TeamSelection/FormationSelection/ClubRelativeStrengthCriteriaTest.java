@@ -1,7 +1,7 @@
 package com.gameplay.TeamSelection.FormationSelection;
 
 import com.Constants;
-import com.models.gameplay.TeamSelection.FormationType;
+import com.models.FormationType;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 /**

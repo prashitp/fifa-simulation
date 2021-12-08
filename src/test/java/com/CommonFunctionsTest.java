@@ -1,7 +1,7 @@
 package com;
 
 import com.models.ClubAttributes;
-import com.models.gameplay.TeamSelection.FormationType;
+import com.models.FormationType;
 import org.junit.jupiter.api.Test;
 import java.util.AbstractMap;
 import java.util.HashMap;

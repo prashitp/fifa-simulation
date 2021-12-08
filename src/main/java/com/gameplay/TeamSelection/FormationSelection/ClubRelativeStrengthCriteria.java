@@ -2,7 +2,7 @@ package com.gameplay.TeamSelection.FormationSelection;
 
 import com.models.ClubAttributes;
 import com.models.ClubModel;
-import com.models.gameplay.TeamSelection.FormationType;
+import com.models.FormationType;
 import com.CommonFunctions;
 import java.util.HashMap;
 import java.util.Map;

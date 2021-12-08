@@ -10,7 +10,7 @@ import java.util.Random;
 import com.gameplay.entity.PlayerEntity;
 import com.models.ClubAttributes;
 import com.models.PlayerPositions;
-import com.models.gameplay.TeamSelection.FormationType;
+import com.models.FormationType;
 /**
  * @author prashitpatel and Mayank Sareen
  */
