@@ -1,6 +1,6 @@
 package com.gameplay.TeamSelection;
 
-import com.models.gameplay.TeamSelection.Lineup;
+import com.models.Lineup;
 import java.util.List;
 
 /**

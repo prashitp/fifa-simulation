@@ -1,9 +1,9 @@
 package com.gameplay.TeamSelection.FormationSelection;
 
 import com.models.ClubModel;
-import com.models.gameplay.TeamSelection.FormationModel;
-import com.models.gameplay.TeamSelection.FormationType;
-import com.models.gameplay.TeamSelection.DefaultFormations;
+import com.models.FormationModel;
+import com.models.FormationType;
+import com.models.DefaultFormations;
 import java.util.*;
 /**
  * @author prashitpatel

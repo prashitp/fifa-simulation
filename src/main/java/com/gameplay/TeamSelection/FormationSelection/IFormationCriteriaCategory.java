@@ -1,7 +1,7 @@
 package com.gameplay.TeamSelection.FormationSelection;
 
 import com.models.ClubModel;
-import com.models.gameplay.TeamSelection.FormationType;
+import com.models.FormationType;
 /**
  * @author prashitpatel
  */

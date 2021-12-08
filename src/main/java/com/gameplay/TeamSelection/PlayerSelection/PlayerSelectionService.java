@@ -65,7 +65,7 @@ public class PlayerSelectionService implements IPlayerSelectionService {
 		return playing11;
 	}
 
-	public static void resetplaying11() {
+	public static void resetPlaying11() {
 		playing11 = new HashMap<>();
 	}
 }

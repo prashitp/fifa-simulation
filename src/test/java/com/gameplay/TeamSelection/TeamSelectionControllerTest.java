@@ -1,6 +1,6 @@
 package com.gameplay.TeamSelection;
 
-import com.models.gameplay.TeamSelection.Lineup;
+import com.models.Lineup;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

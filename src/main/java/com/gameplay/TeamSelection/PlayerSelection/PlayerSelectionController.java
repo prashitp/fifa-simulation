@@ -1,8 +1,8 @@
 package com.gameplay.TeamSelection.PlayerSelection;
 
 import com.models.PlayingPosition;
-import com.models.gameplay.TeamSelection.FormationModel;
-import com.models.gameplay.TeamSelection.FormationType;
+import com.models.FormationModel;
+import com.models.FormationType;
 import com.models.PlayerModel;
 import java.util.HashMap;
 import java.util.List;
@@ -30,11 +30,12 @@ public class PlayerSelectionController implements IPlayerSelectionController{
 	}
 
 	public HashMap<PlayerModel, PlayingPosition> getSquad() {
-		PlayerSelectionService.resetplaying11();
-		IPlayerCategory forwards = new ForwardCategory(players);
-		IPlayerCategory midfielders = new MidfielderCategory(players);
-		IPlayerCategory defenders = new DefenderCategory(players);
-		IPlayerCategory goalkeepers = new GoalkeeperCategory(players);
+		PlayerSelectionService.resetPlaying11();
+		PlayerCategoryFactory playerCategoryFactory = new PlayerCategoryFactory();
+		IPlayerCategory forwards = playerCategoryFactory.getPlayerCategory(PlayingPosition.FORWARD,players);
+		IPlayerCategory midfielders = playerCategoryFactory.getPlayerCategory(PlayingPosition.MIDFIELDER,players);
+		IPlayerCategory defenders = playerCategoryFactory.getPlayerCategory(PlayingPosition.DEFENDER,players);
+		IPlayerCategory goalkeepers = playerCategoryFactory.getPlayerCategory(PlayingPosition.GOALKEEPER,players);
 
 		//give priority for player selection based on formation type
 		if(formationType.equals(FormationType.DEFENSIVE)) {

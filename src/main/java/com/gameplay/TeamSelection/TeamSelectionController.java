@@ -6,8 +6,8 @@ import com.gameplay.TeamSelection.FormationSelection.IFormationSelectionControll
 import com.gameplay.TeamSelection.PlayerSelection.IPlayerSelectionController;
 import com.gameplay.TeamSelection.PlayerSelection.PlayerSelectionController;
 import com.models.*;
-import com.models.gameplay.TeamSelection.FormationModel;
-import com.models.gameplay.TeamSelection.Lineup;
+import com.models.FormationModel;
+import com.models.Lineup;
 import java.util.*;
 
 /**
@@ -42,6 +42,6 @@ public class TeamSelectionController implements ITeamSelectionController {
 
 		//get playing11
 		IPlayerSelectionController playerSelectionController = new PlayerSelectionController(Arrays.asList(club.getPlayers()),formationModel);
-		return new Lineup(formationModel, playerSelectionController.getSquad());
+		return new Lineup(club, formationModel, playerSelectionController.getSquad());
 	}
 }

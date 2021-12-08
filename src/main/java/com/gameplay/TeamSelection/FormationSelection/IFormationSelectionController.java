@@ -1,6 +1,6 @@
 package com.gameplay.TeamSelection.FormationSelection;
 
-import com.models.gameplay.TeamSelection.FormationModel;
+import com.models.FormationModel;
 /**
  * @author prashitpatel
  */
