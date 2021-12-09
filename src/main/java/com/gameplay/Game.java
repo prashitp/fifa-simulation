@@ -56,7 +56,7 @@ import com.utils.Constants;
 import com.utils.Converter;
 
 /**
- * @author Jay Patel
+ * @author Jay Patel, mayanksareen, pppatel, vasugamdha
  */
 public class Game implements IGame {
 

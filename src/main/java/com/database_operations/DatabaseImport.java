@@ -32,7 +32,6 @@ public class DatabaseImport {
             fetchClubs();
             logService.log(Level.INFO, "Clubs fetched!");
         } catch (Exception e) {
-            System.out.println("Database errored out");
             logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table"
                     + e.getStackTrace());
         }

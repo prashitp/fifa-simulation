@@ -15,18 +15,14 @@ public class LogService {
         try {
             createNewFile(Constants.LOGGER_FILE_NAME);
             logWriter = new FileWriter(Constants.LOGGER_FILE_NAME, true);
-        } catch (IOException e) {
-            System.out.println("Failed to create log Writer" + e.getStackTrace());
-        }
+        } catch (IOException e) {}
     }
 
     public LogService(String path) {
         try {
             createNewFile(path);
             logWriter = new FileWriter(path, true);
-        } catch (IOException ex) {
-            System.out.println("Failed to create log Writer" + ex.getMessage());
-        }
+        } catch (IOException ex) {}
     }
    public void log(Level logType, String logMessage) {
         writeToFile(logType, logMessage);
@@ -43,9 +39,7 @@ public class LogService {
             logWriter.write(logType.toString() + " : " + logMessage);
             logWriter.write("\n");
             logWriter.close();
-        } catch (IOException e) {
-            System.out.println("An error occurred." + e.getStackTrace());
-        }
+        } catch (IOException e) {}
     }
 
     private static void createNewFile(String path) {
@@ -53,9 +47,7 @@ public class LogService {
         if (!logFile.exists()) {
             try {
                 logFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            } catch (IOException e) {}
         }
     }
 
