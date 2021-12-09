@@ -1,6 +1,5 @@
 package com.gameplay.controller;
 
-import com.gameplay.TeamSelection.TeamSelectionController;
 import com.models.ClubModel;
 import com.models.SetPieceType;
 import com.models.Goal;

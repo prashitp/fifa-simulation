@@ -1,4 +1,4 @@
-package com.gameplay.TeamSelection.PlayerSelection;
+package com.gameplay.controller;
 
 import com.models.PlayerModel;
 import com.models.PlayingPosition;

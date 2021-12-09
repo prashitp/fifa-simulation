@@ -1,5 +1,6 @@
-package com.gameplay.scoreline.ProbabilityCalculator;
+package com.gameplay.controller;
 
+import com.gameplay.scoreline.ProbabilityCalculator.*;
 import com.models.ClubModel;
 import com.models.SetPieceType;
 import com.models.Criteria;

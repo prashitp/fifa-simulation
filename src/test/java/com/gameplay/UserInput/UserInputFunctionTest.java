@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.TeamSelection.TeamSelectionController;
+import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.UserInput.validation.TeamValidation;
 import com.gameplay.controller.IPlayerStatusController;
 import com.gameplay.controller.ITeamController;

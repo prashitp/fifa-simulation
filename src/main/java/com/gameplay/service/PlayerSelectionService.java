@@ -1,4 +1,4 @@
-package com.gameplay.TeamSelection.PlayerSelection;
+package com.gameplay.service;
 
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;

@@ -1,10 +1,6 @@
-package com.gameplay.TeamSelection;
+package com.gameplay.controller;
 
 import com.Constants;
-import com.gameplay.TeamSelection.FormationSelection.FormationSelectionController;
-import com.gameplay.TeamSelection.FormationSelection.IFormationSelectionController;
-import com.gameplay.TeamSelection.PlayerSelection.IPlayerSelectionController;
-import com.gameplay.TeamSelection.PlayerSelection.PlayerSelectionController;
 import com.models.*;
 import com.models.FormationModel;
 import com.models.Lineup;

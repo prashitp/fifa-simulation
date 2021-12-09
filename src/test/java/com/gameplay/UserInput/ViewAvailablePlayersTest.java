@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.TeamSelection.TeamSelectionController;
+import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.repository.PlayerStatusRepository;
 import com.io.IOutputStream;
