@@ -24,7 +24,8 @@ import com.gameplay.entity.PlayerEntity;
 public class PlayerStatusRepositoryTest {
 
 	private IPlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
-
+	private IPlayerStatusRepository playerRepository = new PlayerStatusRepository();
+	
 	@Test
 	@Order(1)
 	public void fetchAllPlayerValidTest() throws Exception {
@@ -154,7 +155,7 @@ public class PlayerStatusRepositoryTest {
 		
 		Mockito.when(connectionMock.prepareStatement(Mockito.any())).thenReturn(statement);
 
-		assertTrue(playerStatusRepository.savePlayer(new PlayerEntity()),
+		assertTrue(playerStatusRepository.savePlayer(playerRepository.fetchAllPlayers().get(0)),
 				"savePlayer() method is not working as expected.");
 	}
 	
@@ -171,7 +172,7 @@ public class PlayerStatusRepositoryTest {
 		
 		Mockito.when(connectionMock.prepareStatement(Mockito.any())).thenReturn(statement);
 
-		assertFalse(playerStatusRepository.savePlayer(new PlayerEntity()),
+		assertFalse(playerStatusRepository.savePlayer(playerRepository.fetchAllPlayers().get(0)),
 				"savePlayer() method is not working as expected.");
 	}
 	
