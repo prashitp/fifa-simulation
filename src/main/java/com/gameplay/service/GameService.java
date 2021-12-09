@@ -47,6 +47,11 @@ public class GameService implements IGameService {
 	public void resetClubGoals(){
 		for (ClubModel club: Constants.CLUBS) {
 			club.goals = 0;
+			club.matchesDraw=0;
+			club.points=0;
+			club.matchesLoss=0;
+			club.matchesWin=0;
+			club.matchesPlayed=0;
 		}
 	}
 }
