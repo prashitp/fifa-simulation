@@ -7,10 +7,10 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 
-import com.CommonFunctions;
-import com.LogService;
 import com.gameplay.entity.PlayerEntity;
+import com.utils.CommonFunctions;
 import com.utils.Converter;
+import com.utils.LogService;
 
 /**
  * @author Jay Patel
