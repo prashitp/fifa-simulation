@@ -1,6 +1,6 @@
 package com.database_operations;
 
-//import com.utils.LogService;
+import com.utils.LogService;
 import com.models.*;
 
 import java.sql.Connection;
@@ -21,7 +21,7 @@ public class DatabaseImport {
     static Map<String, String> table_nationality = new TreeMap<>();
     static HashMap<PlayerAttributes, Integer> player_attributes = new HashMap<>();
     static HashMap<ClubAttributes, Integer> club_attributes = new HashMap<>();
-//    static LogService logService = new LogService();
+    static LogService logService = new LogService();
 
     static String[] empty_array = {};
 
@@ -30,27 +30,27 @@ public class DatabaseImport {
     private DatabaseImport() {
         try {
             fetchClubs();
-//            logService.log(Level.INFO, "Clubs fetched!");
+            logService.log(Level.INFO, "Clubs fetched!");
         } catch (Exception e) {
-//            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table"
-//                    + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table"
+                    + e.getStackTrace());
         }
 
         try {
             fetchNationality();
-//            logService.log(Level.INFO, "Nationalities fetched!");
+            logService.log(Level.INFO, "Nationalities fetched!");
         } catch (Exception e) {
-//            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table"
-//                    + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table"
+                    + e.getStackTrace());
         }
             setClubs();
 
         try {
             setPlayers();
-//            logService.log(Level.INFO, "Players table imported successfully!");
+            logService.log(Level.INFO, "Players table imported successfully!");
         } catch (Exception e) {
-//            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable"
-//                    + e.getStackTrace());
+            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable"
+                    + e.getStackTrace());
         }
     }
 
