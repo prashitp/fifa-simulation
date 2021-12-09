@@ -165,13 +165,13 @@ public class Game implements IGame {
 			IGameService gameService = new GameService();
 			HashMap<PlayerModel, Integer> highestGoalsPlayer = gameService.getHighestGoalScorer();
 
-			PlayerModel highestScorer = highestGoalsPlayer.keySet().stream().toList().get(0);
+			PlayerModel highestScorer = highestGoalsPlayer.keySet().stream().collect(Collectors.toList()).get(0);
 			int maxGoals = highestGoalsPlayer.get(highestScorer);
 			outputStream.println(String.format("Most goals: %s - %d",highestScorer.getPlayerName(),
 					maxGoals));
 
 			HashMap<ClubModel, Integer> highestGoalsClub = gameService.getHighestGoalsByClub();
-			ClubModel highestScoringClub = highestGoalsClub.keySet().stream().toList().get(0);
+			ClubModel highestScoringClub = highestGoalsClub.keySet().stream().collect(Collectors.toList()).get(0);
 			int maxGoalsClub = highestGoalsClub.get(highestScoringClub);
 			outputStream.println(String.format("Most goals: %s - %d",highestScoringClub.getClubName(),
 					maxGoalsClub));
