@@ -1,6 +1,13 @@
 package com.gameplay.repository;
 
-import com.gameplay.entity.PlayerEntity;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.List;
+
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -8,11 +15,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.gameplay.entity.PlayerEntity;
 
 /**
  * @author Jay Patel
@@ -129,5 +132,63 @@ public class PlayerStatusRepositoryTest {
 
 		assertNull(playerStatusRepository.fetchAllPlayers(1),
 				"fetchAllPlayer() method is not working as expected when exception is thrown.");
+	}
+
+	@Test
+	@Order(10)
+	public void fetchAllPlayersTest() {
+		assertTrue(playerStatusRepository.fetchAllPlayers().size() > 0,
+				"fetchAllPlayer() method is not working as expected.");
+	}
+
+	@Test
+	@Order(11)
+	public void savePlayerTest() throws Exception {
+		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
+		Mockito.when(statement.executeUpdate()).thenReturn(1);
+
+		Connection connectionMock = Mockito.mock(Connection.class);
+		FieldSetter setter = new FieldSetter(playerStatusRepository,
+				PlayerStatusRepository.class.getDeclaredField("databaseConnection"));
+		setter.set(connectionMock);
+		
+		Mockito.when(connectionMock.prepareStatement(Mockito.any())).thenReturn(statement);
+
+		assertTrue(playerStatusRepository.savePlayer(new PlayerEntity()),
+				"savePlayer() method is not working as expected.");
+	}
+	
+	@Test
+	@Order(12)
+	public void savePlayerInvalidTest() throws Exception {
+		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
+		Mockito.when(statement.executeUpdate()).thenThrow(new RuntimeException());
+
+		Connection connectionMock = Mockito.mock(Connection.class);
+		FieldSetter setter = new FieldSetter(playerStatusRepository,
+				PlayerStatusRepository.class.getDeclaredField("databaseConnection"));
+		setter.set(connectionMock);
+		
+		Mockito.when(connectionMock.prepareStatement(Mockito.any())).thenReturn(statement);
+
+		assertFalse(playerStatusRepository.savePlayer(new PlayerEntity()),
+				"savePlayer() method is not working as expected.");
+	}
+	
+	@Test
+	@Order(13)
+	public void fetchAllPlayersInvalidTest() throws Exception {
+		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
+		Mockito.when(statement.executeUpdate()).thenThrow(new RuntimeException());
+
+		Connection connectionMock = Mockito.mock(Connection.class);
+		FieldSetter setter = new FieldSetter(playerStatusRepository,
+				PlayerStatusRepository.class.getDeclaredField("databaseConnection"));
+		setter.set(connectionMock);
+		
+		Mockito.when(connectionMock.prepareStatement(Mockito.any())).thenReturn(statement);
+
+		assertFalse(playerStatusRepository.fetchAllPlayers() != null,
+				"fetchAllPlayer() method is not working as expected.");
 	}
 }
