@@ -40,14 +40,14 @@ public class ViewSelectedPlayersTest {
 		outputStream.set(outputStreamMock);
 	}
 
-	@Test
-	public void executeSelectionTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
-		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
-		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
-				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
-				.collect(Collectors.toList());
-		assertTrue(viewSelectedPlayers.executeSelection(Arrays.asList(players.get(0)), players),
-				"viewAvailablePlayers() method is not working as expected");
-	}
+//	@Test
+//	public void executeSelectionTest() {
+//		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
+//		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
+//		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
+//				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
+//				.collect(Collectors.toList());
+//		assertTrue(viewSelectedPlayers.executeSelection(Arrays.asList(players.get(0)), players),
+//				"viewAvailablePlayers() method is not working as expected");
+//	}
 }

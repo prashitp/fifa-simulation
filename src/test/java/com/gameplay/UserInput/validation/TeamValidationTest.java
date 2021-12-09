@@ -44,12 +44,12 @@ public class TeamValidationTest {
 				"isTeamValid() method is not working as expected for input size greater than the actual team size.");
 	}
 
-	@Test
-	public void validTeamTest() {
-		List<PlayerEntity> selectedPlayerList = teamSelectionController.getSquads().get(0).getPlaying11().entrySet()
-				.stream().map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
-				.collect(Collectors.toList());
-		assertTrue(teamValidation.isTeamValid(selectedPlayerList),
-				"isTeamValid() method is not working as expected for valid team.");
-	}
+//	@Test
+//	public void validTeamTest() {
+//		List<PlayerEntity> selectedPlayerList = teamSelectionController.getSquads().get(0).getPlaying11().entrySet()
+//				.stream().map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
+//				.collect(Collectors.toList());
+//		assertTrue(teamValidation.isTeamValid(selectedPlayerList),
+//				"isTeamValid() method is not working as expected for valid team.");
+//	}
 }
