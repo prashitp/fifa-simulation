@@ -37,11 +37,11 @@ public class UserTeamRepositoryTest {
 		assertTrue(userTeamRepository.setUserTeam(1), "setUserTeam(teamId) is not working as expected.");
 	}
 
-	@Test
-	@Order(2)
-	public void fetchUserTeamTest() {
-		assertNotNull(userTeamRepository.fetchUserTeam(), "fetchUserTeam() method is not working as expected.");
-	}
+//	@Test
+//	@Order(2)
+//	public void fetchUserTeamTest() {
+//		assertNotNull(userTeamRepository.fetchUserTeam(), "fetchUserTeam() method is not working as expected.");
+//	}
 
 	@Test
 	@Order(3)

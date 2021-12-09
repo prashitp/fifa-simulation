@@ -22,7 +22,7 @@ public class Constants {
     public static final String CONNECTION_DEV_URL = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_25_DEVINT";
     public static final String CONNECTION_USERNAME = "CSCI5308_25_DEVINT_USER";
     public static final String CONNECTION_PASSWORD = "uhahMae3oonguNei";
-    public static final String LOGGER_FILE_PATH = "src/main/java/log.log";
+    public static final String LOGGER_FILE_PATH = "src/main/java/com/log.log";
     public static PlayerModel[] PLAYERS = DatabaseImport.getInstance().getPlayers();
     public static ClubModel[] CLUBS = DatabaseImport.getInstance().getClubs();
     public static final PlayerPositions[] FORWARD_POSITIONS = {
@@ -143,5 +143,5 @@ public class Constants {
 			PlayerPositions.LWB, PlayerPositions.RWB, PlayerPositions.LDM, PlayerPositions.RDM, PlayerPositions.CDM,
 	};
 
-	public static final int SEASON_COUNT = 1;
+	public static final int SEASON_COUNT = 10;
 }
