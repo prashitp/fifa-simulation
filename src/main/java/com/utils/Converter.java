@@ -1,13 +1,14 @@
 package com.utils;
 
-import com.gameplay.entity.Column;
-
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
+
+import com.gameplay.entity.Column;
+import com.gameplay.entity.PlayerEntity;
 
 /**
  * @author Jay Patel
@@ -81,5 +82,38 @@ public class Converter {
 
 	public static Integer convertToTeamIdInteger(String teamId) {
 		return Integer.parseInt(teamId.substring(1));
+	}
+
+	public static String convertToUpdateQuery(PlayerEntity player) {
+		try {
+			String setParameter = "";
+			Field[] fields = player.getClass().getDeclaredFields();
+			for (Field field : fields) {
+				field.setAccessible(true);
+			}
+			for (int i = 0; i < fields.length; i++) {
+				Field field = fields[i];
+				Column col = field.getAnnotation(Column.class);
+				if (col == null) {
+					continue;
+				}
+				String name = col.name();
+				String value = field.get(player).toString();
+				if (i != 0) {
+					setParameter += ", ";
+				}
+				if (fields[i].get(player) instanceof String) {
+					setParameter = setParameter + name + "='" + value + "' ";
+				} else {
+					setParameter = setParameter + name + "=" + value + " ";
+				}
+			}
+			String updateQuery = "UPDATE player_status set " + setParameter + " where player_id = '"
+					+ player.getPlayerId() + "'";
+			return updateQuery;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

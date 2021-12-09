@@ -16,4 +16,8 @@ public interface IPlayerStatusService {
 	public Boolean deleteAllPlayers();
 
 	public Boolean copyFromPlayerToPlayerStatus();
+	
+	public List<PlayerEntity> fetchAllPlayers();
+	
+	public Boolean savePlayer(PlayerEntity player);
 }

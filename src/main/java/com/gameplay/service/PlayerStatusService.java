@@ -36,4 +36,14 @@ public class PlayerStatusService implements IPlayerStatusService {
 	public Boolean copyFromPlayerToPlayerStatus() {
 		return playerStatusRepository.copyFromPlayerToPlayerStatus();
 	}
+
+	@Override
+	public List<PlayerEntity> fetchAllPlayers() {
+		return playerStatusRepository.fetchAllPlayers();
+	}
+
+	@Override
+	public Boolean savePlayer(PlayerEntity player) {
+		return playerStatusRepository.savePlayer(player);
+	}
 }

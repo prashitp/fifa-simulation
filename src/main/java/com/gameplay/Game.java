@@ -14,21 +14,30 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.gameplay.controller.IPlayerTrainingController;
+import com.gameplay.controller.IScheduleController;
+import com.gameplay.controller.PlayerTrainingController;
+import com.gameplay.controller.ScheduleController;
+import com.models.MatchModel;
 
 /**
  * @author Jay Patel
  */
 public class Game implements IGame {
 
-	public IUserInputFunction userInputFunction;
+	private IUserInputFunction userInputFunction;
 
-	public IScheduleController scheduleController;
+	private IScheduleController scheduleController;
 
-	IOutputStream outputStream = StandardOutputStream.getInstance();
+	private IOutputStream outputStream;
+
+	private IPlayerTrainingController playerTrainingController;
 
 	public Game() {
 		userInputFunction = new UserInputFunction();
 		scheduleController = new ScheduleController();
+		outputStream = StandardOutputStream.getInstance();
+		playerTrainingController = new PlayerTrainingController();
 	}
 
 	@Override
@@ -119,10 +128,11 @@ public class Game implements IGame {
 				}
 
 				// Training
+				playerTrainingController.performTrainingSession();
+				
 				matchIndex++;
 			}
 			//transfer
 		}
-
 	}
 }
