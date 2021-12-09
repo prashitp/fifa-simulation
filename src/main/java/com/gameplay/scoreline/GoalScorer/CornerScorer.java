@@ -15,7 +15,9 @@ public class CornerScorer implements Scorer{
 
 	@Override
 	public PlayerModel getScorer(List<PlayerModel> players) {
-		return goalScorerService.getScorerForType(Constants.CORNER_SKILLS,
+		PlayerModel player = goalScorerService.getScorerForType(Constants.CORNER_SKILLS,
 				Constants.DEFENDING_POSITIONS, players);
+		player.goals += 1;
+		return player;
 	}
 }

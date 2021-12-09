@@ -12,6 +12,8 @@ public class PenaltyScorer implements Scorer {
 	IGoalScorerService goalScorerService = new GoalScorerService();
 
 	public PlayerModel getScorer(List<PlayerModel> players) {
-		return goalScorerService.getPlayerForPenalty(players);
+		PlayerModel player = goalScorerService.getPlayerForPenalty(players);
+		player.goals += 1;
+		return player;
 	}
 }
