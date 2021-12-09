@@ -1,9 +1,12 @@
 package com.gameplay;
 
+import java.util.List;
+
 import com.gameplay.UserInput.IUserInputFunction;
 import com.gameplay.UserInput.UserInputFunction;
 import com.gameplay.controller.IScheduleController;
 import com.gameplay.controller.ScheduleController;
+import com.models.MatchModel;
 
 /**
  * @author Jay Patel
@@ -22,6 +25,6 @@ public class Game implements IGame {
 	@Override
 	public void startGame() {
 //		userInputFunction.teamSelection();
-		scheduleController.createMatchSchedule();
+		List<MatchModel> matches = scheduleController.createMatchSchedule();
 	}
 }

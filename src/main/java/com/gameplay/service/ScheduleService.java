@@ -36,13 +36,13 @@ public class ScheduleService implements IScheduleService {
 	}
 
 	@Override
-	public Boolean createMatchSchedule() {
+	public List<MatchModel> createMatchSchedule() {
 		List<MatchModel> schedule = new ArrayList<>();
 		schedule.addAll(createSchedule(Boolean.TRUE));
 		schedule.addAll(createSchedule(Boolean.FALSE));
 		scheduleRepository.deleteSchedule();
 		scheduleRepository.saveSchedule(schedule);
-		return Boolean.TRUE;
+		return schedule;
 	}
 
 	private List<MatchModel> createSchedule(Boolean firstTeamPlayingHomeMatch) {
