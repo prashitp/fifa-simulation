@@ -230,9 +230,6 @@ public class Game implements IGame {
 			standardOutput.println(String.format("Most goals: %s - %d\n",highestScoringClub.getClubName(),
 					maxGoalsClub));
 
-			gameService.resetPlayerGoals();
-			gameService.resetClubGoals();
-
 			List<ClubModel> clubsForPointsTable = Arrays.asList(Constants.CLUBS);
 			clubsForPointsTable.sort((c1, c2) -> (c2.points - c1.points));
 			StringBuilder pointsTable = new StringBuilder();
@@ -252,7 +249,9 @@ public class Game implements IGame {
 			pointsTable.append("+" + "-".repeat(tableWidth)).append("+\n");
 			outputStream.println(pointsTable);
 			standardOutput.println(pointsTable);
-			//transfer
+
+			gameService.resetPlayerGoals();
+			gameService.resetClubGoals();
 
 			standardOutput.println(String.format("Simulation completed for season %d", index));
 
