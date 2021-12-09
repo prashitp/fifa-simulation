@@ -1,4 +1,4 @@
-package com.gameplay.player_transfers;
+package com.gameplay.PlayerTransfers;
 /**
  * @author: mayanksareen
  */

@@ -1,10 +1,10 @@
-package com.gameplay.player_transfers;
+package com.gameplay.PlayerTransfers;
+
 /**
  * @author: mayanksareen
  */
-
-import com.gameplay.PlayerTransfers.controller.DefenderPlayerTransfers;
-import com.gameplay.PlayerTransfers.controller.IDefenderPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.ForwardPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.IForwardPlayerTransfers;
 import com.models.PlayerModel;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DefenderPlayerTransfersTest {
+public class ForwardPlayerTransfersTest {
     List<PlayerModel> team = new ArrayList<>();
-    public DefenderPlayerTransfersTest(){
+    public ForwardPlayerTransfersTest(){
         team.add(Constants.PLAYERS[0]);
         team.add(Constants.PLAYERS[12]);
         team.add(Constants.PLAYERS[20]);
@@ -27,8 +27,7 @@ public class DefenderPlayerTransfersTest {
 
     @Test
     void getDefendersForTransferPerTeamTest() {
-        IDefenderPlayerTransfers iDefenderPlayerTransfers = new DefenderPlayerTransfers();
-        iDefenderPlayerTransfers.getDefendersForTransferPerTeam(team);
-        assertEquals("ArrayList", iDefenderPlayerTransfers.getDefendersForTransferPerTeam(team).getClass().getSimpleName());
+        IForwardPlayerTransfers iForwardPlayerTransfers = new ForwardPlayerTransfers();
+        assertEquals("ArrayList", iForwardPlayerTransfers.getForwardsForTransferPerTeam(team).getClass().getSimpleName());
     }
 }
