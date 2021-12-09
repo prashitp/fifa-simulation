@@ -1,12 +1,43 @@
 package com.gameplay;
+import com.gameplay.player_transfers.controller.player_rearrangement.controller.PlayerTransfersController;
+import com.gameplay.service.GameService;
+import com.gameplay.service.IGameService;
+import com.utils.Constants;
+import com.gameplay.UserInput.IUserInputFunction;
+import com.gameplay.UserInput.UserInputFunction;
+import com.gameplay.controller.*;
+import com.io.IOutputStream;
+import com.io.StandardOutputStream;
+import com.models.*;
+import com.models.gameplay.CardType;
+import com.utils.Converter;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 import com.gameplay.UserInput.IUserInputFunction;
 import com.gameplay.UserInput.UserInputFunction;
-import com.gameplay.controller.*;
-import com.gameplay.player_transfers.controller.player_rearrangement.controller.PlayerTransfersController;
+import com.gameplay.controller.CardsController;
+import com.gameplay.controller.ICardsController;
+import com.gameplay.controller.IInjuryController;
+import com.gameplay.controller.IPlayerTrainingController;
+import com.gameplay.controller.IScheduleController;
+import com.gameplay.controller.IScoreLineController;
+import com.gameplay.controller.ISetPieceController;
+import com.gameplay.controller.ITeamSelectionController;
+import com.gameplay.controller.IUserTeamController;
+import com.gameplay.controller.InjuryController;
+import com.gameplay.controller.PlayerTrainingController;
+import com.gameplay.controller.ScheduleController;
+import com.gameplay.controller.ScoreLineController;
+import com.gameplay.controller.SetPieceController;
+import com.gameplay.controller.TeamSelectionController;
+import com.gameplay.controller.UserTeamController;
 import com.gameplay.service.GameService;
 import com.gameplay.service.IGameService;
 import com.io.FileOutputStream;
@@ -20,11 +51,12 @@ import com.models.Lineup;
 import com.models.MatchModel;
 import com.models.PlayerModel;
 import com.models.SetPieceType;
+import com.models.gameplay.CardType;
 import com.utils.Constants;
 import com.utils.Converter;
 
 /**
- * @author Jay Patel, prashitpatel, Vasu Gamdha, Mayank Sareen
+ * @author Jay Patel
  */
 public class Game implements IGame {
 
@@ -129,9 +161,22 @@ public class Game implements IGame {
 				for(SetPieceType setPieceType: setPieces.keySet()){
 					outputStream.print(setPieceType + ": ");
 					outputStream.print(lineups.get(0).club.getClubName() + "-" + setPieces.get(setPieceType).get(0));
-					outputStream.print(" ");
 					outputStream.print(lineups.get(1).club.getClubName() + "-" + setPieces.get(setPieceType).get(1));
-					outputStream.println("");
+				}
+
+				outputStream.println("");
+				outputStream.println("");
+
+				// Cards
+				ICardsController cardsController = new CardsController(lineups.get(0).getPlaying11(),
+						lineups.get(1).getPlaying11());
+				HashMap<CardType, List<PlayerModel>> cards = cardsController.fetchFouls();
+				outputStream.println("***** Fouls ******");
+				for(CardType card: cards.keySet()){
+					outputStream.print(card + " - ");
+					for (PlayerModel player: cards.get(card)){
+						outputStream.print(player.getPlayerName());
+					}
 				}
 
 				outputStream.println("");
@@ -152,14 +197,14 @@ public class Game implements IGame {
 				outputStream.println("");
 				outputStream.println("");
 
-
 				outputStream.println("***** Injured Players ******");
 				for(Map.Entry<PlayerModel, Integer> injury: injuries.entrySet()){
-					outputStream.print(String.format("%s - %s matches, ",injury.getKey().getPlayerName(), injury.getValue()));
+					outputStream.print(String.format("%s - %s matches, ",injury.getKey(), injury.getValue()));
 				}
 
 				outputStream.println("");
 				outputStream.println("");
+
 				// Final Scores
 				IScoreLineController scoreLineController = new ScoreLineController(homeClub, awayClub, lineups,
 						setPieces);
