@@ -1,4 +1,4 @@
-package com.gameplay.Fouls;
+package com.gameplay.controller;
 
 import com.models.PlayerModel;
 import com.models.gameplay.CardType;

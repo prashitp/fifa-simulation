@@ -1,4 +1,4 @@
-package com.gameplay.Fouls;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.*;
@@ -9,7 +9,7 @@ import java.util.*;
  * @author vasugamdha
  */
 
-public abstract class Cards implements ICards {
+public abstract class CardsService implements ICardsService {
 
     protected final List<PlayerModel> players;
     protected double club1overall;
@@ -17,15 +17,25 @@ public abstract class Cards implements ICards {
     protected final Random random;
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
+    public static PlayerAttributes[] POSITIVE_SKILLS;
+    public static PlayerAttributes[] NEGATIVE_SKILLS;
+
     String homeClub;
     String awayClub;
 
-    protected Cards(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+    protected CardsService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         this.team1 = team1;
         this.team2 = team2;
         players = new ArrayList<>();
         club1overall = 0;
         club2overall = 0;
+        NEGATIVE_SKILLS = new PlayerAttributes[]{
+                PlayerAttributes.MENTALITY_AGGRESSION
+        };
+        POSITIVE_SKILLS = new PlayerAttributes[]{
+                PlayerAttributes.DEFENDING, PlayerAttributes.MOVEMENT_BALANCE, PlayerAttributes.DEFENDING_MARKING_AWARENESS,
+                PlayerAttributes.DEFENDING_SLIDING_TACKLE, PlayerAttributes.DEFENDING_STANDING_TACKLE
+        };
         random = new Random();
         setup();
     }
@@ -83,13 +93,13 @@ public abstract class Cards implements ICards {
                 overall = club2overall;
             }
             double positiveAverage = 0, negativeAverage = 0;
-            for (PlayerAttributes skill : FoulsConstants.POSITIVE_SKILLS) {
+            for (PlayerAttributes skill : POSITIVE_SKILLS) {
                 double value = player.skills.get(skill);
-                positiveAverage = positiveAverage + (value / (double) FoulsConstants.POSITIVE_SKILLS.length);
+                positiveAverage = positiveAverage + (value / (double) POSITIVE_SKILLS.length);
             }
-            for (PlayerAttributes skill : FoulsConstants.NEGATIVE_SKILLS) {
+            for (PlayerAttributes skill : NEGATIVE_SKILLS) {
                 double value = player.skills.get(skill);
-                negativeAverage = negativeAverage + (value / (double) FoulsConstants.NEGATIVE_SKILLS.length);
+                negativeAverage = negativeAverage + (value / (double) NEGATIVE_SKILLS.length);
             }
             map.put(player, (positiveAverage - negativeAverage) * overall / 100);
         }

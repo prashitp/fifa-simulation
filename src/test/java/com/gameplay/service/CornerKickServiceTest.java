@@ -9,6 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 
+/**
+ * @author vasugamdha
+ */
+
 public class CornerKickServiceTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();

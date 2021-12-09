@@ -1,4 +1,4 @@
-package com.gameplay.Fouls;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.PlayerModel;
@@ -13,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author vasugamdha
  */
 
-public class YellowCardTest {
+public class YellowCardServiceTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
 
-    public YellowCardTest(){
+    public YellowCardServiceTest(){
         team1.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
         team1.put(Constants.PLAYERS[12], PlayingPosition.MIDFIELDER);
         team1.put(Constants.PLAYERS[20], PlayingPosition.DEFENDER);
@@ -31,8 +31,8 @@ public class YellowCardTest {
 
     @Test
     public void getPlayersTypeTest(){
-        ICards yellowCard = new YellowCard(team1, team2);
-        assertEquals("ArrayList", yellowCard.getPlayers().getClass().getSimpleName());
+        ICardsService yellowCardService = new YellowCardService(team1, team2);
+        assertEquals("ArrayList", yellowCardService.getPlayers().getClass().getSimpleName());
     }
 
 }

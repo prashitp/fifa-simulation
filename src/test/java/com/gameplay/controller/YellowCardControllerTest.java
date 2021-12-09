@@ -1,4 +1,4 @@
-package com.gameplay.Fouls;
+package com.gameplay.controller;
 
 import com.Constants;
 import com.models.PlayerModel;
@@ -13,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author vasugamdha
  */
 
-public class CardsControllerTest {
+public class YellowCardControllerTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
 
-    public CardsControllerTest(){
+    public YellowCardControllerTest(){
         team1.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
         team1.put(Constants.PLAYERS[12], PlayingPosition.MIDFIELDER);
         team1.put(Constants.PLAYERS[20], PlayingPosition.DEFENDER);
@@ -30,8 +30,8 @@ public class CardsControllerTest {
     }
 
     @Test
-    public void getFoulsTypeTest(){
-        ICardsController cardsController = new CardsController(team1, team2);
-        assertEquals("HashMap",cardsController.fetchFouls().getClass().getSimpleName());
+    public void getPlayersTypeTest(){
+        IYellowCardController yellowCardController = new YellowCardController(team1, team2);
+        assertEquals("ArrayList", yellowCardController.getYellowCardPlayers().getClass().getSimpleName());
     }
 }

@@ -1,5 +1,8 @@
-package com.gameplay.Fouls;
+package com.gameplay.controller;
 
+import com.gameplay.service.ICardsService;
+import com.gameplay.service.RedCardService;
+import com.gameplay.service.YellowCardService;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import com.models.gameplay.CardType;
@@ -44,8 +47,8 @@ public class CardsController implements ICardsController{
     public HashMap<CardType, List<PlayerModel>> fetchFouls() {
         fouls = new HashMap<>();
 
-        ICards redCard = new RedCard(team1, team2);
-        ICards yellowCard = new YellowCard(team1, team2);
+        ICardsService redCard = new RedCardService(team1, team2);
+        ICardsService yellowCard = new YellowCardService(team1, team2);
 
         fouls.put(CardType.RED, redCard.getPlayers());
         fouls.put(CardType.YELLOW, yellowCard.getPlayers());

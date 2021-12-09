@@ -1,6 +1,8 @@
-package com.gameplay.service;
+package com.gameplay.controller;
 
 import com.Constants;
+import com.gameplay.controller.CardsController;
+import com.gameplay.controller.ICardsController;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;
@@ -13,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author vasugamdha
  */
 
-public class PenaltyKickServiceTest {
+public class CardsControllerTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
 
-    public PenaltyKickServiceTest(){
+    public CardsControllerTest(){
         team1.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
         team1.put(Constants.PLAYERS[12], PlayingPosition.MIDFIELDER);
         team1.put(Constants.PLAYERS[20], PlayingPosition.DEFENDER);
@@ -30,8 +32,8 @@ public class PenaltyKickServiceTest {
     }
 
     @Test
-    public void getSetPieceTypeTest(){
-        IKickService penaltyKick = new PenaltyKickService(team1,team2);
-        assertEquals("List12",penaltyKick.getSetPiece().getClass().getSimpleName());
+    public void getFoulsTypeTest(){
+        ICardsController cardsController = new CardsController(team1, team2);
+        assertEquals("HashMap",cardsController.fetchFouls().getClass().getSimpleName());
     }
 }

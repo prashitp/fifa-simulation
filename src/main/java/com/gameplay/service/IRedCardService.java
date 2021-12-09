@@ -1,4 +1,4 @@
-package com.gameplay.Fouls;
+package com.gameplay.service;
 
 import com.models.PlayerModel;
 
@@ -8,8 +8,6 @@ import java.util.List;
  * @author vasugamdha
  */
 
-public interface ICards {
-    void setup();
-
+public interface IRedCardService {
     List<PlayerModel> getPlayers();
 }

@@ -18,7 +18,7 @@ InjuryService implements IInjuryService {
     protected double club1overall;
     protected double club2overall;
     protected final Random random;
-    public static PlayerAttributes[] INJURY_SKILLS = new PlayerAttributes[9];
+    public static PlayerAttributes[] INJURY_SKILLS;
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
     String homeClub;
