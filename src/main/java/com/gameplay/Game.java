@@ -156,6 +156,8 @@ public class Game implements IGame {
 
 				// substitution
 
+				// substitution
+
 				// Final Scores
 				IScoreLineController scoreLineController = new ScoreLineController(homeClub, awayClub, lineups,
 						setPieces);
