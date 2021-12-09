@@ -1,8 +1,8 @@
 package com.gameplay.scoreline.ProbabilityCalculator;
 
 import com.Constants;
-import com.gameplay.TeamSelection.TeamSelectionController;
-import com.gameplay.scoreline.ProbabilityCalculator.*;
+import com.gameplay.controller.ProbabilityController;
+import com.gameplay.controller.TeamSelectionController;
 import com.models.ClubModel;
 import com.models.SetPieceType;
 import com.models.Criteria;

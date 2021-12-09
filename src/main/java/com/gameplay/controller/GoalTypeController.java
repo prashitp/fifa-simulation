@@ -2,7 +2,6 @@ package com.gameplay.controller;
 
 import com.gameplay.service.GoalTypeService;
 import com.gameplay.service.IGoalTypeService;
-import com.gameplay.scoreline.ProbabilityCalculator.ProbabilityController;
 import com.models.ClubModel;
 import com.models.SetPieceType;
 import com.models.Criteria;

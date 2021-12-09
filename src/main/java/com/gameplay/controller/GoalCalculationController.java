@@ -1,6 +1,5 @@
 package com.gameplay.controller;
 
-import com.gameplay.scoreline.ProbabilityCalculator.*;
 import com.gameplay.service.GoalCalculationService;
 import com.gameplay.service.IGoalCalculationService;
 import com.models.ClubModel;
