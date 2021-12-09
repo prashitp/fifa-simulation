@@ -18,10 +18,10 @@ public class DatabaseConnection {
     private Connection connection;
     private DatabaseConnection() {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+//            Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection(Constants.CONNECTION_DEV_URL, Constants.CONNECTION_USERNAME,
                     Constants.CONNECTION_PASSWORD);
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex);
 //            logService.log(Level.SEVERE, "ERROR! Exception occurred while connecting to Database :: " + ex.getMessage());
         }

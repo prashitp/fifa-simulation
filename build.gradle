@@ -15,6 +15,9 @@ jar {
                 'Main-Class': 'com.Main'
         )
     }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 
