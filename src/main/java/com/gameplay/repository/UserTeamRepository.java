@@ -1,15 +1,15 @@
 package com.gameplay.repository;
 
+import com.utils.LogService;
+import com.database_operations.DatabaseConnection;
+import com.models.UserTeamModel;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-
-import com.LogService;
-import com.database_operations.DatabaseConnection;
-import com.models.UserTeamModel;
 
 /**
  * @author Jay Patel

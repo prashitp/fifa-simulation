@@ -1,10 +1,10 @@
 package com.gameplay.controller;
 
-import java.util.List;
-
 import com.gameplay.service.IScheduleService;
 import com.gameplay.service.ScheduleService;
 import com.models.MatchModel;
+
+import java.util.List;
 
 /**
  * @author Jay Patel

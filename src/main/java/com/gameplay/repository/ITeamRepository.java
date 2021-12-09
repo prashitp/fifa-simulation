@@ -1,8 +1,8 @@
 package com.gameplay.repository;
 
-import java.util.List;
-
 import com.models.ClubModel;
+
+import java.util.List;
 
 /**
  * @author Jay Patel

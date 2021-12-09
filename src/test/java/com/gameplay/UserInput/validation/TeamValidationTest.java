@@ -1,19 +1,18 @@
 package com.gameplay.UserInput.validation;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.junit.jupiter.api.Test;
-
 import com.gameplay.controller.ITeamSelectionController;
 import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.repository.IPlayerStatusRepository;
 import com.gameplay.repository.PlayerStatusRepository;
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

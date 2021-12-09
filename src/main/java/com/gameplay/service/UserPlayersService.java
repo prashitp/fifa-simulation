@@ -1,13 +1,13 @@
 package com.gameplay.service;
 
-import java.util.List;
-import java.util.logging.Level;
-
-import com.LogService;
+import com.utils.LogService;
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.repository.IUserPlayersRepository;
 import com.gameplay.repository.UserPlayersRepository;
 import com.utils.Converter;
+
+import java.util.List;
+import java.util.logging.Level;
 
 /**
  * @author Jay Patel

@@ -1,14 +1,13 @@
 package com.utils;
 
+import com.gameplay.entity.Column;
+
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
-
-import com.LogService;
-import com.gameplay.entity.Column;
 
 /**
  * @author Jay Patel

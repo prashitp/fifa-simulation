@@ -1,11 +1,8 @@
 package com.gameplay.service;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.gameplay.entity.PlayerEntity;
+import com.gameplay.repository.IPlayerStatusRepository;
+import com.gameplay.repository.PlayerStatusRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -14,11 +11,11 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.entity.PlayerEntity;
-import com.gameplay.repository.IPlayerStatusRepository;
-import com.gameplay.repository.PlayerStatusRepository;
-import com.gameplay.service.IPlayerStatusService;
-import com.gameplay.service.PlayerStatusService;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 /**
  * @author Jay Patel

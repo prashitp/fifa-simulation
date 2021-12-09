@@ -1,6 +1,6 @@
 package com.gameplay.service;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 

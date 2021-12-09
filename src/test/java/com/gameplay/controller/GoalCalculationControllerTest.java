@@ -1,15 +1,17 @@
 package com.gameplay.controller;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.ClubModel;
-import com.models.SetPieceType;
 import com.models.Lineup;
+import com.models.SetPieceType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */

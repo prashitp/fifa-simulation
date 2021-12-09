@@ -1,35 +1,19 @@
 package com.gameplay.UserInput;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.CommonFunctions;
+import com.utils.CommonFunctions;
 import com.exceptions.InvalidInputException;
 import com.exceptions.InvalidPlayingXISelectionException;
 import com.exceptions.TeamNotFoundException;
 import com.gameplay.UserInput.validation.ITeamValidation;
 import com.gameplay.UserInput.validation.TeamValidation;
-import com.gameplay.controller.IPlayerStatusController;
-import com.gameplay.controller.ITeamController;
-import com.gameplay.controller.IUserPlayersController;
-import com.gameplay.controller.IUserTeamController;
-import com.gameplay.controller.PlayerStatusController;
-import com.gameplay.controller.TeamController;
-import com.gameplay.controller.UserPlayersController;
-import com.gameplay.controller.UserTeamController;
+import com.gameplay.controller.*;
 import com.gameplay.entity.PlayerEntity;
-import com.io.IErrorStream;
-import com.io.IInputStream;
-import com.io.IOutputStream;
-import com.io.StandardErrorStream;
-import com.io.StandardInputStream;
-import com.io.StandardOutputStream;
-import com.models.BooleanOptions;
-import com.models.ClubModel;
-import com.models.PlayerSelectionOptions;
-import com.models.StartOrResumeOptions;
-import com.models.UserTeamModel;
+import com.io.*;
+import com.models.*;
 import com.utils.TableFormat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jay Patel

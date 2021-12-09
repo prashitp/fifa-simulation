@@ -1,16 +1,17 @@
 package com.gameplay.TeamSelection.PlayerSelection;
 
-import com.Constants;
+import com.utils.Constants;
 import com.gameplay.controller.PlayerSelectionController;
-import com.models.PlayerModel;
-import com.models.PlayingPosition;
 import com.models.FormationModel;
 import com.models.FormationType;
+import com.models.PlayerModel;
+import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerSelectionControllerTest {
 

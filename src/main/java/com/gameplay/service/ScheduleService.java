@@ -1,17 +1,12 @@
 package com.gameplay.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-
 import com.gameplay.repository.IScheduleRepository;
 import com.gameplay.repository.ScheduleRepository;
 import com.models.ClubModel;
 import com.models.MatchModel;
 import com.utils.Converter;
+
+import java.util.*;
 
 /**
  * @author Jay Patel

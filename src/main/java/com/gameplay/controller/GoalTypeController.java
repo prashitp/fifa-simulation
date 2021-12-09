@@ -3,10 +3,13 @@ package com.gameplay.controller;
 import com.gameplay.service.GoalTypeService;
 import com.gameplay.service.IGoalTypeService;
 import com.models.ClubModel;
-import com.models.SetPieceType;
 import com.models.Criteria;
 import com.models.GoalType;
-import java.util.*;
+import com.models.SetPieceType;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  * @author prashitpatel
  */

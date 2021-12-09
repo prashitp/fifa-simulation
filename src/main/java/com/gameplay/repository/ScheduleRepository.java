@@ -1,13 +1,13 @@
 package com.gameplay.repository;
 
+import com.utils.LogService;
+import com.database_operations.DatabaseConnection;
+import com.models.MatchModel;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.logging.Level;
-
-import com.LogService;
-import com.database_operations.DatabaseConnection;
-import com.models.MatchModel;
 
 /**
  * @author Jay Patel

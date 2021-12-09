@@ -20,7 +20,7 @@ public class CardsController implements ICardsController{
     private final HashMap<PlayerModel, PlayingPosition> team2;
     HashMap<CardType, List<PlayerModel>> fouls;
 
-    protected CardsController(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+    public CardsController(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         this.team1 = team1;
         this.team2 = team2;
         fouls = fetchFouls();

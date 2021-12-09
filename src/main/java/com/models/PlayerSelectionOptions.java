@@ -1,10 +1,6 @@
 package com.models;
 
-import com.gameplay.UserInput.AddPlayer;
-import com.gameplay.UserInput.PlayingXISelection;
-import com.gameplay.UserInput.RemovePlayer;
-import com.gameplay.UserInput.ViewAvailablePlayers;
-import com.gameplay.UserInput.ViewSelectedPlayers;
+import com.gameplay.UserInput.*;
 
 /**
  * @author Jay Patel

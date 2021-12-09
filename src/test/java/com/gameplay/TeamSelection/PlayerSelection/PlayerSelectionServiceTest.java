@@ -1,13 +1,16 @@
 package com.gameplay.TeamSelection.PlayerSelection;
 
-import com.Constants;
+import com.utils.Constants;
 import com.gameplay.service.PlayerSelectionService;
 import com.models.PlayerModel;
 import com.models.PlayerPositions;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author prashitpatel
  */

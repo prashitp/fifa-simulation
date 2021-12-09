@@ -1,18 +1,15 @@
 package com.gameplay.service;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.gameplay.repository.IUserTeamRepository;
+import com.gameplay.repository.UserTeamRepository;
+import com.models.UserTeamModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.repository.IUserTeamRepository;
-import com.gameplay.repository.UserTeamRepository;
-import com.gameplay.service.IUserTeamService;
-import com.gameplay.service.UserTeamService;
-import com.models.UserTeamModel;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

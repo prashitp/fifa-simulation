@@ -1,11 +1,8 @@
 package com.models;
 
-import com.models.FormationModel;
-import com.models.FormationType;
-import com.models.DefaultFormations;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author prashitpatel

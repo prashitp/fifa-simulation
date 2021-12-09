@@ -1,17 +1,16 @@
 package com.gameplay.controller;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
+import com.gameplay.service.ITeamService;
+import com.gameplay.service.TeamService;
+import com.models.ClubModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.service.ITeamService;
-import com.gameplay.service.TeamService;
-import com.models.ClubModel;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

@@ -1,17 +1,16 @@
 package com.gameplay.controller;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
+import com.gameplay.entity.PlayerEntity;
+import com.gameplay.service.IPlayerStatusService;
+import com.gameplay.service.PlayerStatusService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.entity.PlayerEntity;
-import com.gameplay.service.IPlayerStatusService;
-import com.gameplay.service.PlayerStatusService;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

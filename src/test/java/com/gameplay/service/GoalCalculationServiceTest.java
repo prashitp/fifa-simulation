@@ -1,15 +1,14 @@
 package com.gameplay.service;
 
-import com.Constants;
-import com.gameplay.service.GoalCalculationService;
-import com.gameplay.service.IGoalCalculationService;
+import com.utils.Constants;
 import com.models.ClubModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */

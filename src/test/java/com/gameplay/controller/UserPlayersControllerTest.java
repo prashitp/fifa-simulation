@@ -1,14 +1,13 @@
 package com.gameplay.controller;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.gameplay.service.IUserPlayersService;
+import com.gameplay.service.UserPlayersService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.service.IUserPlayersService;
-import com.gameplay.service.UserPlayersService;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

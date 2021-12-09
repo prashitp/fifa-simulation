@@ -1,8 +1,9 @@
 package com.models.gameplay.Substitution;
 
-import com.CommonFunctions;
+import com.utils.CommonFunctions;
 import com.models.PlayerAttributes;
 import com.models.PlayingPosition;
+
 import java.util.HashMap;
 /**
  * @author Mayank Sareen

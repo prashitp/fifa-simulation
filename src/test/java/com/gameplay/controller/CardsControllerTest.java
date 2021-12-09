@@ -1,8 +1,6 @@
 package com.gameplay.controller;
 
-import com.Constants;
-import com.gameplay.controller.CardsController;
-import com.gameplay.controller.ICardsController;
+import com.utils.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;

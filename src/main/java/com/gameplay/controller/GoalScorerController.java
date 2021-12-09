@@ -2,12 +2,7 @@ package com.gameplay.controller;
 
 import com.gameplay.scoreline.GoalScorer.Scorer;
 import com.gameplay.scoreline.GoalScorer.ScorerFactory;
-import com.models.ClubModel;
-import com.models.PlayerModel;
-import com.models.PlayingPosition;
-import com.models.Goal;
-import com.models.GoalType;
-import com.models.Lineup;
+import com.models.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

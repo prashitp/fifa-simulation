@@ -1,8 +1,9 @@
 package com.models;
 
-import com.Constants;
-import com.LogService;
+import com.utils.Constants;
+import com.utils.LogService;
 import com.exceptions.FormationInvalidException;
+
 import java.util.List;
 import java.util.logging.Level;
 

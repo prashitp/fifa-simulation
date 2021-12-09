@@ -1,6 +1,6 @@
 package com.database_operations;
 
-import com.LogService;
+import com.utils.LogService;
 import com.models.*;
 
 import java.sql.Connection;

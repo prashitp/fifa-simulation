@@ -1,10 +1,10 @@
 package com.gameplay.controller;
 
-import java.util.List;
-
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.service.IUserPlayersService;
 import com.gameplay.service.UserPlayersService;
+
+import java.util.List;
 
 /**
  * @author Jay Patel

@@ -1,12 +1,13 @@
 package com.gameplay.TeamSelection.FormationSelection;
 
-import com.Constants;
+import com.utils.Constants;
 import com.gameplay.controller.FormationSelectionController;
 import com.models.FormationModel;
 import com.models.FormationType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */
