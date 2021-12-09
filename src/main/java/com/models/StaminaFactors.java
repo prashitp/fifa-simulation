@@ -1,13 +1,11 @@
-package com.models.gameplay.Substitution;
+/**
+ * @author mayanksareen
+ */
+
+package com.models;
 
 import com.utils.CommonFunctions;
-import com.models.PlayerAttributes;
-import com.models.PlayingPosition;
-
 import java.util.HashMap;
-/**
- * @author Mayank Sareen
- */
 
 public class StaminaFactors {
     public static HashMap<PlayingPosition,HashMap<PlayerAttributes, Double>> getMultiplicativeFactors() {
@@ -20,7 +18,6 @@ public class StaminaFactors {
         return multiplicativeFactors;
     }
     public static HashMap<PlayingPosition, Double> getPercentageReducedByPosition() {
-        //System.out.println("a"+CommonFunctions.generateRandomDoubleBetweenRange(5, 6));
         HashMap<PlayingPosition, Double> getPercentage = new HashMap<PlayingPosition, Double>() {{
             put(PlayingPosition.FORWARD, 0.1 * CommonFunctions.generateRandomDoubleBetweenRange(7, 8)); //0.70
             put(PlayingPosition.MIDFIELDER, 0.1 * CommonFunctions.generateRandomDoubleBetweenRange(6, 7)); //0.65;

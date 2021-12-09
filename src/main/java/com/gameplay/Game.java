@@ -1,5 +1,6 @@
 package com.gameplay;
 
+import com.gameplay.player_transfers.controller.player_rearrangement.controller.PlayerTransfersController;
 import com.gameplay.service.GameService;
 import com.gameplay.service.IGameService;
 import com.utils.Constants;
@@ -12,7 +13,6 @@ import com.models.*;
 import com.models.gameplay.CardType;
 import com.utils.Converter;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -114,7 +114,8 @@ public class Game implements IGame {
 				HashMap<PlayerModel, Integer> injuries = injuryController.getInjuredPlayers();
 
 				//substitution
-
+				IStaminaCalculatorController staminaCalculatorController = new StaminaCalculatorController();
+				Boolean isStaminaComputed = staminaCalculatorController.computeStamina(lineups.get(0).getPlaying11(),lineups.get(1).getPlaying11());
 				// Final Scores
 				IScoreLineController scoreLineController = new ScoreLineController(homeClub,awayClub,lineups,setPieces);
 				HashMap<ClubModel, List<Goal>> scoreline = scoreLineController.getScoreLine();
@@ -160,6 +161,7 @@ public class Game implements IGame {
 				playerTrainingController.performTrainingSession();
 				
 				matchIndex++;
+				break;
 			}
 			outputStream.println(String.format("***** Statistics *****"));
 			IGameService gameService = new GameService();
@@ -186,6 +188,7 @@ public class Game implements IGame {
 						club.getClubName(), club.matchesPlayed, club.matchesWin, club.matchesLoss,club.matchesDraw, club.points ));
 			}
 			//transfer
+			PlayerTransfersController.getInstance(Arrays.asList(Constants.PLAYERS));
 
 		}
 	}

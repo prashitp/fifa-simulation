@@ -3,6 +3,10 @@ package com.utils;
 import com.database_operations.DatabaseImport;
 import com.models.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Constants {
     public static final int DEFENDERS_MIN = 3;
     public static final int DEFENDERS_MAX = 5;
@@ -36,6 +40,8 @@ public class Constants {
     public static final PlayerPositions[] GOALKEEPER_POSITIONS = {
             PlayerPositions.GK
     };
+	public static List<PlayerTransferWrapper> RETIRED_PLAYERS = new ArrayList<>();
+	public static List<PlayerModel> ALL_PLAYERS_AFTER_TRANSFER = Arrays.asList(PLAYERS);
 
     public static final int MATCH_READY_STAMINA_FORWARDS = 50;
     public static final int MATCH_READY_STAMINA_MIDFIELDERS = 60;
