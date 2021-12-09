@@ -29,6 +29,8 @@ public class PlayerModel {
 	public int injuredForMatches;
 	public Boolean availability;
 
+	public int goals = 0;
+
 	public PlayerModel(int playerId, String playerName, PlayerPositions[] positions, int overall, int potential,
 					   long value, int age, int height, int weight, String club, PlayerPositions clubPosition,
 					   int clubJerseyNo, int clubContractUntilYear, String nationality, String preferredFoot,

@@ -46,7 +46,7 @@ public class GoalTypeController implements IGoalTypeController {
 		HashMap<Criteria, Double> clubProbabilities = probabilityController.getGoalScorerProbabilities(club);
 
 		List<Map.Entry<Criteria, Double>> sortedProbabilities = goalTypeService.sortCriteriaHashMap(clubProbabilities);
-
+		club.goals += goals;
 		while(goals>0) {
 			GoalType goalType;
 			if(clubProbabilities.containsKey(Criteria.PENALTY) && clubProbabilities.get(Criteria.PENALTY) == 1.0) {

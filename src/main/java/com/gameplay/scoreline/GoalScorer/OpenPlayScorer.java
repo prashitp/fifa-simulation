@@ -14,7 +14,9 @@ public class OpenPlayScorer implements Scorer{
 
 	@Override
 	public PlayerModel getScorer(List<PlayerModel> players) {
-		return goalScorerService.getScorerForType(Constants.ATTACKING_SKILLS,
+		PlayerModel player = goalScorerService.getScorerForType(Constants.ATTACKING_SKILLS,
 				Constants.ATTACKING_POSITIONS, players);
+		player.goals += 1;
+		return player;
 	}
 }

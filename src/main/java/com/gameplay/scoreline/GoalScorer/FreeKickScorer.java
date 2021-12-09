@@ -14,7 +14,9 @@ public class FreeKickScorer implements Scorer{
 
 	@Override
 	public PlayerModel getScorer(List<PlayerModel> players) {
-		return goalScorerService.getScorerForType(Constants.FREE_KICK_SKILLS,
+		PlayerModel player = goalScorerService.getScorerForType(Constants.FREE_KICK_SKILLS,
 				Constants.ATTACKING_POSITIONS, players);
+		player.goals += 1;
+		return player;
 	}
 }
