@@ -43,8 +43,7 @@ public class SubstitutePlayerService extends StaminaObserver {
         for (PlayingPosition position: availablePlayers.keySet()) {
             availablePlayers.get(position).sort((p1, p2) -> (p2.overall - p1.overall));
             for (Integer i = 0; i < candidateForSubstitution.size() && i < MAXIMUM_ALLOWED_SUBSTITUTIONS; i++) {
-               output.add("Player " + candidateForSubstitution.get(i).getPlayerName()
-                        + " has been substituted with " + availablePlayers.get(position).get(i).getPlayerName());
+               output.add("Player " + candidateForSubstitution.get(i).getPlayerName() + " has been substituted");
             }
         }
         return output;
