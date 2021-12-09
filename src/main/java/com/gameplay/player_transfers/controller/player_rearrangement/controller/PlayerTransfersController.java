@@ -40,10 +40,9 @@ public class PlayerTransfersController {
 
     private PlayerTransfersController(List<PlayerModel> playerList) {
         this.allPlayers = playerList;
-        filterPlayersByPositions();
     }
 
-    private void filterPlayersByPositions() {
+    public List<String> filterPlayersByPositions() {
         HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap = new HashMap<>();
         for (ClubModel club: Constants.CLUBS) {
             HashMap<String, List<PlayerTransferWrapper>> transfersMap = new HashMap<>();
@@ -55,32 +54,33 @@ public class PlayerTransfersController {
         }
         iReArrangePlayersByClubRanks = ReArrangePlayersByClubRanks.getInstance();
         transferPlayerMap = iReArrangePlayersByClubRanks.reArrangeClubToPlayerMappings(transferPlayerMap);
-        computeBestSellingPlayers(transferPlayerMap);
+        return computeBestSellingPlayers(transferPlayerMap);
     }
 
-    private void computeBestSellingPlayers(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
+    private List<String> computeBestSellingPlayers(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
+        List<String> output = new ArrayList<>();
         iForwardPlayerTransfers = ForwardPlayerTransfers.getInstance();
         List<PlayerModel> forwardsToBeTransferred = iForwardPlayerTransfers.computeBestSellingForwards(transferPlayerMap);
-        System.out.println("=====================PLAYER TRANSFERS======================");
+       output.add("**** Player transfers ***");
         for (PlayerModel player: forwardsToBeTransferred) {
-            System.out.println(player.getPlayerName() + " transferred to " + player.club);
+            output.add(player.getPlayerName() + " transferred to " + player.club);
         }
         iDefenderPlayerTransfers = DefenderPlayerTransfers.getInstance();
         List<PlayerModel> defendersToBeTransferred = iDefenderPlayerTransfers.computeBestSellingDefenders(transferPlayerMap);
         for (PlayerModel player: defendersToBeTransferred) {
-            System.out.println(player.getPlayerName() + " transferred to " + player.club);
+           output.add(player.getPlayerName() + " transferred to " + player.club);
         }
         iGoalKeeperPlayerTransfers = GoalKeeperPlayerTransfers.getInstance();
         List<PlayerModel> goaliesToBeTransferred = iGoalKeeperPlayerTransfers.computeBestSellingGoalies(transferPlayerMap);
         for (PlayerModel player: goaliesToBeTransferred) {
-            System.out.println(player.getPlayerName() + " transferred to " + player.club);
+            output.add(player.getPlayerName() + " transferred to " + player.club);
         }
         iMidFielderPlayerTransfers = MidFielderPlayerTransfers.getInstance();
         List<PlayerModel> midFieldersToBeTransferred = iMidFielderPlayerTransfers.computeBestSellingMidFields(transferPlayerMap);
         for (PlayerModel player: midFieldersToBeTransferred) {
-            System.out.println(player.getPlayerName() + " transferred to " + player.club);
+           output.add(player.getPlayerName() + " transferred to " + player.club);
         }
-        System.out.println("===================================================================");
+       return output;
     }
 
     private HashMap<String, List<PlayerTransferWrapper>> filterPlayersByForwardPositions(String team, HashMap<String, List<PlayerTransferWrapper>> transfersMap) {

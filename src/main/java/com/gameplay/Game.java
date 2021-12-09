@@ -189,7 +189,13 @@ public class Game implements IGame {
 
 				//substitution
 				IStaminaCalculatorController staminaCalculatorController = new StaminaCalculatorController();
-				Boolean isStaminaComputed = staminaCalculatorController.computeStamina(lineups.get(0).getPlaying11(),lineups.get(1).getPlaying11());
+				List<String> substitutionList = staminaCalculatorController.computeStamina(lineups.get(0).getPlaying11(),lineups.get(1).getPlaying11());
+				outputStream.println("***** Substituted Players ******");
+				for(String str : substitutionList){
+					outputStream.print(String.format(str));
+				}
+				outputStream.println("");
+				outputStream.println("");
 
 				outputStream.println("***** Injured Players ******");
 				for(Map.Entry<PlayerModel, Integer> injury: injuries.entrySet()){
@@ -245,7 +251,6 @@ public class Game implements IGame {
 				playerTrainingController.performTrainingSession();
 
 				matchIndex++;
-				break;
 			}
 
 			outputStream.println(String.format("***** Statistics *****"));
@@ -291,7 +296,14 @@ public class Game implements IGame {
 			outputStream.println(pointsTable);
 			standardOutput.println(pointsTable);
 			//transfer
-			PlayerTransfersController.getInstance(Arrays.asList(Constants.PLAYERS));
+			outputStream.println(String.format("***** Player Transfer *****"));
+			PlayerTransfersController playerTransfersController = PlayerTransfersController.getInstance(Arrays.asList(Constants.PLAYERS));
+			List<String> transfers = playerTransfersController.filterPlayersByPositions();
+			for(String output: transfers){
+				outputStream.print(String.format(output));
+			}
+			outputStream.println("");
+			outputStream.println("");
 
 			standardOutput.println(String.format("Simulation completed for season %d", index));
 
