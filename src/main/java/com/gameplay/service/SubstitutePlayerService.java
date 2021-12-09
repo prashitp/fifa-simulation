@@ -1,10 +1,7 @@
-/**
- * @author Mayank Sareen
- */
-
 package com.gameplay.service;
-
-import com.gameplay.service.IStaminaCalculatorService;
+/**
+ * @author mayanksareen
+ */
 import com.gameplay.controller.StaminaObserver;
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;
@@ -29,25 +26,28 @@ public class SubstitutePlayerService extends StaminaObserver {
     }
 
     @Override
-    public void notifyUpdate(HashMap<PlayerModel, PlayingPosition> playingEleven) {
-        performPlayerSubstitution(playingEleven);
+    public List<String> notifyUpdate(HashMap<PlayerModel, PlayingPosition> playingEleven) {
+        return performPlayerSubstitution(playingEleven);
     }
 
-    private void performPlayerSubstitution(HashMap<PlayerModel, PlayingPosition> playingEleven) {
+    private List<String> performPlayerSubstitution(HashMap<PlayerModel, PlayingPosition> playingEleven) {
+        List<String> output = new ArrayList<>();
+        String clubName="";
         for (PlayerModel player : playingEleven.keySet()) {
             if (player.skills.get(PlayerAttributes.POWER_STAMINA) < MINIMUM_STAMINA_THRESHOLD) {
                 setAvailablePlayersForSubstitution(player.club, playingEleven.get(player));
+                clubName = player.club;
             }
         }
-
+        output.add("***** Substitutions - " + clubName + "*****");
         for (PlayingPosition position: availablePlayers.keySet()) {
             availablePlayers.get(position).sort((p1, p2) -> (p2.overall - p1.overall));
             for (Integer i = 0; i < candidateForSubstitution.size() && i < MAXIMUM_ALLOWED_SUBSTITUTIONS; i++) {
-                System.out.println("***** Substitutions *****");
-                System.out.println("Player " + candidateForSubstitution.get(i).getPlayerName()
-                        + " has been substituted with " + availablePlayers.get(position).get(i).getPlayerName());
+               output.add("Player " + candidateForSubstitution.get(i).getPlayerName()
+                        + " has been substituted");
             }
         }
+        return output;
     }
 
     private void setAvailablePlayersForSubstitution(String clubName, PlayingPosition position) {

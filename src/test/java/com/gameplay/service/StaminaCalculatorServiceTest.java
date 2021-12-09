@@ -8,6 +8,8 @@ import com.models.PlayingPosition;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StaminaCalculatorServiceTest {
@@ -23,6 +25,6 @@ public class StaminaCalculatorServiceTest {
     @Test
     void getComputedStaminaTest(){
         IStaminaCalculatorService staminaCalculatorService = new StaminaCalculatorService();
-        assertTrue(staminaCalculatorService.computeStamina(team1));
+        assertEquals("ArrayList",staminaCalculatorService.computeStamina(team1).getClass().getSimpleName());
     }
 }

@@ -22,7 +22,7 @@ public class StaminaCalculatorService implements IStaminaCalculatorService {
     }
 
     @Override
-    public Boolean computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven) {
+    public List<String> computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven) {
         for (PlayerModel player : playingEleven.keySet()) {
             HashMap<PlayerAttributes, Double> playerMap =
                     StaminaFactors.getMultiplicativeFactors().get(playingEleven.get(player));
@@ -38,14 +38,15 @@ public class StaminaCalculatorService implements IStaminaCalculatorService {
                     StaminaFactors.getPercentageReducedByPosition().get(playingEleven.get(player)));
             player.skills.put(PlayerAttributes.POWER_STAMINA, powerStamina);
         }
-        notifyAllObservers(playingEleven);
-        return true;
+        return notifyAllObservers(playingEleven);
     }
 
-    private void notifyAllObservers(HashMap<PlayerModel, PlayingPosition> playingEleven){
+    private List<String> notifyAllObservers(HashMap<PlayerModel, PlayingPosition> playingEleven){
+        List<String> outputOfAllObservers = new ArrayList<>();
         for (StaminaObserver observer : observers) {
-            observer.notifyUpdate(playingEleven);
+            outputOfAllObservers.addAll(observer.notifyUpdate(playingEleven));
         }
+        return outputOfAllObservers;
     }
 }
 

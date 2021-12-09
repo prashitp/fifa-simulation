@@ -4,10 +4,8 @@ import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author mayanksareen
  */
@@ -30,6 +28,6 @@ public class StaminaCalculatorControllerTest {
     @Test
     void getComputedStaminaTest() {
         IStaminaCalculatorController staminaCalculatorController = new StaminaCalculatorController();
-        assertTrue(staminaCalculatorController.computeStamina(team1, team2));
+        assertEquals("ArrayList",staminaCalculatorController.computeStamina(team1, team2).getClass().getSimpleName());
     }
 }
