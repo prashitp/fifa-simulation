@@ -16,7 +16,6 @@ public class DatabaseConnection {
     private Connection connection;
     private DatabaseConnection() {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection(Constants.CONNECTION_DEV_URL, Constants.CONNECTION_USERNAME,
                     Constants.CONNECTION_PASSWORD);
 
