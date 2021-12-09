@@ -24,7 +24,7 @@ class GoalTypeControllerTest {
 		scores.put(Constants.CLUBS[0], 1);
 		scores.put(Constants.CLUBS[1], 1);
 
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Chelsea","Arsenal");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		List<Lineup> lineups = teamSelectionController.getSquads();
 		IGoalScorerController goalScorerController = new GoalScorerController(lineups);
 

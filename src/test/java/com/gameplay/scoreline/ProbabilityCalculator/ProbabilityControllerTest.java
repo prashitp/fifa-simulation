@@ -30,7 +30,7 @@ class ProbabilityControllerTest {
 	@BeforeAll
 	public static void init() {
 		probabilityController = ProbabilityController.getInstance();
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Chelsea","Arsenal");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		lineups = teamSelectionController.getSquads();
 
 		HashMap<SetPieceType, List<Integer>> setPieces = new HashMap<>();

@@ -5,6 +5,7 @@ import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.repository.IPlayerStatusRepository;
 import com.gameplay.repository.PlayerStatusRepository;
+import com.utils.Constants;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -20,9 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TeamValidationTest {
 
 	private IPlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
-	private static final String clubName = "Liverpool";
-	private static final String opposingClubName = "Manchester United";
-	private ITeamSelectionController teamSelectionController = new TeamSelectionController(clubName, opposingClubName);
+
+	private ITeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 
 	private TeamValidation teamValidation = new TeamValidation();
 	

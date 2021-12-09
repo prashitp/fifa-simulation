@@ -4,6 +4,7 @@ import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.repository.PlayerStatusRepository;
 import com.io.*;
+import com.utils.Constants;
 import com.utils.Converter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,7 +57,7 @@ public class AddPlayerTest {
 
 	@Test
 	public void executeSelectionPlayerNotFoundTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
@@ -68,7 +69,7 @@ public class AddPlayerTest {
 
 	@Test
 	public void executeSelectionPlayerAlreadySelectedTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
@@ -81,7 +82,7 @@ public class AddPlayerTest {
 
 	@Test
 	public void executeSelectionValidTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))

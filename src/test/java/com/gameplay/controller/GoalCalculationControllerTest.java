@@ -23,7 +23,7 @@ class GoalCalculationControllerTest {
 		ClubModel homeClub = Constants.CLUBS[0];
 		ClubModel awayClub = Constants.CLUBS[1];
 
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Arsenal", "Aston Villa");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		List<Lineup> lineups = teamSelectionController.getSquads();
 
 		HashMap<SetPieceType, List<Integer>> setPieces = new HashMap<>();

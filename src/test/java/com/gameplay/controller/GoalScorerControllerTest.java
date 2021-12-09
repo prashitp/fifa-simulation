@@ -17,7 +17,7 @@ class GoalScorerControllerTest {
 
 	@BeforeAll
 	public static void init() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Arsenal","Aston Villa");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		List<Lineup> lineups = teamSelectionController.getSquads();
 		goalScorerController = new GoalScorerController(lineups);
 	}

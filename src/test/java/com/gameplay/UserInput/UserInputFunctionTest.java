@@ -8,6 +8,7 @@ import com.io.*;
 import com.models.ClubModel;
 import com.models.StartOrResumeOptions;
 import com.models.UserTeamModel;
+import com.utils.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -108,7 +109,7 @@ public class UserInputFunctionTest {
 
 	@Test
 	public void startNewGameWithPlayerSelectionTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		UserTeamModel userTeamModel = new UserTeamModel();
 		userTeamModel.setSeasonPlayed(1);

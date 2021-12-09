@@ -3,8 +3,10 @@ package com.gameplay.TeamSelection;
 import com.gameplay.controller.ITeamSelectionController;
 import com.gameplay.controller.TeamSelectionController;
 import com.models.Lineup;
+import com.utils.Constants;
 import org.junit.jupiter.api.Test;
 
+import java.lang.constant.Constable;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author prashitpatel
  */
 class TeamSelectionControllerTest {
-	ITeamSelectionController iTeamSelectionController = new TeamSelectionController("Chelsea", "Arsenal");
+	ITeamSelectionController iTeamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 
 	@Test
 	public void getSquadsTest() {
