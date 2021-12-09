@@ -75,8 +75,8 @@ public class UserInputFunction implements IUserInputFunction {
 	private Boolean isResuming() {
 		try {
 			UserTeamModel userTeam = userTeamController.fetchUserTeamModel();
-			if (userTeam != null && (userTeam.getSeasonPlayed() != TOTAL_SEASONS_PLAYED_IN_SIMULATION
-					&& userTeam.getSeasonPlayed() != 0)) {
+			if (userTeam != null && (userTeam.getSeasonPlayed() < TOTAL_SEASONS_PLAYED_IN_SIMULATION
+					&& userTeam.getSeasonPlayed() > 0)) {
 				outputStream.println(OPTION_TO_RESUME_OR_START_OVER);
 				Integer option = inputStream.readInteger();
 				if (option.equals(StartOrResumeOptions.START_NEW_GAME.getOption())) {

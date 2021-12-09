@@ -34,4 +34,9 @@ public class UserTeamController implements IUserTeamController {
 	public Boolean customizePlayingXI(Boolean flag) {
 		return userTeamService.customizePlayingXI(flag);
 	}
+
+	@Override
+	public Boolean setSeasonPlayed(Integer seasonPlayed) {
+		return userTeamService.setSeasonPlayed(seasonPlayed);
+	}
 }

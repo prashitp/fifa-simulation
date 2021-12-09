@@ -52,4 +52,10 @@ public class UserTeamControllerTest {
 		assertTrue(userTeamController.customizePlayingXI(Boolean.TRUE),
 				"customizePlayingXI() method is not working as expected.");
 	}
+	
+	@Test
+	public void setSeasonPlayedTest() {
+		Mockito.when(userTeamServiceMock.setSeasonPlayed(Mockito.any())).thenReturn(Boolean.TRUE);
+		assertTrue(userTeamController.setSeasonPlayed(1), "setSeasonPlayed() method is not working as expected.");
+	}
 }
