@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 import com.gameplay.UserInput.IUserInputFunction;
 import com.gameplay.UserInput.UserInputFunction;
-import com.gameplay.controller.CardsController;
-import com.gameplay.controller.ICardsController;
 import com.gameplay.controller.IInjuryController;
 import com.gameplay.controller.IPlayerTrainingController;
 import com.gameplay.controller.IScheduleController;
@@ -34,12 +32,11 @@ import com.models.Lineup;
 import com.models.MatchModel;
 import com.models.PlayerModel;
 import com.models.SetPieceType;
-import com.models.gameplay.CardType;
 import com.utils.Constants;
 import com.utils.Converter;
 
 /**
- * @author Jay Patel
+ * @author Jay Patel, prashitpatel, Vasu Gamdha, Mayank Sareen
  */
 public class Game implements IGame {
 
@@ -164,8 +161,6 @@ public class Game implements IGame {
 
 				outputStream.println("");
 				outputStream.println("");
-
-				// substitution
 
 				// Final Scores
 				IScoreLineController scoreLineController = new ScoreLineController(homeClub, awayClub, lineups,
