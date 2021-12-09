@@ -11,7 +11,7 @@ public class ClubModel {
 	private final int clubId;
 	private final String  clubName;
 	public HashMap<ClubAttributes,Integer> attributes;
-	long transferBudget;
+	public long transferBudget;
 	public int matchesPlayed = 0;
 	public int matchesWin = 0;
 	public int matchesDraw = 0;

@@ -1,19 +1,19 @@
-package com.gameplay.Substitution.StaminaComputation;
-
-import com.models.PlayerAttributes;
-import com.models.PlayerModel;
-import com.models.PlayingPosition;
-import com.models.gameplay.Substitution.StaminaFactors;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * @author Mayank Sareen
  */
 
-public class StaminaCalculatorController implements IStaminaCalculatorController {
+package com.gameplay.service;
+
+import com.gameplay.controller.StaminaObserver;
+import com.models.PlayerAttributes;
+import com.models.PlayerModel;
+import com.models.PlayingPosition;
+import com.models.StaminaFactors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class StaminaCalculatorService implements IStaminaCalculatorService {
     private static List<StaminaObserver> observers = new ArrayList<StaminaObserver>();
 
     @Override
@@ -22,7 +22,7 @@ public class StaminaCalculatorController implements IStaminaCalculatorController
     }
 
     @Override
-    public void computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven) {
+    public Boolean computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven) {
         for (PlayerModel player : playingEleven.keySet()) {
             HashMap<PlayerAttributes, Double> playerMap =
                     StaminaFactors.getMultiplicativeFactors().get(playingEleven.get(player));
@@ -38,12 +38,13 @@ public class StaminaCalculatorController implements IStaminaCalculatorController
                     StaminaFactors.getPercentageReducedByPosition().get(playingEleven.get(player)));
             player.skills.put(PlayerAttributes.POWER_STAMINA, powerStamina);
         }
-        notifyAllObservers();
+        notifyAllObservers(playingEleven);
+        return true;
     }
 
-    private void notifyAllObservers(){
+    private void notifyAllObservers(HashMap<PlayerModel, PlayingPosition> playingEleven){
         for (StaminaObserver observer : observers) {
-            observer.notifyUpdate();
+            observer.notifyUpdate(playingEleven);
         }
     }
 }

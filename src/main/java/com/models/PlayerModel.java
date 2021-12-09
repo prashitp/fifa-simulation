@@ -2,7 +2,7 @@ package com.models;
 
 import java.util.HashMap;
 /**
- * @author prashitpatel and vasugamdha
+ * @author prashitpatel and vasugamdha and mayanksareen
  */
 
 public class PlayerModel {
@@ -28,6 +28,7 @@ public class PlayerModel {
 	public Boolean yellowCard;
 	public int injuredForMatches;
 	public Boolean availability;
+	public int numberOfGamesPlayed;
 
 	public int goals = 0;
 
@@ -104,5 +105,12 @@ public class PlayerModel {
 
 	public Boolean isAvailable(){
 		return availability;
+	}
+
+	public void setNumberOfGamesPlayed(int numberOfGamesPlayed) {
+		this.numberOfGamesPlayed = numberOfGamesPlayed;
+	}
+	public int getNumberOfGamesPlayed() {
+		return this.numberOfGamesPlayed;
 	}
 }
