@@ -144,22 +144,9 @@ public class Game implements IGame {
 				for(SetPieceType setPieceType: setPieces.keySet()){
 					outputStream.print(setPieceType + ": ");
 					outputStream.print(lineups.get(0).club.getClubName() + "-" + setPieces.get(setPieceType).get(0));
+					outputStream.print(" ");
 					outputStream.print(lineups.get(1).club.getClubName() + "-" + setPieces.get(setPieceType).get(1));
-				}
-
-				outputStream.println("");
-				outputStream.println("");
-
-				// Cards
-				ICardsController cardsController = new CardsController(lineups.get(0).getPlaying11(),
-						lineups.get(1).getPlaying11());
-				HashMap<CardType, List<PlayerModel>> cards = cardsController.fetchFouls();
-				outputStream.println("***** Fouls ******");
-				for(CardType card: cards.keySet()){
-					outputStream.print(card + " - ");
-					for (PlayerModel player: cards.get(card)){
-						outputStream.print(player.getPlayerName());
-					}
+					outputStream.println("");
 				}
 
 				outputStream.println("");
@@ -172,7 +159,7 @@ public class Game implements IGame {
 
 				outputStream.println("***** Injured Players ******");
 				for(Map.Entry<PlayerModel, Integer> injury: injuries.entrySet()){
-					outputStream.print(String.format("%s - %s matches, ",injury.getKey(), injury.getValue()));
+					outputStream.print(String.format("%s - %s matches, ",injury.getKey().getPlayerName(), injury.getValue()));
 				}
 
 				outputStream.println("");

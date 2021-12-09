@@ -1,7 +1,7 @@
 package com.models;
 
 import com.utils.Constants;
-import com.utils.LogService;
+//import com.utils.LogService;
 import com.exceptions.FormationInvalidException;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class FormationModel {
 	int forwards;
 	public FormationType type;
 	public boolean extendedFormation;
-	LogService logService = new LogService();
+//	LogService logService = new LogService();
 	public FormationModel(int defenders, int midfielders, int forwards, FormationType type) {
 		try{
 			checkFormationValidity(defenders, midfielders, forwards);
@@ -28,7 +28,7 @@ public class FormationModel {
 			this.forwards = forwards;
 			this.type = type;
 		} catch (FormationInvalidException e) {
-			logService.log(Level.SEVERE, "ERROR! " + e);
+//			logService.log(Level.SEVERE, "ERROR! " + e);
 		}
 	}
 
@@ -43,7 +43,7 @@ public class FormationModel {
 			this.forwards = forwards;
 			this.type = type;
 		} catch (FormationInvalidException e) {
-			logService.log(Level.SEVERE, "ERROR! " + e);
+//			logService.log(Level.SEVERE, "ERROR! " + e);
 		}
 	}
 

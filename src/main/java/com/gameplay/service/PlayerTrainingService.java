@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import com.gameplay.entity.PlayerEntity;
 import com.utils.CommonFunctions;
 import com.utils.Converter;
-import com.utils.LogService;
+//import com.utils.LogService;
 
 /**
  * @author Jay Patel
@@ -26,11 +26,11 @@ public class PlayerTrainingService implements IPlayerTrainingService {
 
 	private IPlayerStatusService playerStatusService;
 	
-	private LogService logService;
+//	private LogService logService;
 
 	public PlayerTrainingService() {
 		playerStatusService = new PlayerStatusService();
-		logService = new LogService();
+//		logService = new LogService();
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class PlayerTrainingService implements IPlayerTrainingService {
 
 			return Boolean.TRUE;
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
