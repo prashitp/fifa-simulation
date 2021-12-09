@@ -20,6 +20,7 @@ public class DatabaseConnection {
             connection = DriverManager.getConnection(Constants.CONNECTION_DEV_URL, Constants.CONNECTION_USERNAME,
                     Constants.CONNECTION_PASSWORD);
         } catch (SQLException ex) {
+            System.out.println("Throwing error from database");
 //            logService.log(Level.SEVERE, "ERROR! Exception occurred while connecting to Database :: " + ex.getMessage());
         }
     }

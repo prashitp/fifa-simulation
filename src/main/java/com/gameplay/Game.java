@@ -62,10 +62,10 @@ public class Game implements IGame {
 	private static final String OUTPUT_FILE_SUFFIX = ".txt";
 
 	public Game() {
-		userInputFunction = new UserInputFunction();
+//		userInputFunction = new UserInputFunction();
 		scheduleController = new ScheduleController();
 		playerTrainingController = new PlayerTrainingController();
-		userTeamController = new UserTeamController();
+//		userTeamController = new UserTeamController();
 		inputStream = StandardInputStream.getInstance();
 		standardOutput = StandardOutputStream.getInstance();
 	}
@@ -74,11 +74,11 @@ public class Game implements IGame {
 	public void startGame() {
 
 		// User Input
-		userInputFunction.teamSelection();
+//		userInputFunction.teamSelection();
 
-		Integer seasonPlayed = userTeamController.fetchUserTeamModel().getSeasonPlayed();
+//		Integer seasonPlayed = userTeamController.fetchUserTeamModel().getSeasonPlayed();
 
-		for (int index = seasonPlayed + 1; index <= Constants.SEASON_COUNT; index++) {
+		for (int index = 1; index <= Constants.SEASON_COUNT; index++) {
 
 			outputStream = new FileOutputStream(OUTPUT_DIRECTORY, OUTPUT_FILE_PREFIX + index + OUTPUT_FILE_SUFFIX);
 
