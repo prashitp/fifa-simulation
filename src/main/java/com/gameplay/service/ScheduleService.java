@@ -49,7 +49,7 @@ public class ScheduleService implements IScheduleService {
 	}
 
 	private List<MatchModel> findTotalMatchesToBePlayed(Boolean firstTeamPlayingHomeMatch) {
-		List<ClubModel> teams = teamService.fetchAllTeams();
+		List<ClubModel> teams = new ArrayList<>(teamService.fetchAllTeams());
 		Collections.shuffle(teams);
 		COUNT_TEAM = teams.size();
 		List<MatchModel> matches = new ArrayList<>();
