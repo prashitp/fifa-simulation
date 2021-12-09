@@ -1,7 +1,6 @@
 package com.gameplay.ScoreLine.GoalCalculator;
 
 import com.Constants;
-import com.gameplay.SetPiece.SetPiece;
 import com.models.SetPieceType;
 
 import java.util.ArrayList;

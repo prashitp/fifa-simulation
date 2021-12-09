@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * @author vasugamdha
  */
 
-public interface ISetPiece {
+public interface IKickService {
 
     void setup();
 

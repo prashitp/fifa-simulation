@@ -1,4 +1,4 @@
-package com.gameplay.Injury.controller;
+package com.gameplay.service;
 
 import com.models.PlayerModel;
 
@@ -8,6 +8,7 @@ import java.util.HashMap;
  * @author vasugamdha
  */
 
-public interface IInjuryController {
+public interface IInjuryService {
+    void setup();
     HashMap<PlayerModel, Integer> getInjuredPlayers();
 }

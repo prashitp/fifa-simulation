@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.PlayerModel;
@@ -9,11 +9,11 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PenaltyKickTest {
+public class PenaltyKickServiceTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
 
-    public PenaltyKickTest(){
+    public PenaltyKickServiceTest(){
         team1.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
         team1.put(Constants.PLAYERS[12], PlayingPosition.MIDFIELDER);
         team1.put(Constants.PLAYERS[20], PlayingPosition.DEFENDER);
@@ -27,7 +27,7 @@ public class PenaltyKickTest {
 
     @Test
     public void getSetPieceTypeTest(){
-        ISetPiece penaltyKick = new PenaltyKick(team1,team2);
+        IKickService penaltyKick = new PenaltyKickService(team1,team2);
         assertEquals("List12",penaltyKick.getSetPiece().getClass().getSimpleName());
     }
 }

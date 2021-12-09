@@ -1,8 +1,8 @@
-package com.gameplay.Injury;
+package com.gameplay.service;
 
 import com.Constants;
-import com.gameplay.Injury.controller.IInjuryController;
-import com.gameplay.Injury.controller.InjuryController;
+import com.gameplay.service.ISetPieceService;
+import com.gameplay.service.SetPieceService;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,11 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * @author vasugamdha
- */
-
-public class InjuryControllerTest {
+public class SetPieceServiceTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
 
-    public InjuryControllerTest(){
+    public SetPieceServiceTest(){
         team1.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
         team1.put(Constants.PLAYERS[12], PlayingPosition.MIDFIELDER);
         team1.put(Constants.PLAYERS[20], PlayingPosition.DEFENDER);
@@ -32,9 +28,8 @@ public class InjuryControllerTest {
     }
 
     @Test
-    void getInjuredPlayersTest(){
-        IInjuryController injuryController = new InjuryController(team1, team2);
-        assertEquals("HashMap", injuryController.getInjuredPlayers().getClass().getSimpleName());
+    public void getSetPiecesTypeTest(){
+        ISetPieceService setPieceService = new SetPieceService(team1,team2);
+        assertEquals("HashMap", setPieceService.getSetPieces().getClass().getSimpleName());
     }
-
 }
