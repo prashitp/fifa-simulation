@@ -1,9 +1,7 @@
-/**
- * @author Mayank Sareen
- */
-
 package com.gameplay.service;
-
+/**
+ * @author mayanksareen
+ */
 import com.gameplay.controller.StaminaObserver;
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;

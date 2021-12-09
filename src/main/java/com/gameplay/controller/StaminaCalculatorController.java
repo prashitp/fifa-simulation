@@ -7,7 +7,6 @@ import com.gameplay.service.IStaminaCalculatorService;
 import com.gameplay.service.StaminaCalculatorService;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

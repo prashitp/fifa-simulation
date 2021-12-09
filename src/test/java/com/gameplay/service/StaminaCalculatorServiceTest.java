@@ -8,9 +8,7 @@ import com.models.PlayingPosition;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StaminaCalculatorServiceTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
