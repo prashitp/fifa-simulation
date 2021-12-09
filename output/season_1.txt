@@ -2,41 +2,40 @@
 
 ***** MATCH 1 *****
 
-***** Newcastle United -vs- Manchester United *****
+***** Newcastle United -vs- Leicester City *****
 
-Lineup: Newcastle United - Formation: 4-1-3-2
+Lineup: Newcastle United - Formation: 4-1-4-1
 A. Saint-Maximin C. Clark J. Willock J. Lascelles I. Hayden C. Wilson M. Dubravka F. Fernandez J. Shelvey F. Schar M. Almiron 
 
-Lineup: Manchester United - Formation: 4-1-4-1
-Cristiano Ronaldo De Gea L. Shaw J. Sancho A. Wan-Bissaka P. Pogba Fred R. Varane H. Maguire Bruno Fernandes M. Rashford 
+Lineup: Leicester City - Formation: 4-3-3
+W. Ndidi K. Schmeichel T. Castagne J. Vardy J. Vestergaard Y. Tielemans Ayoze Perez J. Evans C. Soyuncu Ricardo Pereira H. Barnes 
 
-PENALTY_KICK: Newcastle United-2Manchester United-0FREE_KICK: Newcastle United-14Manchester United-13CORNER_KICK: Newcastle United-2Manchester United-2
+CORNER_KICK: Newcastle United-4Leicester City-4PENALTY_KICK: Newcastle United-1Leicester City-0FREE_KICK: Newcastle United-16Leicester City-15
 
 ***** Fouls ******
-YELLOW - M. RashfordCristiano RonaldoJ. ShelveyM. RashfordRED - M. Rashford
+YELLOW - C. WilsonJ. ShelveyJ. VestergaardRED - J. Vardy
+
+***** Substituted Players ******
+***** Substitutions - Newcastle United*****Player M. Ritchie has been substituted with M. RitchiePlayer J. Hendrick has been substituted with J. HendrickPlayer Manquillo has been substituted with ManquilloPlayer Joelinton has been substituted with JoelintonPlayer E. Krafth has been substituted with E. Krafth***** Substitutions - *****Player M. Ritchie has been substituted with M. RitchiePlayer J. Hendrick has been substituted with J. HendrickPlayer Manquillo has been substituted with ManquilloPlayer Joelinton has been substituted with JoelintonPlayer E. Krafth has been substituted with E. Krafth
 
 ***** Injured Players ******
-
+com.models.PlayerModel@69b794e2 - 2 matches, com.models.PlayerModel@4450d156 - 1 matches, 
 
 ***** Scores *****
-Newcastle United 2 - 3 Manchester United
+Newcastle United 0 - 3 Leicester City
 
-Newcastle United
-M. Dubravka - PENALTY
-I. Hayden - FREE_KICK
-
-Manchester United
-L. Shaw - CORNER
-A. Wan-Bissaka - CORNER
-P. Pogba - OPEN_PLAY
+Leicester City
+Y. Tielemans - CORNER
+T. Castagne - CORNER
+W. Ndidi - CORNER
 
 ***** Statistics *****
-Most goals: P. Pogba - 1
-Most goals: Manchester United - 3
+Most goals: W. Ndidi - 1
+Most goals: Leicester City - 3
 +------------------------------------------------------------------------------------------------+
 | POSITION | CLUB                           |    P    |    W    |    D    |    L    |   POINTS   |
 +------------------------------------------------------------------------------------------------+
-|    1     | MANCHESTER UNITED              |    1    |    1    |    0    |    0    |     3      |
+|    1     | LEICESTER CITY                 |    1    |    1    |    0    |    0    |     3      |
 |    2     | ARSENAL                        |    0    |    0    |    0    |    0    |     0      |
 |    3     | ASTON VILLA                    |    0    |    0    |    0    |    0    |     0      |
 |    4     | BRENTFORD                      |    0    |    0    |    0    |    0    |     0      |
@@ -46,9 +45,9 @@ Most goals: Manchester United - 3
 |    8     | CRYSTAL PALACE                 |    0    |    0    |    0    |    0    |     0      |
 |    9     | EVERTON                        |    0    |    0    |    0    |    0    |     0      |
 |    10    | LEEDS UNITED                   |    0    |    0    |    0    |    0    |     0      |
-|    11    | LEICESTER CITY                 |    0    |    0    |    0    |    0    |     0      |
-|    12    | LIVERPOOL                      |    0    |    0    |    0    |    0    |     0      |
-|    13    | MANCHESTER CITY                |    0    |    0    |    0    |    0    |     0      |
+|    11    | LIVERPOOL                      |    0    |    0    |    0    |    0    |     0      |
+|    12    | MANCHESTER CITY                |    0    |    0    |    0    |    0    |     0      |
+|    13    | MANCHESTER UNITED              |    0    |    0    |    0    |    0    |     0      |
 |    14    | NEWCASTLE UNITED               |    1    |    0    |    1    |    0    |     0      |
 |    15    | NORWICH CITY                   |    0    |    0    |    0    |    0    |     0      |
 |    16    | SOUTHAMPTON                    |    0    |    0    |    0    |    0    |     0      |
@@ -57,4 +56,7 @@ Most goals: Manchester United - 3
 |    19    | WEST HAM UNITED                |    0    |    0    |    0    |    0    |     0      |
 |    20    | WOLVERHAMPTON WANDERERS        |    0    |    0    |    0    |    0    |     0      |
 +------------------------------------------------------------------------------------------------+
+
+***** Player Transfer *****
+**** Player transfers ***C. Tosun transferred to EvertonE. Simms transferred to EvertonJ. Rodriguez transferred to EvertonL. Dobbin transferred to EvertonA. Begovic transferred to EvertonJ. Pickford transferred to EvertonDe Gea transferred to Manchester UnitedD. Henderson transferred to Manchester UnitedG. Sigurdsson transferred to EvertonF. Delph transferred to EvertonE. Iversen transferred to EvertonJ. Rodriguez transferred to Everton
 
