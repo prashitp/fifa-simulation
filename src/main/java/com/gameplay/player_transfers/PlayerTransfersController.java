@@ -21,9 +21,10 @@ import com.gameplay.player_transfers.player_rearrangement.IReArrangePlayersByClu
 import com.gameplay.player_transfers.player_rearrangement.ReArrangePlayersByClubRanks;
 import com.models.gameplay.player_transfers.PlayerTransferWrapper;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
-public class TransferFactory {
+public class PlayerTransfersController {
     private List<PlayerModel> allPlayers;
     private List<PlayerModel> forwards;
     private List<PlayerModel> defenders;
@@ -35,15 +36,15 @@ public class TransferFactory {
     IGoalKeeperPlayerTransfers iGoalKeeperPlayerTransfers;
     IReArrangePlayersByClubRanks iReArrangePlayersByClubRanks;
 
-    private static TransferFactory transferService;
-    public static TransferFactory getInstance(List<PlayerModel> playerList) {
+    private static PlayerTransfersController transferService;
+    public static PlayerTransfersController getInstance(List<PlayerModel> playerList) {
         if (transferService == null) {
-            transferService = new TransferFactory(playerList);
+            transferService = new PlayerTransfersController(playerList);
         }
         return transferService;
     }
 
-    private TransferFactory(List<PlayerModel> playerList) {
+    private PlayerTransfersController(List<PlayerModel> playerList) {
         this.allPlayers = playerList;
         filterPlayersByPositions();
     }
@@ -64,6 +65,7 @@ public class TransferFactory {
     }
 
     private void computeBestSellingPlayers(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
+        List<PlayerModel> allPlayers = Arrays.asList(Constants.PLAYERS);
         iForwardPlayerTransfers = ForwardPlayerTransfers.getInstance();
         List<PlayerModel> forwardsToBeTransferred = iForwardPlayerTransfers.computeBestSellingForwards(transferPlayerMap);
         System.out.println("=====================PLAYER TRANSFERS======================");
@@ -72,19 +74,16 @@ public class TransferFactory {
         }
         iDefenderPlayerTransfers = DefenderPlayerTransfers.getInstance();
         List<PlayerModel> defendersToBeTransferred = iDefenderPlayerTransfers.computeBestSellingDefenders(transferPlayerMap);
-        System.out.println(defendersToBeTransferred.size());
         for (PlayerModel player: defendersToBeTransferred) {
             System.out.println(player.getPlayerName() + " transferred to " + player.club);
         }
         iGoalKeeperPlayerTransfers = GoalKeeperPlayerTransfers.getInstance();
         List<PlayerModel> goaliesToBeTransferred = iGoalKeeperPlayerTransfers.computeBestSellingGoalies(transferPlayerMap);
-        System.out.println(goaliesToBeTransferred.size());
         for (PlayerModel player: goaliesToBeTransferred) {
             System.out.println(player.getPlayerName() + " transferred to " + player.club);
         }
         iMidFielderPlayerTransfers = MidFielderPlayerTransfers.getInstance();
         List<PlayerModel> midFieldersToBeTransferred = iMidFielderPlayerTransfers.computeBestSellingMidFields(transferPlayerMap);
-        System.out.println(midFieldersToBeTransferred.size());
         for (PlayerModel player: midFieldersToBeTransferred) {
             System.out.println(player.getPlayerName() + " transferred to " + player.club);
         }

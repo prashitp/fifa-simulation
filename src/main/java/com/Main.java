@@ -1,7 +1,7 @@
 
 package com;
 
-import com.gameplay.player_transfers.TransferFactory;
+import com.gameplay.player_transfers.PlayerTransfersController;
 
 
 import java.util.Arrays;
@@ -21,6 +21,6 @@ public class Main {
 //        StaminaCalculatorService staminaCalculatorService = new StaminaCalculatorService();
 //        staminaCalculatorService.computeStamina(lineup);
 
-       TransferFactory tf = TransferFactory.getInstance(Arrays.asList(Constants.PLAYERS));
+       PlayerTransfersController tf = PlayerTransfersController.getInstance(Arrays.asList(Constants.PLAYERS));
     }
 }
