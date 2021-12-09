@@ -3,7 +3,6 @@ package com.gameplay.PlayerTransfers.controller;
  * @author: mayanksareen
  */
 import com.gameplay.PlayerTransfers.PlayerRearrangement.service.*;
-import com.gameplay.PlayerTransfers.controller.PlayerRearrangement.service.*;
 import com.models.*;
 import com.utils.CommonFunctions;
 import com.utils.Constants;
