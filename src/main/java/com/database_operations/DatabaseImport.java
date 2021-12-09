@@ -32,7 +32,6 @@ public class DatabaseImport {
             fetchClubs();
 //            logService.log(Level.INFO, "Clubs fetched!");
         } catch (Exception e) {
-            System.out.println("Database errored out");
 //            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from clubs table"
 //                    + e.getStackTrace());
         }
@@ -41,7 +40,6 @@ public class DatabaseImport {
             fetchNationality();
 //            logService.log(Level.INFO, "Nationalities fetched!");
         } catch (Exception e) {
-            System.out.println("Database errored out");
 //            logService.log(Level.SEVERE, "ERROR! Exception occurred while fetching from nationality table"
 //                    + e.getStackTrace());
         }
@@ -51,7 +49,6 @@ public class DatabaseImport {
             setPlayers();
 //            logService.log(Level.INFO, "Players table imported successfully!");
         } catch (Exception e) {
-            System.out.println("Database errored out");
 //            logService.log(Level.SEVERE, "ERROR! Exception occurred while storing players table into variable"
 //                    + e.getStackTrace());
         }

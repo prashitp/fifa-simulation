@@ -34,12 +34,11 @@ import com.models.Lineup;
 import com.models.MatchModel;
 import com.models.PlayerModel;
 import com.models.SetPieceType;
-import com.models.gameplay.CardType;
 import com.utils.Constants;
 import com.utils.Converter;
 
 /**
- * @author Jay Patel
+ * @author Jay Patel, prashitpatel, Vasu Gamdha, Mayank Sareen
  */
 public class Game implements IGame {
 
@@ -175,8 +174,6 @@ public class Game implements IGame {
 
 				outputStream.println("");
 				outputStream.println("");
-
-				// substitution
 
 				// Final Scores
 				IScoreLineController scoreLineController = new ScoreLineController(homeClub, awayClub, lineups,
