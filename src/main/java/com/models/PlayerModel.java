@@ -2,7 +2,7 @@ package com.models;
 
 import java.util.HashMap;
 /**
- * @author prashitpatel
+ * @author prashitpatel and Mayank Sareen
  */
 
 public class PlayerModel {
@@ -25,6 +25,7 @@ public class PlayerModel {
 	private PlayerWorkRate workRate;
 	private String[] playerTraits;
 	public HashMap<PlayerAttributes, Integer> skills;
+	public int numberOfGamesPlayed;
 
 	public PlayerModel(int playerId, String playerName, PlayerPositions[] positions, int overall, int potential, long value, int age, int height, int weight, String club,
 				PlayerPositions clubPosition, int clubJerseyNo, int clubContractUntilYear, String nationality, String preferredFoot, int skillMoves, PlayerWorkRate workRate,
@@ -89,5 +90,13 @@ public class PlayerModel {
 
 	public String[] getPlayerTraits() {
 		return playerTraits;
+	}
+
+	public void setNumberOfGamesPlayed(int numberOfGamesPlayed) {
+		this.numberOfGamesPlayed = numberOfGamesPlayed;
+	}
+
+	public int getNumberOfGamesPlayed() {
+	    return this.numberOfGamesPlayed;
 	}
 }

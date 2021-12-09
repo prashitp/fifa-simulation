@@ -37,12 +37,12 @@ public class StaminaCalculatorController implements IStaminaCalculatorController
                     StaminaFactors.getPercentageReducedByPosition().get(playingEleven.get(player)));
             player.skills.put(PlayerAttributes.POWER_STAMINA, powerStamina);
         }
-        notifyAllObservers();
+        notifyAllObservers(playingEleven);
     }
 
-    private void notifyAllObservers(){
+    private void notifyAllObservers(HashMap<PlayerModel, PlayingPosition> playingEleven){
         for (StaminaObserver observer : observers) {
-            observer.notifyUpdate();
+            observer.notifyUpdate(playingEleven);
         }
     }
 }

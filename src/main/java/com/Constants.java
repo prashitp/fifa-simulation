@@ -5,6 +5,11 @@ import com.models.ClubModel;
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;
 import com.models.PlayerPositions;
+import com.models.gameplay.player_transfers.PlayerTransferWrapper;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @authors: Mayank Sareen, Prashit Patel, and Vasu Gamdha
@@ -77,4 +82,10 @@ public class Constants {
             PlayerAttributes.GOALKEEPING_POSITIONING, PlayerAttributes.GOALKEEPING_REFLEXES, PlayerAttributes.MENTALITY_VISION,
             PlayerAttributes.MENTALITY_POSITIONING, PlayerAttributes.SKILL_LONG_PASSING, PlayerAttributes.MENTALITY_COMPOSURE
     };
+
+    public static final int PLAYER_TRANSFER_GAMES_PLAYED_THRESHOLD = 3;
+    //TO BE DISCUSSED WITH PRASHIT.
+    public static List<PlayerTransferWrapper> RETIRED_PLAYERS = new ArrayList<>();
+    public static List<PlayerModel> ALL_PLAYERS_AFTER_TRANSFER = Arrays.asList(PLAYERS);
+
 }
