@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.*;
@@ -9,7 +9,7 @@ import java.util.*;
  * @author vasugamdha
  */
 
-public abstract class SetPiece implements ISetPiece {
+public abstract class KickService implements IKickService {
 
     private static final List<List<PlayerModel>> forward = new ArrayList<>();
     private static final List<List<PlayerModel>> midfielder = new ArrayList<>();
@@ -23,7 +23,7 @@ public abstract class SetPiece implements ISetPiece {
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
 
-    protected SetPiece(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+    protected KickService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         this.team1 = team1;
         this.team2 = team2;
         setup();

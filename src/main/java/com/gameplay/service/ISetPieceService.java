@@ -1,15 +1,11 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.models.SetPieceType;
 
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * @author vasugamdha
- */
-
-public interface ISetPieceController {
+public interface ISetPieceService {
 
     HashMap<SetPieceType, List<Integer>> getSetPieces();
 }

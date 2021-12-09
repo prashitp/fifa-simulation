@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.PlayerModel;
@@ -11,8 +11,8 @@ import java.util.List;
  * @author vasugamdha
  */
 
-public class PenaltyKick extends SetPiece {
-    public PenaltyKick(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+public class PenaltyKickService extends KickService implements IPenaltyKickService {
+    public PenaltyKickService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         super(team1, team2);
     }
 
@@ -36,7 +36,7 @@ public class PenaltyKick extends SetPiece {
 
         t1threshold = (t1forward) / (t1forward + t2defender);
         t2threshold = (t2defender) / (t1forward + t2defender);
-        calculateKicks(t1threshold, t2threshold);
+        calculatePenaltyKicks(t1threshold, t2threshold);
 
         // Combination 2
         t2forward = calculateProbableSkillValue(forward.get(1), Constants.ATTACKING_SKILLS);
@@ -44,10 +44,11 @@ public class PenaltyKick extends SetPiece {
 
         t1threshold = (t2forward) / (t2forward + t1defender);
         t2threshold = (t1defender) / (t2forward + t1defender);
-        calculateKicks(t1threshold, t2threshold);
+        calculatePenaltyKicks(t1threshold, t2threshold);
     }
 
-    protected void calculateKicks(double threshold1, double threshold2) {
+    @Override
+    public void calculatePenaltyKicks(double threshold1, double threshold2) {
 
         double[] limit = {0, 1, 2};
         int kicks = (int) Math.round(random.nextDouble() * (limit[2] - limit[0]));

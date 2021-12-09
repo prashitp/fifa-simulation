@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.PlayerModel;
@@ -11,9 +11,10 @@ import java.util.List;
  * @author vasugamdha
  */
 
-public class FreeKick extends SetPiece {
 
-    public FreeKick(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+public class FreeKickService extends KickService implements IFreeKickService {
+
+    public FreeKickService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         super(team1, team2);
     }
 
@@ -43,10 +44,11 @@ public class FreeKick extends SetPiece {
         t2midfielder = calculateProbableSkillValue(midfielder.get(1), Constants.MIDFIELD_SKILLS);
         t2sum = (t2forward + t2midfielder + t2defender + t2goalkeeper) / 4;
 
-        calculateKicks(t1sum, t2sum);
+        calculateFreeKicks(t1sum, t2sum);
     }
 
-    protected void calculateKicks(double threshold1, double threshold2) {
+    @Override
+    public void calculateFreeKicks(double threshold1, double threshold2) {
 
         double t1threshold, t2threshold;
         t1threshold = (threshold1) / (threshold1 + threshold2);

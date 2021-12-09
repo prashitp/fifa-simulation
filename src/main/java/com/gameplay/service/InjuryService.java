@@ -1,7 +1,6 @@
-package com.gameplay.Injury.service;
+package com.gameplay.service;
 
 import com.Constants;
-import com.gameplay.Injury.constants.InjuryConstants;
 import com.models.*;
 
 import java.util.*;
@@ -10,7 +9,8 @@ import java.util.*;
  * @author vasugamdha
  */
 
-public class InjuryService implements IInjuryService {
+public class
+InjuryService implements IInjuryService {
 
     protected final List<PlayerModel> players;
     protected final List<PlayerModel> candidates;
@@ -18,6 +18,7 @@ public class InjuryService implements IInjuryService {
     protected double club1overall;
     protected double club2overall;
     protected final Random random;
+    public static PlayerAttributes[] INJURY_SKILLS = new PlayerAttributes[9];
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
     String homeClub;
@@ -32,7 +33,11 @@ public class InjuryService implements IInjuryService {
         random = new Random();
         club1overall = 0;
         club2overall = 0;
-
+        INJURY_SKILLS = new PlayerAttributes[]{
+                PlayerAttributes.PHYSIC, PlayerAttributes.MOVEMENT_ACCELERATION, PlayerAttributes.MOVEMENT_SPRINT_SPEED,
+                PlayerAttributes.MOVEMENT_REACTIONS, PlayerAttributes.MOVEMENT_AGILITY, PlayerAttributes.MOVEMENT_BALANCE,
+                PlayerAttributes.POWER_STAMINA, PlayerAttributes.POWER_JUMPING, PlayerAttributes.ATTACKING_HEADING_ACCURACY
+        };
         setup();
         updateInjuries();
     }
@@ -109,9 +114,9 @@ public class InjuryService implements IInjuryService {
                 overall = club2overall;
             }
             double injuryFactor = 0;
-            for (PlayerAttributes skill : InjuryConstants.INJURY_SKILLS) {
+            for (PlayerAttributes skill : INJURY_SKILLS) {
                 double value = player.skills.get(skill);
-                injuryFactor = injuryFactor + (value / (double) InjuryConstants.INJURY_SKILLS.length);
+                injuryFactor = injuryFactor + (value / (double) INJURY_SKILLS.length);
             }
             map.put(player, injuryFactor * overall / 100);
         }

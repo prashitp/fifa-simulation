@@ -1,7 +1,7 @@
-package com.gameplay.Injury.controller;
+package com.gameplay.controller;
 
-import com.gameplay.Injury.service.IInjuryService;
-import com.gameplay.Injury.service.InjuryService;
+import com.gameplay.service.IInjuryService;
+import com.gameplay.service.InjuryService;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 

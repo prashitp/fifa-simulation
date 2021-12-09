@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.PlayerModel;
@@ -11,9 +11,10 @@ import java.util.List;
  * @author vasugamdha
  */
 
-public class CornerKick extends SetPiece {
 
-    public CornerKick(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+public class CornerKickService extends KickService implements ICornerKickService {
+
+    public CornerKickService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         super(team1, team2);
     }
 
@@ -38,7 +39,7 @@ public class CornerKick extends SetPiece {
 
         t1threshold = (t1forward + t1midfielder) / (t1forward + t1midfielder + t2defender + t2goalkeeper);
         t2threshold = (t2defender + t2goalkeeper) / (t1forward + t1midfielder + t2defender + t2goalkeeper);
-        calculateKicks(t1threshold, t2threshold);
+        calculateCornerKicks(t1threshold, t2threshold);
 
         // Combination 2
         t1defender = calculateProbableSkillValue(defender.get(0), Constants.DEFENDING_SKILLS);
@@ -48,10 +49,11 @@ public class CornerKick extends SetPiece {
 
         t1threshold = (t2forward + t2midfielder) / (t1forward + t1midfielder + t2defender + t2goalkeeper);
         t2threshold = (t1defender + t1goalkeeper) / (t1forward + t1midfielder + t2defender + t2goalkeeper);
-        calculateKicks(t1threshold, t2threshold);
+        calculateCornerKicks(t1threshold, t2threshold);
     }
 
-    protected void calculateKicks(double threshold1, double threshold2) {
+    @Override
+    public void calculateCornerKicks(double threshold1, double threshold2) {
 
         double rand = (random.nextDouble() * Math.abs(threshold1 - threshold2)) + Math.min(threshold1, threshold2);
         double fold = Math.max(Math.abs(threshold1 - rand), Math.abs(threshold2 - rand));

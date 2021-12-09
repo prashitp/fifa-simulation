@@ -1,19 +1,19 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class SetPieceControllerTest {
+public class CornerKickServiceTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
 
-    public SetPieceControllerTest(){
+    public CornerKickServiceTest(){
         team1.put(Constants.PLAYERS[0], PlayingPosition.FORWARD);
         team1.put(Constants.PLAYERS[12], PlayingPosition.MIDFIELDER);
         team1.put(Constants.PLAYERS[20], PlayingPosition.DEFENDER);
@@ -27,7 +27,7 @@ public class SetPieceControllerTest {
 
     @Test
     public void getSetPieceTypeTest(){
-        ISetPieceController cornerKick = new SetPieceController(team1,team2);
-        assertEquals("HashMap",cornerKick.getSetPieces().getClass().getSimpleName());
+        IKickService cornerKick = new CornerKickService(team1,team2);
+        assertEquals("List12",cornerKick.getSetPiece().getClass().getSimpleName());
     }
 }

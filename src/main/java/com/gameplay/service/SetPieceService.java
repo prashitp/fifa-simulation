@@ -1,4 +1,4 @@
-package com.gameplay.SetPiece;
+package com.gameplay.service;
 
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
@@ -7,16 +7,12 @@ import com.models.SetPieceType;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * @author vasugamdha
- */
-
-public class SetPieceController implements ISetPieceController {
+public class SetPieceService implements ISetPieceService{
 
     private final HashMap<PlayerModel, PlayingPosition> team1;
     private final HashMap<PlayerModel, PlayingPosition> team2;
 
-    public SetPieceController(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+    public SetPieceService(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
         this.team1 = team1;
         this.team2 = team2;
     }
@@ -25,9 +21,9 @@ public class SetPieceController implements ISetPieceController {
     public HashMap<SetPieceType, List<Integer>> getSetPieces() {
         HashMap<SetPieceType, List<Integer>> setPieces = new HashMap<>();
 
-        SetPiece cornerKicks = new CornerKick(team1, team2);
-        SetPiece freeKicks = new FreeKick(team1, team2);
-        SetPiece penaltyKicks = new PenaltyKick(team1, team2);
+        KickService cornerKicks = new CornerKickService(team1, team2);
+        KickService freeKicks = new FreeKickService(team1, team2);
+        KickService penaltyKicks = new PenaltyKickService(team1, team2);
 
         setPieces.put(SetPieceType.CORNER_KICK, cornerKicks.getSetPiece());
         setPieces.put(SetPieceType.FREE_KICK, freeKicks.getSetPiece());
@@ -35,5 +31,4 @@ public class SetPieceController implements ISetPieceController {
 
         return setPieces;
     }
-
 }
