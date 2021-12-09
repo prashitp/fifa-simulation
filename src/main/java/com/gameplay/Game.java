@@ -5,8 +5,22 @@ import java.util.stream.Collectors;
 
 import com.gameplay.UserInput.IUserInputFunction;
 import com.gameplay.UserInput.UserInputFunction;
-import com.gameplay.controller.*;
-import com.gameplay.player_transfers.controller.player_rearrangement.controller.PlayerTransfersController;
+import com.gameplay.controller.CardsController;
+import com.gameplay.controller.ICardsController;
+import com.gameplay.controller.IInjuryController;
+import com.gameplay.controller.IPlayerTrainingController;
+import com.gameplay.controller.IScheduleController;
+import com.gameplay.controller.IScoreLineController;
+import com.gameplay.controller.ISetPieceController;
+import com.gameplay.controller.ITeamSelectionController;
+import com.gameplay.controller.IUserTeamController;
+import com.gameplay.controller.InjuryController;
+import com.gameplay.controller.PlayerTrainingController;
+import com.gameplay.controller.ScheduleController;
+import com.gameplay.controller.ScoreLineController;
+import com.gameplay.controller.SetPieceController;
+import com.gameplay.controller.TeamSelectionController;
+import com.gameplay.controller.UserTeamController;
 import com.gameplay.service.GameService;
 import com.gameplay.service.IGameService;
 import com.io.FileOutputStream;
@@ -48,10 +62,10 @@ public class Game implements IGame {
 	private static final String OUTPUT_FILE_SUFFIX = ".txt";
 
 	public Game() {
-//		userInputFunction = new UserInputFunction();
+		userInputFunction = new UserInputFunction();
 		scheduleController = new ScheduleController();
 		playerTrainingController = new PlayerTrainingController();
-//		userTeamController = new UserTeamController();
+		userTeamController = new UserTeamController();
 		inputStream = StandardInputStream.getInstance();
 		standardOutput = StandardOutputStream.getInstance();
 	}
@@ -60,11 +74,11 @@ public class Game implements IGame {
 	public void startGame() {
 
 		// User Input
-//		userInputFunction.teamSelection();
+		userInputFunction.teamSelection();
 
-//		Integer seasonPlayed = userTeamController.fetchUserTeamModel().getSeasonPlayed();
+		Integer seasonPlayed = userTeamController.fetchUserTeamModel().getSeasonPlayed();
 
-		for (int index = 1; index <= Constants.SEASON_COUNT; index++) {
+		for (int index = seasonPlayed + 1; index <= Constants.SEASON_COUNT; index++) {
 
 			outputStream = new FileOutputStream(OUTPUT_DIRECTORY, OUTPUT_FILE_PREFIX + index + OUTPUT_FILE_SUFFIX);
 
