@@ -1,8 +1,12 @@
 package com.database_operations;
-import java.util.logging.*;
-import com.Constants;
-import com.LogService;
-import java.sql.*;
+
+import com.utils.Constants;
+import com.utils.LogService;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
 
 /**
  * @author Mayank Sareen

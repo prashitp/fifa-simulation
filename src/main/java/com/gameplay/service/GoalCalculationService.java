@@ -27,7 +27,7 @@ public class GoalCalculationService implements IGoalCalculationService {
 		List<Integer> upperRange = Arrays.asList(0,0,1,2,2,3,3,4,4,5,5,6);
 		List<Integer> lowerRange = Arrays.asList(0,0,0,0,0,1,1,2,2,3,4,4);
 
-		int index = probabilityMatcher.indexOf(probability);
+		int index = Math.max(0,probabilityMatcher.indexOf(probability));
 		int goals = generateRandom(lowerRange.get(index), upperRange.get(index));
 		updateGoals(club, goals);
 	}

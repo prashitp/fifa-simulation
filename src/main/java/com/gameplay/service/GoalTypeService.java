@@ -1,8 +1,9 @@
 package com.gameplay.service;
 
-import com.models.SetPieceType;
 import com.models.Criteria;
 import com.models.GoalType;
+import com.models.SetPieceType;
+
 import java.util.*;
 /**
  * @author prashitpatel

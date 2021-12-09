@@ -1,6 +1,18 @@
 package com.gameplay.UserInput;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.gameplay.UserInput.validation.TeamValidation;
+import com.gameplay.controller.*;
+import com.gameplay.entity.PlayerEntity;
+import com.gameplay.repository.PlayerStatusRepository;
+import com.io.*;
+import com.models.ClubModel;
+import com.models.StartOrResumeOptions;
+import com.models.UserTeamModel;
+import com.utils.Constants;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -8,27 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.FieldSetter;
-
-import com.gameplay.controller.TeamSelectionController;
-import com.gameplay.UserInput.validation.TeamValidation;
-import com.gameplay.controller.IPlayerStatusController;
-import com.gameplay.controller.ITeamController;
-import com.gameplay.controller.IUserPlayersController;
-import com.gameplay.controller.IUserTeamController;
-import com.gameplay.entity.PlayerEntity;
-import com.gameplay.repository.PlayerStatusRepository;
-import com.io.IErrorStream;
-import com.io.IInputStream;
-import com.io.IOutputStream;
-import com.io.StandardErrorStream;
-import com.io.StandardOutputStream;
-import com.models.ClubModel;
-import com.models.StartOrResumeOptions;
-import com.models.UserTeamModel;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel
@@ -117,7 +109,7 @@ public class UserInputFunctionTest {
 
 	@Test
 	public void startNewGameWithPlayerSelectionTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		UserTeamModel userTeamModel = new UserTeamModel();
 		userTeamModel.setSeasonPlayed(1);

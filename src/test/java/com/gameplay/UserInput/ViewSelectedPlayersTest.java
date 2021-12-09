@@ -1,6 +1,14 @@
 package com.gameplay.UserInput;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.gameplay.controller.TeamSelectionController;
+import com.gameplay.entity.PlayerEntity;
+import com.gameplay.repository.PlayerStatusRepository;
+import com.io.IOutputStream;
+import com.io.StandardOutputStream;
+import com.utils.Constants;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -8,15 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.reflection.FieldSetter;
-
-import com.gameplay.controller.TeamSelectionController;
-import com.gameplay.entity.PlayerEntity;
-import com.gameplay.repository.PlayerStatusRepository;
-import com.io.IOutputStream;
-import com.io.StandardOutputStream;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel
@@ -42,7 +42,7 @@ public class ViewSelectedPlayersTest {
 
 	@Test
 	public void executeSelectionTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))

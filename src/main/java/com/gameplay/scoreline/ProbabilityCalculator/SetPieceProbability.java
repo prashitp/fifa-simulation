@@ -1,8 +1,9 @@
 package com.gameplay.scoreline.ProbabilityCalculator;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.ClubModel;
 import com.models.SetPieceType;
+
 import java.util.HashMap;
 /**
  * @author prashitpatel

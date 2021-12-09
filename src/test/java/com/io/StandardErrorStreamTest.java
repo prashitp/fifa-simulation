@@ -1,11 +1,11 @@
 package com.io;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.util.reflection.FieldSetter;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 /**
  * @author Jay Patel

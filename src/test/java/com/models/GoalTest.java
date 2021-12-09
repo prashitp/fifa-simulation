@@ -1,11 +1,9 @@
 package com.models;
 
-import com.Constants;
-import com.models.Goal;
-import com.models.GoalType;
-import com.models.PlayerModel;
+import com.utils.Constants;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author prashitpatel

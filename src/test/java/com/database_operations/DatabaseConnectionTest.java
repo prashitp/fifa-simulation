@@ -1,9 +1,11 @@
 package com.database_operations;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DatabaseConnectionTest {
     public static Connection connection;

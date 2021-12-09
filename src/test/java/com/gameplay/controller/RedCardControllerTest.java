@@ -1,15 +1,11 @@
 package com.gameplay.controller;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-
-/**
- * @author vasugamdha
- */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

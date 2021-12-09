@@ -1,16 +1,18 @@
 package com.gameplay.controller;
 
+import com.utils.Constants;
 import com.models.ClubModel;
-import com.models.SetPieceType;
 import com.models.Goal;
 import com.models.Lineup;
+import com.models.SetPieceType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author prashitpatel
@@ -20,7 +22,7 @@ class ScoreLineControllerTest {
 
 	@BeforeAll
 	public static void init() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Arsenal", "Aston Villa");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		List<Lineup> lineups = teamSelectionController.getSquads();
 
 		HashMap<SetPieceType, List<Integer>> setPieces = new HashMap<>();
@@ -41,7 +43,7 @@ class ScoreLineControllerTest {
 		setPieces.put(SetPieceType.CORNER_KICK,corners);
 		setPieces.put(SetPieceType.PENALTY_KICK,penalty);
 
-		scoreLineController = new ScoreLineController("Arsenal", "Aston Villa", lineups, setPieces);
+		scoreLineController = new ScoreLineController(Constants.CLUBS[0],Constants.CLUBS[1], lineups, setPieces);
 	}
 
 	@Test

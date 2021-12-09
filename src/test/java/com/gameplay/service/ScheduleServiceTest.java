@@ -1,17 +1,16 @@
 package com.gameplay.service;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.FieldSetter;
-
 import com.database_operations.DatabaseImport;
 import com.gameplay.repository.IScheduleRepository;
 import com.gameplay.repository.ScheduleRepository;
 import com.models.MatchModel;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.util.reflection.FieldSetter;
+
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

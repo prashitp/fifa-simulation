@@ -1,16 +1,11 @@
-package com;
-
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+package com.utils;
 
 import com.gameplay.entity.PlayerEntity;
 import com.models.ClubAttributes;
-import com.models.PlayerPositions;
 import com.models.FormationType;
+import com.models.PlayerPositions;
+
+import java.util.*;
 /**
  * @author prashitpatel and Mayank Sareen
  */

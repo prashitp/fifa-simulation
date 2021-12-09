@@ -1,12 +1,14 @@
 package com.gameplay.scoreline.ProbabilityCalculator;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.ClubModel;
 import com.models.FormationModel;
 import com.models.FormationType;
 import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */

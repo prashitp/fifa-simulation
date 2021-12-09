@@ -1,14 +1,14 @@
 package com.gameplay.UserInput.validation;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.CommonFunctions;
-import com.Constants;
+import com.utils.CommonFunctions;
+import com.utils.Constants;
 import com.gameplay.entity.PlayerEntity;
 import com.models.PlayerPositions;
 import com.models.TeamValidationParameters;
 import com.models.TeamValidationParameters.Builder;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Jay Patel

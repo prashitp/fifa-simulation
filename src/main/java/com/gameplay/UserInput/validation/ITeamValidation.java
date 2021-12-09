@@ -1,8 +1,8 @@
 package com.gameplay.UserInput.validation;
 
-import java.util.List;
-
 import com.gameplay.entity.PlayerEntity;
+
+import java.util.List;
 
 /**
  * @author Jay Patel

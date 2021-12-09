@@ -1,13 +1,5 @@
 package com.gameplay.repository;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,8 +7,10 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.repository.IUserTeamRepository;
-import com.gameplay.repository.UserTeamRepository;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Jay Patel

@@ -1,8 +1,6 @@
 package com.gameplay.controller;
 
-import com.Constants;
-import com.gameplay.controller.IInjuryController;
-import com.gameplay.controller.InjuryController;
+import com.utils.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;

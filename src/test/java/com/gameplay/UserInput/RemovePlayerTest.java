@@ -1,7 +1,15 @@
 package com.gameplay.UserInput;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.gameplay.controller.TeamSelectionController;
+import com.gameplay.entity.PlayerEntity;
+import com.gameplay.repository.PlayerStatusRepository;
+import com.io.*;
+import com.utils.Constants;
+import com.utils.Converter;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -10,20 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.internal.util.reflection.FieldSetter;
-
-import com.gameplay.controller.TeamSelectionController;
-import com.gameplay.entity.PlayerEntity;
-import com.gameplay.repository.PlayerStatusRepository;
-import com.io.IErrorStream;
-import com.io.IInputStream;
-import com.io.IOutputStream;
-import com.io.StandardErrorStream;
-import com.io.StandardOutputStream;
-import com.utils.Converter;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel
@@ -60,7 +56,7 @@ public class RemovePlayerTest {
 
 	@Test
 	public void executeSelectionTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))
@@ -73,7 +69,7 @@ public class RemovePlayerTest {
 
 	@Test
 	public void executeSelectionInvalidPlayerTest() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Liverpool", "Manchester United");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		PlayerStatusRepository playerStatusRepository = new PlayerStatusRepository();
 		List<PlayerEntity> players = teamSelectionController.getSquads().get(0).getPlaying11().entrySet().stream()
 				.map(entrySet -> playerStatusRepository.fetchPlayer(entrySet.getKey().getPlayerId()))

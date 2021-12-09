@@ -1,10 +1,14 @@
 package com.gameplay.controller;
 
-import com.Constants;
-import com.models.*;
+import com.models.ClubModel;
 import com.models.FormationModel;
 import com.models.Lineup;
-import java.util.*;
+import com.models.PlayerModel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author prashitpatel
@@ -14,10 +18,10 @@ public class TeamSelectionController implements ITeamSelectionController {
 	ClubModel opposingClubDetails;
 	HashMap<PlayerModel,String > playing11 = new HashMap<>();
 
-	public TeamSelectionController(String clubName, String opposingClubName) {
+	public TeamSelectionController(ClubModel clubName, ClubModel opposingClubName) {
 		//get club details
-		clubDetails = Arrays.stream(Constants.CLUBS).filter(club -> club.getClubName().equals(clubName)).toArray(ClubModel[]::new)[0];
-		opposingClubDetails = Arrays.stream(Constants.CLUBS).filter(club -> club.getClubName().equals(opposingClubName)).toArray(ClubModel[]::new)[0];
+		this.clubDetails = clubName;
+		this.opposingClubDetails = opposingClubName;
 	}
 
 	public List<Lineup> getSquads() {

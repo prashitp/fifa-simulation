@@ -1,8 +1,9 @@
 package com.models;
 
-import java.util.HashMap;
-import com.Constants;
+import com.utils.Constants;
+
 import java.util.Arrays;
+import java.util.HashMap;
 /**
  * @author prashitpatel
  */

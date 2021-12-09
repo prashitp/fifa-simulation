@@ -1,20 +1,17 @@
 package com.gameplay.service;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
+import com.gameplay.entity.PlayerEntity;
+import com.gameplay.repository.IUserPlayersRepository;
+import com.gameplay.repository.UserPlayersRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.FieldSetter;
 
-import com.gameplay.entity.PlayerEntity;
-import com.gameplay.repository.IUserPlayersRepository;
-import com.gameplay.repository.UserPlayersRepository;
-import com.gameplay.service.IUserPlayersService;
-import com.gameplay.service.UserPlayersService;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Jay Patel

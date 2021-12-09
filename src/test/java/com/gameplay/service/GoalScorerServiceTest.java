@@ -1,14 +1,13 @@
 package com.gameplay.service;
 
-import com.Constants;
-import com.gameplay.service.GoalScorerService;
+import com.utils.Constants;
 import com.models.PlayerModel;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */

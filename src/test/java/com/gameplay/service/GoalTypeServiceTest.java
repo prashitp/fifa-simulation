@@ -1,15 +1,15 @@
 package com.gameplay.service;
 
-import com.gameplay.service.GoalTypeService;
-import com.gameplay.service.IGoalTypeService;
-import com.models.SetPieceType;
 import com.models.Criteria;
 import com.models.GoalType;
+import com.models.SetPieceType;
 import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */

@@ -1,11 +1,10 @@
 package com.gameplay.controller;
 
-import com.Constants;
 import com.models.ClubModel;
-import com.models.SetPieceType;
 import com.models.Goal;
 import com.models.Lineup;
-import java.util.Arrays;
+import com.models.SetPieceType;
+
 import java.util.HashMap;
 import java.util.List;
 /**
@@ -17,9 +16,9 @@ public class ScoreLineController implements IScoreLineController {
 	List<Lineup> lineups;
 	HashMap<SetPieceType,List<Integer>> setPieces;
 
-	public ScoreLineController(String homeClub, String awayClub, List<Lineup> lineups, HashMap<SetPieceType,List<Integer>> setPieces) {
-		this.homeClub = Arrays.stream(Constants.CLUBS).filter(club -> club.getClubName().equals(homeClub)).toArray(ClubModel[]::new)[0];
-		this.awayClub = Arrays.stream(Constants.CLUBS).filter(club -> club.getClubName().equals(awayClub)).toArray(ClubModel[]::new)[0];
+	public ScoreLineController(ClubModel homeClub, ClubModel awayClub, List<Lineup> lineups, HashMap<SetPieceType,List<Integer>> setPieces) {
+		this.homeClub = homeClub;
+		this.awayClub = awayClub;
 		this.lineups = lineups;
 		this.setPieces = setPieces;
 	}

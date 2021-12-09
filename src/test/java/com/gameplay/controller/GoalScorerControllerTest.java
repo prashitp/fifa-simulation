@@ -1,6 +1,6 @@
 package com.gameplay.controller;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.GoalType;
 import com.models.Lineup;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author prashitpatel
  */
@@ -17,7 +17,7 @@ class GoalScorerControllerTest {
 
 	@BeforeAll
 	public static void init() {
-		TeamSelectionController teamSelectionController = new TeamSelectionController("Arsenal","Aston Villa");
+		TeamSelectionController teamSelectionController = new TeamSelectionController(Constants.CLUBS[0], Constants.CLUBS[1]);
 		List<Lineup> lineups = teamSelectionController.getSquads();
 		goalScorerController = new GoalScorerController(lineups);
 	}

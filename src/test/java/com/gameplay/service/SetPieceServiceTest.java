@@ -1,8 +1,6 @@
 package com.gameplay.service;
 
-import com.Constants;
-import com.gameplay.service.ISetPieceService;
-import com.gameplay.service.SetPieceService;
+import com.utils.Constants;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import org.junit.jupiter.api.Test;

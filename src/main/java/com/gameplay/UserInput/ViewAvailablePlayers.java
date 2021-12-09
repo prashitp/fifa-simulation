@@ -1,12 +1,12 @@
 package com.gameplay.UserInput;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.gameplay.entity.PlayerEntity;
 import com.io.IOutputStream;
 import com.io.StandardOutputStream;
 import com.utils.TableFormat;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Jay Patel

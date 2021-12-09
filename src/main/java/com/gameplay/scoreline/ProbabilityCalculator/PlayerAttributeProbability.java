@@ -1,10 +1,11 @@
 package com.gameplay.scoreline.ProbabilityCalculator;
 
-import com.Constants;
+import com.utils.Constants;
 import com.models.ClubModel;
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -1,9 +1,11 @@
 package com.gameplay.TeamSelection.PlayerSelection;
 
-import com.Constants;
+import com.utils.Constants;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author prashitpatel
  */
