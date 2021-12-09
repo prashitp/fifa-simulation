@@ -38,6 +38,6 @@ public class ScheduleServiceTest {
 				Arrays.asList(DatabaseImport.getInstance().getClubs()));
 		Mockito.when(scheduleRepositoryMock.deleteSchedule()).thenReturn(Boolean.TRUE);
 		Mockito.when(scheduleRepositoryMock.saveSchedule(Arrays.asList(match))).thenReturn(Boolean.TRUE);
-		assertTrue(scheduleService.createMatchSchedule(), "createMatchSchedule() method is not working as expected.");
+		assertTrue(scheduleService.createMatchSchedule() != null, "createMatchSchedule() method is not working as expected.");
 	}
 }
