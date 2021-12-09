@@ -1,9 +1,6 @@
 package com.gameplay.controller;
 
 import com.Constants;
-import com.gameplay.TeamSelection.TeamSelectionController;
-import com.gameplay.controller.GoalScorerController;
-import com.gameplay.controller.IGoalScorerController;
 import com.models.GoalType;
 import com.models.Lineup;
 import org.junit.jupiter.api.BeforeAll;

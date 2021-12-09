@@ -1,11 +1,6 @@
 package com.gameplay.controller;
 
 import com.Constants;
-import com.gameplay.controller.GoalTypeController;
-import com.gameplay.controller.IGoalTypeController;
-import com.gameplay.controller.GoalScorerController;
-import com.gameplay.controller.IGoalScorerController;
-import com.gameplay.TeamSelection.TeamSelectionController;
 import com.models.ClubModel;
 import com.models.SetPieceType;
 import com.models.Goal;

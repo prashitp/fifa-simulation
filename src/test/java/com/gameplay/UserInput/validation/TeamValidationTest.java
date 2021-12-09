@@ -9,9 +9,8 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import com.gameplay.TeamSelection.ITeamSelectionController;
-import com.gameplay.TeamSelection.TeamSelectionController;
-import com.gameplay.UserInput.validation.TeamValidation;
+import com.gameplay.controller.ITeamSelectionController;
+import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.entity.PlayerEntity;
 import com.gameplay.repository.IPlayerStatusRepository;
 import com.gameplay.repository.PlayerStatusRepository;
