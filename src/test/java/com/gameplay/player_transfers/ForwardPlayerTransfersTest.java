@@ -3,8 +3,8 @@ package com.gameplay.player_transfers;
 /**
  * @author: mayanksareen
  */
-import com.gameplay.player_transfers.controller.forwards.ForwardPlayerTransfers;
-import com.gameplay.player_transfers.controller.forwards.IForwardPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.ForwardPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.IForwardPlayerTransfers;
 import com.models.PlayerModel;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;

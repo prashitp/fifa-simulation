@@ -1,18 +1,10 @@
-package com.gameplay.player_transfers.controller.player_rearrangement.controller;
+package com.gameplay.PlayerTransfers.controller;
 /**
  * @author mayanksareen
  */
-import com.gameplay.player_transfers.controller.defenders.DefenderPlayerTransfers;
-import com.gameplay.player_transfers.controller.defenders.IDefenderPlayerTransfers;
-import com.gameplay.player_transfers.controller.forwards.IForwardPlayerTransfers;
-import com.gameplay.player_transfers.controller.goalkeeper.GoalKeeperPlayerTransfers;
+import com.gameplay.PlayerTransfers.PlayerRearrangement.service.IReArrangePlayersByClubRanks;
+import com.gameplay.PlayerTransfers.PlayerRearrangement.service.ReArrangePlayersByClubRanks;
 import com.models.*;
-import com.gameplay.player_transfers.controller.forwards.ForwardPlayerTransfers;
-import com.gameplay.player_transfers.controller.goalkeeper.IGoalKeeperPlayerTransfers;
-import com.gameplay.player_transfers.controller.midfielders.IMidFielderPlayerTransfers;
-import com.gameplay.player_transfers.controller.midfielders.MidFielderPlayerTransfers;
-import com.gameplay.player_transfers.controller.player_rearrangement.service.IReArrangePlayersByClubRanks;
-import com.gameplay.player_transfers.controller.player_rearrangement.service.ReArrangePlayersByClubRanks;
 import com.utils.Constants;
 
 import java.util.*;

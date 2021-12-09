@@ -1,8 +1,8 @@
-package com.gameplay.player_transfers.controller.midfielders;
+package com.gameplay.PlayerTransfers.controller;
 /**
  * @author: mayanksareen
  */
-import com.gameplay.player_transfers.controller.player_rearrangement.service.*;
+import com.gameplay.PlayerTransfers.PlayerRearrangement.service.*;
 import com.models.*;
 import com.utils.CommonFunctions;
 import com.utils.Constants;

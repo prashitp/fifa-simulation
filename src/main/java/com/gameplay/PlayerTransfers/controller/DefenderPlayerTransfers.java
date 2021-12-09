@@ -1,33 +1,34 @@
-package com.gameplay.player_transfers.controller.forwards;
+package com.gameplay.PlayerTransfers.controller;
 /**
  * @author: mayanksareen
  */
-import com.gameplay.player_transfers.controller.player_rearrangement.service.*;
+import com.gameplay.PlayerTransfers.PlayerRearrangement.service.*;
+import com.gameplay.PlayerTransfers.controller.PlayerRearrangement.service.*;
 import com.models.*;
 import com.utils.CommonFunctions;
 import com.utils.Constants;
 
 import java.util.*;
 
-public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
-    private static ForwardPlayerTransfers forwardPlayerTransfers;
+public class DefenderPlayerTransfers implements IDefenderPlayerTransfers {
+    private static DefenderPlayerTransfers defenderPlayerTransfers;
     IReArrangePlayersByPositionRank shiftPlayers = new ReArrangePlayersByRank();
-    public static ForwardPlayerTransfers getInstance() {
-        if (forwardPlayerTransfers == null) {
-            forwardPlayerTransfers = new ForwardPlayerTransfers();
+    public static DefenderPlayerTransfers getInstance() {
+        if (defenderPlayerTransfers == null) {
+            defenderPlayerTransfers = new DefenderPlayerTransfers();
         }
-        return forwardPlayerTransfers;
+        return defenderPlayerTransfers;
     }
 
     @Override
-    public List<PlayerTransferWrapper> getForwardsForTransferPerTeam(List<PlayerModel> forwardsListForTransfer) {
-        List<PlayerTransferWrapper> rankedForwardsForTransfer = getTopForwardsForTransferWithinAClub(forwardsListForTransfer);
-        shiftPlayers.movePlayersByComputedRank(rankedForwardsForTransfer);
-        return rankedForwardsForTransfer;
+    public List<PlayerTransferWrapper> getDefendersForTransferPerTeam(List<PlayerModel> defendersListForTransfer) {
+        List<PlayerTransferWrapper> rankedDefenderForTransfer = getTopDefendersForTransfer(defendersListForTransfer);
+        shiftPlayers.movePlayersByComputedRank(rankedDefenderForTransfer);
+        return rankedDefenderForTransfer;
     }
     @Override
-    public  List<PlayerModel> computeBestSellingForwards(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
-        List<PlayerTransferWrapper>playersReady = getTopForwardsInTheGameAcrossClubs(transferPlayerMap);
+    public List<PlayerModel> computeBestSellingDefenders(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
+        List<PlayerTransferWrapper>playersReady = getTopDefendersInTheGameAcrossClubs(transferPlayerMap);
         return transferPlayer(playersReady);
     }
 
@@ -42,7 +43,7 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
                 players.remove(player);
             }
         }
-        HashMap<ClubModel, PlayerModel> topTransfers = tradeTopFourForwardsBetweenTopFourClubs(highestPayingClubs, players);
+        HashMap<ClubModel, PlayerModel> topTransfers = tradeTopFourDefendersBetweenTopFourClubs(highestPayingClubs, players);
         List<PlayerModel> finalizedDataPostTransfers = new ArrayList<>(Constants.ALL_PLAYERS_AFTER_TRANSFER);
         Set<PlayerModel> playerTransferList = new HashSet<>();
         for (ClubModel club : topTransfers.keySet()) {
@@ -62,7 +63,7 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
         return finalizedDataPostTransfers;
     }
 
-    private HashMap<ClubModel, PlayerModel> tradeTopFourForwardsBetweenTopFourClubs(List<ClubModel> clubs, List<PlayerTransferWrapper> players) {
+    private HashMap<ClubModel, PlayerModel> tradeTopFourDefendersBetweenTopFourClubs(List<ClubModel> clubs, List<PlayerTransferWrapper> players) {
         IClubPlayerPreferenceMatching iClubPlayerPreferenceMatching = new ClubPlayerPreferenceMatching();
         ArrayList<Integer> matchedPreferences = new ArrayList<>();
         HashMap<ClubModel, PlayerModel> topTransfers = new HashMap<>();
@@ -99,22 +100,22 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
         return topTransfers;
     }
 
-    private List<PlayerTransferWrapper> getTopForwardsInTheGameAcrossClubs(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
-        List<PlayerTransferWrapper> topForwardsAcrossAllClubs = new ArrayList<>();
+    private List<PlayerTransferWrapper> getTopDefendersInTheGameAcrossClubs(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
+        List<PlayerTransferWrapper> topDefendersAcrossAllClubs = new ArrayList<>();
         for (String club : transferPlayerMap.keySet()) {
-            if (transferPlayerMap.get(club).get(PlayingPosition.FORWARD.name()) != null) {
-                topForwardsAcrossAllClubs.addAll(transferPlayerMap.get(club).get(PlayingPosition.FORWARD.name()));
+            if (transferPlayerMap.get(club).get(PlayingPosition.DEFENDER.name()) != null) {
+                topDefendersAcrossAllClubs.addAll(transferPlayerMap.get(club).get(PlayingPosition.DEFENDER.name()));
             }
         }
-        if (topForwardsAcrossAllClubs.size() > 0) {
-            shiftPlayers.movePlayersByComputedRank(topForwardsAcrossAllClubs);
+        if (topDefendersAcrossAllClubs.size() > 0) {
+            shiftPlayers.movePlayersByComputedRank(topDefendersAcrossAllClubs);
         }
-        return topForwardsAcrossAllClubs;
+        return topDefendersAcrossAllClubs;
     }
 
-    private List<PlayerTransferWrapper> getTopForwardsForTransferWithinAClub(List<PlayerModel>playersWithExpiringContract) {
-        List<PlayerTransferWrapper> topForwards = computeRanking(playersWithExpiringContract);
-        return topForwards;
+    private List<PlayerTransferWrapper> getTopDefendersForTransfer(List<PlayerModel>playersWithExpiringContract) {
+        List<PlayerTransferWrapper> topDefenders = computeRanking(playersWithExpiringContract);
+        return topDefenders;
     }
 
     private List<PlayerTransferWrapper> computeRanking(List<PlayerModel> playersToBeTransferred) {
@@ -123,7 +124,7 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
         Boolean isNearRetirementAge = false;
         for (PlayerModel player : playersToBeTransferred) {
             ranking = 0;
-            ranking += Math.floor(computeRankBasedOnForwardSkills(player.skills) * 0.5);
+            ranking += Math.floor(computeRankBasedOnDefenderSkills(player.skills) * 0.5);
             ranking += computeRankBasedOnPlayerMetrics(player, ranking);
             isNearRetirementAge = checkIfRetirementAge(player);
             playerTransferWrapper.add(new PlayerTransferWrapper(ranking, player, isNearRetirementAge));
@@ -131,13 +132,13 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
         return playerTransferWrapper;
     }
 
-    private static int computeRankBasedOnForwardSkills(HashMap<PlayerAttributes, Integer> playerAttributesMap) {
+    private static int computeRankBasedOnDefenderSkills(HashMap<PlayerAttributes, Integer> playerAttributesMap) {
         int ranking = 0;
-        List<PlayerAttributes> playerAttributes = getForwardRankingFactorsBasedOnSkills();
-             for (PlayerAttributes attributes: playerAttributesMap.keySet()) {
-                if (playerAttributes.contains(attributes)) {
-                 ranking += playerAttributesMap.get(attributes);
-             }
+        List<PlayerAttributes> playerAttributes = getDefenderRankingFactorsBasedOnSkills();
+        for (PlayerAttributes attributes: playerAttributesMap.keySet()) {
+            if (playerAttributes.contains(attributes)) {
+                ranking += playerAttributesMap.get(attributes);
+            }
         }
         return ranking;
     }
@@ -151,32 +152,32 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
         return player.age >= 35;
     }
 
-    private static List<PlayerAttributes> getForwardRankingFactorsBasedOnSkills() {
-        List<PlayerAttributes> forwardAttributes = new ArrayList<PlayerAttributes>();
-        forwardAttributes.add(PlayerAttributes.SHOOTING);
-        forwardAttributes.add(PlayerAttributes.SKILL_CURVE);
-        forwardAttributes.add(PlayerAttributes.SKILL_LONG_PASSING);
-        forwardAttributes.add(PlayerAttributes.ATTACKING_VOLLEYS);
-        forwardAttributes.add(PlayerAttributes.ATTACKING_HEADING_ACCURACY);
-        forwardAttributes.add(PlayerAttributes.ATTACKING_FINISHING);
-        forwardAttributes.add(PlayerAttributes.ATTACKING_CROSSING);
-        forwardAttributes.add(PlayerAttributes.ATTACKING_SHORT_PASSING);
-        forwardAttributes.add(PlayerAttributes.POWER_STAMINA);
-        forwardAttributes.add(PlayerAttributes.POWER_STRENGTH);
-        forwardAttributes.add(PlayerAttributes.POWER_LONG_SHOTS);
-        forwardAttributes.add(PlayerAttributes.MOVEMENT_SPRINT_SPEED);
-        forwardAttributes.add(PlayerAttributes.MOVEMENT_ACCELERATION);
-        forwardAttributes.add(PlayerAttributes.MOVEMENT_AGILITY);
-        forwardAttributes.add(PlayerAttributes.MOVEMENT_BALANCE);
-        forwardAttributes.add(PlayerAttributes.DRIBBLING);
-        forwardAttributes.add(PlayerAttributes.PASSING);
-        forwardAttributes.add(PlayerAttributes.PACE);
-        forwardAttributes.add(PlayerAttributes.MENTALITY_COMPOSURE);
-        forwardAttributes.add(PlayerAttributes.MENTALITY_AGGRESSION);
-        forwardAttributes.add(PlayerAttributes.MENTALITY_INTERCEPTIONS);
-        forwardAttributes.add(PlayerAttributes.MENTALITY_PENALTIES);
-        forwardAttributes.add(PlayerAttributes.MENTALITY_VISION);
-        forwardAttributes.add(PlayerAttributes.MENTALITY_POSITIONING);
-        return forwardAttributes;
+    private static List<PlayerAttributes> getDefenderRankingFactorsBasedOnSkills() {
+        List<PlayerAttributes> defenderAttributes = new ArrayList<PlayerAttributes>();
+        defenderAttributes.add(PlayerAttributes.DEFENDING);
+        defenderAttributes.add(PlayerAttributes.DEFENDING_SLIDING_TACKLE);
+        defenderAttributes.add(PlayerAttributes.SKILL_LONG_PASSING);
+        defenderAttributes.add(PlayerAttributes.DEFENDING_STANDING_TACKLE);
+        defenderAttributes.add(PlayerAttributes.DEFENDING_MARKING_AWARENESS);
+        defenderAttributes.add(PlayerAttributes.DRIBBLING);
+        defenderAttributes.add(PlayerAttributes.SKILL_DRIBBLING);
+        defenderAttributes.add(PlayerAttributes.PHYSIC);
+        defenderAttributes.add(PlayerAttributes.POWER_STAMINA);
+        defenderAttributes.add(PlayerAttributes.POWER_STRENGTH);
+        defenderAttributes.add(PlayerAttributes.POWER_LONG_SHOTS);
+        defenderAttributes.add(PlayerAttributes.MOVEMENT_SPRINT_SPEED);
+        defenderAttributes.add(PlayerAttributes.MOVEMENT_ACCELERATION);
+        defenderAttributes.add(PlayerAttributes.MOVEMENT_AGILITY);
+        defenderAttributes.add(PlayerAttributes.MOVEMENT_BALANCE);
+        defenderAttributes.add(PlayerAttributes.DRIBBLING);
+        defenderAttributes.add(PlayerAttributes.PASSING);
+        defenderAttributes.add(PlayerAttributes.PACE);
+        defenderAttributes.add(PlayerAttributes.MENTALITY_COMPOSURE);
+        defenderAttributes.add(PlayerAttributes.MENTALITY_AGGRESSION);
+        defenderAttributes.add(PlayerAttributes.MENTALITY_INTERCEPTIONS);
+        defenderAttributes.add(PlayerAttributes.MENTALITY_PENALTIES);
+        defenderAttributes.add(PlayerAttributes.MENTALITY_VISION);
+        defenderAttributes.add(PlayerAttributes.MENTALITY_POSITIONING);
+        return defenderAttributes;
     }
 }

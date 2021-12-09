@@ -1,4 +1,4 @@
-package com.gameplay.player_transfers.controller.midfielders;
+package com.gameplay.PlayerTransfers.controller;
 /**
  * @author: mayanksareen
  */

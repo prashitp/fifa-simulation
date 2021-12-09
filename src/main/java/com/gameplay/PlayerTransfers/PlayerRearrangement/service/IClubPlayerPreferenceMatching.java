@@ -1,4 +1,4 @@
-package com.gameplay.player_transfers.controller.player_rearrangement.service;
+package com.gameplay.PlayerTransfers.PlayerRearrangement.service;
 /**
  * @author: mayanksareen
  */

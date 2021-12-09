@@ -1,4 +1,4 @@
-package com.database_operations;
+package com.databaseOperations;
 
 import com.utils.Constants;
 import com.utils.LogService;

@@ -1,4 +1,4 @@
-package com.gameplay.player_transfers.controller.player_rearrangement.service;
+package com.gameplay.PlayerTransfers.PlayerRearrangement.service;
 /**
  * @author: mayanksareen
  */
@@ -20,14 +20,14 @@ public class ClubPlayerPreferenceMatching implements IClubPlayerPreferenceMatchi
 
     @Override
     public ArrayList<Integer> matchClubsAndPlayersBasedOnTheirPreferences(ArrayList<ArrayList<Integer>> preferenceIndices) {
-        ArrayList<Integer> matchedPreferences = new ArrayList<>(){
+        ArrayList<Integer> matchedPreferences = new ArrayList(){
             {   add(-1);
                 add(-1);
                 add(-1);
                 add(-1);
             }
         };
-        ArrayList<Boolean> freePlayers = new ArrayList<>(){
+        ArrayList<Boolean> freePlayers = new ArrayList(){
             {   add(false);
                 add(false);
                 add(false);

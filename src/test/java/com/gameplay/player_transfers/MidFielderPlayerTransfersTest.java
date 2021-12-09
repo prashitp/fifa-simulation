@@ -2,8 +2,8 @@ package com.gameplay.player_transfers;
 /**
  * @author: mayanksareen
  */
-import com.gameplay.player_transfers.controller.midfielders.IMidFielderPlayerTransfers;
-import com.gameplay.player_transfers.controller.midfielders.MidFielderPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.IMidFielderPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.MidFielderPlayerTransfers;
 import com.models.PlayerModel;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;

@@ -2,7 +2,7 @@
  * @author Mayank Sareen
  */
 
-package com.gameplay.player_transfers.controller.player_rearrangement.service;
+package com.gameplay.PlayerTransfers.PlayerRearrangement.service;
 
 import com.models.PlayerTransferWrapper;
 import java.util.List;

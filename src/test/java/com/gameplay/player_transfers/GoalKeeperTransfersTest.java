@@ -2,8 +2,8 @@ package com.gameplay.player_transfers;
 /**
  * @author: mayanksareen
  */
-import com.gameplay.player_transfers.controller.goalkeeper.GoalKeeperPlayerTransfers;
-import com.gameplay.player_transfers.controller.goalkeeper.IGoalKeeperPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.GoalKeeperPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.IGoalKeeperPlayerTransfers;
 import com.models.PlayerModel;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;

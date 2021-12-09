@@ -1,4 +1,4 @@
-package com.database_operations;
+package com.databaseOperations;
 
 import com.models.*;
 import org.junit.jupiter.api.BeforeEach;

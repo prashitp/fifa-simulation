@@ -3,8 +3,8 @@ package com.gameplay.player_transfers;
  * @author: mayanksareen
  */
 
-import com.gameplay.player_transfers.controller.defenders.DefenderPlayerTransfers;
-import com.gameplay.player_transfers.controller.defenders.IDefenderPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.DefenderPlayerTransfers;
+import com.gameplay.PlayerTransfers.controller.IDefenderPlayerTransfers;
 import com.models.PlayerModel;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;
