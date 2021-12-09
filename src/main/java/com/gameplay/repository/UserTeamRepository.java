@@ -1,15 +1,15 @@
 package com.gameplay.repository;
 
-//import com.utils.LogService;
-import com.database_operations.DatabaseConnection;
-import com.models.UserTeamModel;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+
+import com.database_operations.DatabaseConnection;
+import com.models.UserTeamModel;
+import com.utils.LogService;
 
 /**
  * @author Jay Patel
@@ -23,11 +23,11 @@ public class UserTeamRepository implements IUserTeamRepository {
 	public static final String DELETE_ALL_USER_TEAM_QUERY = "DELETE FROM user_team";
 
 	private Connection databaseConnection;
-//	private LogService logService;
+	private LogService logService;
 	private PreparedStatement statement;
 
 	public UserTeamRepository() {
-//		logService = new LogService();
+		logService = new LogService();
 		databaseConnection = DatabaseConnection.getInstance().getConnection();
 	}
 
@@ -39,7 +39,7 @@ public class UserTeamRepository implements IUserTeamRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-//			logService.log(Level.SEVERE, e.getMessage());
+			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
@@ -52,7 +52,7 @@ public class UserTeamRepository implements IUserTeamRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-//			logService.log(Level.SEVERE, e.getMessage());
+			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
@@ -65,7 +65,7 @@ public class UserTeamRepository implements IUserTeamRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-//			logService.log(Level.SEVERE, e.getMessage());
+			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
@@ -86,7 +86,7 @@ public class UserTeamRepository implements IUserTeamRepository {
 				return userTeamList.get(0);
 			}
 		} catch (Exception e) {
-//			logService.log(Level.SEVERE, e.getMessage());
+			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -98,7 +98,7 @@ public class UserTeamRepository implements IUserTeamRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-//			logService.log(Level.SEVERE, e.getMessage());
+			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
