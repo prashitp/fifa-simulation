@@ -15,7 +15,7 @@ import com.gameplay.entity.PlayerEntity;
  */
 public class Converter {
 
-	public static LogService logService = new LogService();
+//	public static LogService logService = new LogService();
 
 	public static <T> List<T> resultSetToEntityList(ResultSet resultSet, Class<T> returnType) {
 		try {
@@ -41,12 +41,12 @@ public class Converter {
 					}
 					list.add(dto);
 				} catch (Exception e) {
-					logService.log(Level.WARNING, e.getMessage());
+//					logService.log(Level.WARNING, e.getMessage());
 				}
 			}
 			return list;
 		} catch (Exception e) {
-			logService.log(Level.WARNING, e.getMessage());
+//			logService.log(Level.WARNING, e.getMessage());
 		}
 		return null;
 	}

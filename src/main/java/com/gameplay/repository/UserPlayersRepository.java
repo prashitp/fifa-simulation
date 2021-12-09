@@ -1,6 +1,6 @@
 package com.gameplay.repository;
 
-import com.utils.LogService;
+//import com.utils.LogService;
 import com.database_operations.DatabaseConnection;
 import com.utils.Converter;
 
@@ -16,15 +16,15 @@ public class UserPlayersRepository implements IUserPlayersRepository {
 	public static final String ADD_PLAYER_QUERY = "INSERT INTO user_players VALUES (?)";
 
 	private Connection databaseConnection;
-	private LogService logService;
+//	private LogService logService;
 	private PreparedStatement statement;
 
 	public UserPlayersRepository() {
 		try {
-			logService = new LogService();
+//			logService = new LogService();
 			databaseConnection = DatabaseConnection.getInstance().getConnection();
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
@@ -36,7 +36,7 @@ public class UserPlayersRepository implements IUserPlayersRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}

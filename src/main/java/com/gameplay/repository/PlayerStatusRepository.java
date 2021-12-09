@@ -1,6 +1,6 @@
 package com.gameplay.repository;
 
-import com.utils.LogService;
+//import com.utils.LogService;
 import com.database_operations.DatabaseConnection;
 import com.exceptions.PlayerNotFoundException;
 import com.gameplay.entity.PlayerEntity;
@@ -24,15 +24,15 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 	public static final String FETCH_ALL_PLAYER_QUERY = "SELECT * FROM player_status";
 
 	private Connection databaseConnection;
-	private LogService logService;
+//	private LogService logService;
 	private PreparedStatement statement;
 
 	public PlayerStatusRepository() {
 		try {
-			logService = new LogService();
+//			logService = new LogService();
 			databaseConnection = DatabaseConnection.getInstance().getConnection();
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 	}
 
@@ -45,7 +45,7 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 			List<PlayerEntity> playerList = Converter.resultSetToEntityList(resultSet, PlayerEntity.class);
 			return playerList;
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -62,7 +62,7 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 			}
 			return players.get(0);
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -74,7 +74,7 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
@@ -86,7 +86,7 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
@@ -98,7 +98,7 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 			ResultSet resultSet = statement.executeQuery();
 			return Converter.resultSetToEntityList(resultSet, PlayerEntity.class);
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -110,7 +110,7 @@ public class PlayerStatusRepository implements IPlayerStatusRepository {
 			statement.executeUpdate();
 			return Boolean.TRUE;
 		} catch (Exception e) {
-			logService.log(Level.SEVERE, e.getMessage());
+//			logService.log(Level.SEVERE, e.getMessage());
 		}
 		return Boolean.FALSE;
 	}
