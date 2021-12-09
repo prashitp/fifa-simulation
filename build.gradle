@@ -17,7 +17,6 @@ jar {
     }
 }
 
-
 dependencies {
     implementation 'mysql:mysql-connector-java:8.0.25'
     implementation 'org.mockito:mockito-all:1.10.19'
