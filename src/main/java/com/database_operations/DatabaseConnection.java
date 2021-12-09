@@ -4,6 +4,7 @@ import com.utils.Constants;
 //import com.utils.LogService;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,9 +18,10 @@ public class DatabaseConnection {
     private Connection connection;
     private DatabaseConnection() {
         try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection(Constants.CONNECTION_DEV_URL, Constants.CONNECTION_USERNAME,
                     Constants.CONNECTION_PASSWORD);
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex);
 //            logService.log(Level.SEVERE, "ERROR! Exception occurred while connecting to Database :: " + ex.getMessage());
         }
