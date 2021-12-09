@@ -6,7 +6,6 @@ import com.models.Lineup;
 import com.utils.Constants;
 import org.junit.jupiter.api.Test;
 
-import java.lang.constant.Constable;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
