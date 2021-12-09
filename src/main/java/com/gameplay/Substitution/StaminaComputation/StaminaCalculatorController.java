@@ -1,3 +1,7 @@
+/**
+ * @author Mayank Sareen
+ */
+
 package com.gameplay.Substitution.StaminaComputation;
 
 import com.models.PlayerAttributes;
@@ -7,10 +11,6 @@ import com.models.gameplay.Substitution.StaminaFactors;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-/**
- * @author Mayank Sareen
- */
 
 public class StaminaCalculatorController implements IStaminaCalculatorController {
     private static List<StaminaObserver> observers = new ArrayList<StaminaObserver>();

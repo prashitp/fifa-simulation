@@ -1,10 +1,10 @@
+/**
+ * @author Mayank Sareen
+ */
 package com.gameplay.Substitution.StaminaComputation;
 
-import com.models.PlayerModel;
-import com.models.PlayingPosition;
-
-import java.util.HashMap;
+import com.models.gameplay.TeamSelection.Lineup;
 
 public interface IStaminaCalculatorService {
-    public void computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven);
+    public void computeStamina(Lineup lineup);
 }

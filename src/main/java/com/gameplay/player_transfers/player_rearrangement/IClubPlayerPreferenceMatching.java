@@ -1,4 +1,7 @@
-package com.models.gameplay.player_transfers.player_rearrangement;
+/**
+ * @author: Mayank Sareen
+ */
+package com.gameplay.player_transfers.player_rearrangement;
 
 import java.util.ArrayList;
 

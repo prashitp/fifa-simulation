@@ -1,8 +1,10 @@
-package com.models.gameplay.player_transfers.player_rearrangement;
+/**
+ * @author: Mayank Sareen
+ */
+package com.gameplay.player_transfers.player_rearrangement;
 
 import com.models.ClubModel;
 import com.models.gameplay.player_transfers.PlayerTransferWrapper;
-
 import java.util.HashMap;
 import java.util.List;
 

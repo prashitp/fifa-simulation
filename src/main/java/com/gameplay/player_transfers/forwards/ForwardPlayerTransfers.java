@@ -1,18 +1,17 @@
-package com.models.gameplay.player_transfers.forwards;
+/**
+ * @author Mayank Sareen
+ */
+package com.gameplay.player_transfers.forwards;
 
 import com.CommonFunctions;
 import com.Constants;
+import com.gameplay.player_transfers.player_rearrangement.*;
 import com.models.ClubModel;
 import com.models.PlayerAttributes;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import com.models.gameplay.player_transfers.PlayerTransferWrapper;
-import com.models.gameplay.player_transfers.player_rearrangement.*;
 import java.util.*;
-
-/**
- * @author Mayank Sareen
- */
 
 public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
     private static ForwardPlayerTransfers forwardPlayerTransfers;
@@ -27,19 +26,13 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
     @Override
     public List<PlayerTransferWrapper> getForwardsForTransferPerTeam(List<PlayerModel> forwardsListForTransfer) {
         List<PlayerTransferWrapper> rankedForwardsForTransfer = getTopForwardsForTransferWithinAClub(forwardsListForTransfer);
-        System.out.println(rankedForwardsForTransfer.size());
-        System.out.println(rankedForwardsForTransfer.get(0).getRank());
-        System.out.println(rankedForwardsForTransfer.get(rankedForwardsForTransfer.size()-1).getRank());
         shiftPlayers.movePlayersByComputedRank(rankedForwardsForTransfer);
-        System.out.println(rankedForwardsForTransfer.get(0).getRank());
-        System.out.println(rankedForwardsForTransfer.get(rankedForwardsForTransfer.size()-1).getRank());
         return rankedForwardsForTransfer;
     }
     @Override
     public  List<PlayerModel> computeBestSellingForwards(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
         List<PlayerTransferWrapper>playersReady = getTopForwardsInTheGameAcrossClubs(transferPlayerMap);
         return transferPlayer(playersReady);
-
     }
 
     private List<PlayerModel> transferPlayer(List<PlayerTransferWrapper> players) {
@@ -49,7 +42,6 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
         filterRetiredPlayers.addAll(players);
         for (PlayerTransferWrapper player : filterRetiredPlayers) {
             if (player.getIsNearRetirement() && player.getPlayer().overall < 80) {
-                System.out.println("in" + player.getPlayer().overall);
                 Constants.RETIRED_PLAYERS.add(player);
                 players.remove(player);
             }
@@ -114,17 +106,13 @@ public class ForwardPlayerTransfers implements IForwardPlayerTransfers {
     private List<PlayerTransferWrapper> getTopForwardsInTheGameAcrossClubs(HashMap<String, HashMap<String, List<PlayerTransferWrapper>>> transferPlayerMap) {
         List<PlayerTransferWrapper> topForwardsAcrossAllClubs = new ArrayList<>();
         for (String club : transferPlayerMap.keySet()) {
-            System.out.println("ppoo"+transferPlayerMap.get(club).get(PlayingPosition.FORWARD.name()));
             if (transferPlayerMap.get(club).get(PlayingPosition.FORWARD.name()) != null) {
                 topForwardsAcrossAllClubs.addAll(transferPlayerMap.get(club).get(PlayingPosition.FORWARD.name()));
             }
         }
-        System.out.println(topForwardsAcrossAllClubs.size());
-        System.out.println(topForwardsAcrossAllClubs.get(0).getRank());
-        System.out.println(topForwardsAcrossAllClubs.get(topForwardsAcrossAllClubs.size()-1).getRank());
-        shiftPlayers.movePlayersByComputedRank(topForwardsAcrossAllClubs);
-        System.out.println(topForwardsAcrossAllClubs.get(0).getRank());
-        System.out.println(topForwardsAcrossAllClubs.get(topForwardsAcrossAllClubs.size()-1).getRank());
+        if (topForwardsAcrossAllClubs.size() > 0) {
+            shiftPlayers.movePlayersByComputedRank(topForwardsAcrossAllClubs);
+        }
         return topForwardsAcrossAllClubs;
     }
 
