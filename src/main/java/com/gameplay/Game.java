@@ -1,8 +1,6 @@
 package com.gameplay;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.gameplay.UserInput.IUserInputFunction;
@@ -143,16 +141,42 @@ public class Game implements IGame {
 				ISetPieceController setPieceController = new SetPieceController(lineups.get(0).getPlaying11(),
 						lineups.get(1).getPlaying11());
 				HashMap<SetPieceType, List<Integer>> setPieces = setPieceController.getSetPieces();
+				for(SetPieceType setPieceType: setPieces.keySet()){
+					outputStream.print(setPieceType + ": ");
+					outputStream.print(lineups.get(0).club.getClubName() + "-" + setPieces.get(setPieceType).get(0));
+					outputStream.print(lineups.get(1).club.getClubName() + "-" + setPieces.get(setPieceType).get(1));
+				}
+
+				outputStream.println("");
+				outputStream.println("");
 
 				// Cards
 				ICardsController cardsController = new CardsController(lineups.get(0).getPlaying11(),
 						lineups.get(1).getPlaying11());
 				HashMap<CardType, List<PlayerModel>> cards = cardsController.fetchFouls();
+				outputStream.println("***** Fouls ******");
+				for(CardType card: cards.keySet()){
+					outputStream.print(card + " - ");
+					for (PlayerModel player: cards.get(card)){
+						outputStream.print(player.getPlayerName());
+					}
+				}
+
+				outputStream.println("");
+				outputStream.println("");
 
 				// Injuries
 				IInjuryController injuryController = new InjuryController(lineups.get(0).getPlaying11(),
 						lineups.get(1).getPlaying11());
 				HashMap<PlayerModel, Integer> injuries = injuryController.getInjuredPlayers();
+
+				outputStream.println("***** Injured Players ******");
+				for(Map.Entry<PlayerModel, Integer> injury: injuries.entrySet()){
+					outputStream.print(String.format("%s - %s matches, ",injury.getKey()));
+				}
+
+				outputStream.println("");
+				outputStream.println("");
 
 				// substitution
 
@@ -205,6 +229,7 @@ public class Game implements IGame {
 			}
 
 			outputStream.println(String.format("***** Statistics *****"));
+			standardOutput.println(String.format("***** Statistics *****"));
 			IGameService gameService = new GameService();
 			HashMap<PlayerModel, Integer> highestGoalsPlayer = gameService.getHighestGoalScorer();
 
@@ -212,11 +237,15 @@ public class Game implements IGame {
 			int maxGoals = highestGoalsPlayer.get(highestScorer);
 			outputStream.println(String.format("Most goals: %s - %d",highestScorer.getPlayerName(),
 					maxGoals));
+			standardOutput.println(String.format("Most goals: %s - %d",highestScorer.getPlayerName(),
+					maxGoals));
 
 			HashMap<ClubModel, Integer> highestGoalsClub = gameService.getHighestGoalsByClub();
 			ClubModel highestScoringClub = highestGoalsClub.keySet().stream().collect(Collectors.toList()).get(0);
 			int maxGoalsClub = highestGoalsClub.get(highestScoringClub);
 			outputStream.println(String.format("Most goals: %s - %d",highestScoringClub.getClubName(),
+					maxGoalsClub));
+			standardOutput.println(String.format("Most goals: %s - %d\n",highestScoringClub.getClubName(),
 					maxGoalsClub));
 
 			gameService.resetPlayerGoals();
@@ -224,10 +253,23 @@ public class Game implements IGame {
 
 			List<ClubModel> clubsForPointsTable = Arrays.asList(Constants.CLUBS);
 			clubsForPointsTable.sort((c1, c2) -> (c2.points - c1.points));
-			for (ClubModel club: clubsForPointsTable) {
-				outputStream.println(String.format("%s - P-%d, W-%d, L-%d, D-%d, Points-%d",
-						club.getClubName(), club.matchesPlayed, club.matchesWin, club.matchesLoss,club.matchesDraw, club.points ));
+			StringBuilder pointsTable = new StringBuilder();
+			String headerFormat = "| %-8S | %-30S |    %-4s |    %-4s |    %-4s |    %-4s |   %-8S |\n";
+			String rowFormat = "|    %-5S | %-30S |    %-4s |    %-4s |    %-4s |    %-4s |     %-7S|\n";
+			int tableWidth = 96;
+			pointsTable.append("+" + "-".repeat(tableWidth)).append("+\n");
+			pointsTable.append(String.format(headerFormat, "Position", "Club", "P", "W", "D", "L", "Points"));
+			pointsTable.append("+" + "-".repeat(tableWidth)).append("+\n");
+			int rank = 1;
+			for (ClubModel club : clubsForPointsTable) {
+				pointsTable.append(String.format(rowFormat, rank++,
+						club.getClubName(), club.matchesPlayed, club.matchesWin, club.matchesLoss,
+						club.matchesDraw, club.points));
 			}
+
+			pointsTable.append("+" + "-".repeat(tableWidth)).append("+\n");
+			outputStream.println(pointsTable);
+			standardOutput.println(pointsTable);
 			//transfer
 
 			standardOutput.println(String.format("Simulation completed for season %d", index));
