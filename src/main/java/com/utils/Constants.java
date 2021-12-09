@@ -137,5 +137,5 @@ public class Constants {
 			PlayerPositions.LWB, PlayerPositions.RWB, PlayerPositions.LDM, PlayerPositions.RDM, PlayerPositions.CDM,
 	};
 
-	public static final int SEASON_COUNT = 1;
+	public static final int SEASON_COUNT = 10;
 }

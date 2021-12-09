@@ -14,4 +14,6 @@ public interface IUserTeamController {
 	public Boolean deleteUserTeamModel();
 	
 	public Boolean customizePlayingXI(Boolean flag);
+	
+	public Boolean setSeasonPlayed(Integer seasonPlayed);
 }
