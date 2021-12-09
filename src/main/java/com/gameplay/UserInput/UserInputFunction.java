@@ -10,9 +10,11 @@ import com.gameplay.controller.*;
 import com.gameplay.entity.PlayerEntity;
 import com.io.*;
 import com.models.*;
+import com.utils.Constants;
 import com.utils.TableFormat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -158,7 +160,8 @@ public class UserInputFunction implements IUserInputFunction {
 	}
 
 	private void displayAllTeams() {
-		List<ClubModel> teamList = teamController.fetchAllTeams();
+//		List<ClubModel> teamList = teamController.fetchAllTeams();
+		List<ClubModel> teamList = Arrays.asList(Constants.CLUBS);
 		List<String[]> teamTable = new ArrayList<>();
 		String[] header = TableFormat.createTableRow("TEAM ID", "TEAM NAME");
 		teamTable.add(header);
