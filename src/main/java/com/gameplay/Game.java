@@ -1,8 +1,6 @@
 package com.gameplay;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.gameplay.UserInput.IUserInputFunction;
@@ -143,16 +141,42 @@ public class Game implements IGame {
 				ISetPieceController setPieceController = new SetPieceController(lineups.get(0).getPlaying11(),
 						lineups.get(1).getPlaying11());
 				HashMap<SetPieceType, List<Integer>> setPieces = setPieceController.getSetPieces();
+				for(SetPieceType setPieceType: setPieces.keySet()){
+					outputStream.print(setPieceType + ": ");
+					outputStream.print(lineups.get(0).club.getClubName() + "-" + setPieces.get(setPieceType).get(0));
+					outputStream.print(lineups.get(1).club.getClubName() + "-" + setPieces.get(setPieceType).get(1));
+				}
+
+				outputStream.println("");
+				outputStream.println("");
 
 				// Cards
 				ICardsController cardsController = new CardsController(lineups.get(0).getPlaying11(),
 						lineups.get(1).getPlaying11());
 				HashMap<CardType, List<PlayerModel>> cards = cardsController.fetchFouls();
+				outputStream.println("***** Fouls ******");
+				for(CardType card: cards.keySet()){
+					outputStream.print(card + " - ");
+					for (PlayerModel player: cards.get(card)){
+						outputStream.print(player.getPlayerName());
+					}
+				}
+
+				outputStream.println("");
+				outputStream.println("");
 
 				// Injuries
 				IInjuryController injuryController = new InjuryController(lineups.get(0).getPlaying11(),
 						lineups.get(1).getPlaying11());
 				HashMap<PlayerModel, Integer> injuries = injuryController.getInjuredPlayers();
+
+				outputStream.println("***** Injured Players ******");
+				for(Map.Entry<PlayerModel, Integer> injury: injuries.entrySet()){
+					outputStream.print(String.format("%s - %s matches, ",injury.getKey()));
+				}
+
+				outputStream.println("");
+				outputStream.println("");
 
 				// substitution
 
