@@ -1,5 +1,5 @@
 package com.gameplay;
-import com.gameplay.player_transfers.controller.player_rearrangement.controller.PlayerTransfersController;
+import com.gameplay.PlayerTransfers.controller.PlayerTransfersController;
 import com.gameplay.service.GameService;
 import com.gameplay.service.IGameService;
 import com.utils.Constants;
@@ -8,7 +8,6 @@ import com.gameplay.UserInput.UserInputFunction;
 import com.gameplay.controller.*;
 import com.io.IOutputStream;
 import com.io.StandardOutputStream;
-import com.models.*;
 import com.models.gameplay.CardType;
 import com.utils.Converter;
 
@@ -18,10 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import com.gameplay.UserInput.IUserInputFunction;
-import com.gameplay.UserInput.UserInputFunction;
 import com.gameplay.controller.CardsController;
 import com.gameplay.controller.ICardsController;
 import com.gameplay.controller.IInjuryController;
@@ -38,22 +34,15 @@ import com.gameplay.controller.ScoreLineController;
 import com.gameplay.controller.SetPieceController;
 import com.gameplay.controller.TeamSelectionController;
 import com.gameplay.controller.UserTeamController;
-import com.gameplay.service.GameService;
-import com.gameplay.service.IGameService;
 import com.io.FileOutputStream;
 import com.io.IInputStream;
-import com.io.IOutputStream;
 import com.io.StandardInputStream;
-import com.io.StandardOutputStream;
 import com.models.ClubModel;
 import com.models.Goal;
 import com.models.Lineup;
 import com.models.MatchModel;
 import com.models.PlayerModel;
 import com.models.SetPieceType;
-import com.models.gameplay.CardType;
-import com.utils.Constants;
-import com.utils.Converter;
 
 /**
  * @author Jay Patel, mayanksareen, pppatel, vasugamdha

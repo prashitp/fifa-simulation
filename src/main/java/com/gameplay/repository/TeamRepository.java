@@ -1,6 +1,6 @@
 package com.gameplay.repository;
 
-import com.database_operations.DatabaseImport;
+import com.databaseOperations.DatabaseImport;
 import com.models.ClubModel;
 
 import java.util.Arrays;

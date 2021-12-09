@@ -1,6 +1,6 @@
 package com.utils;
 
-import com.database_operations.DatabaseImport;
+import com.databaseOperations.DatabaseImport;
 import com.models.*;
 
 import java.util.ArrayList;
