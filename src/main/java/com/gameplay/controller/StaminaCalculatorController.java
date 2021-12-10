@@ -14,9 +14,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class StaminaCalculatorController implements IStaminaCalculatorController {
+    Set<String> output;
     @Override
     public Set<String> computeStamina(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
-        Set<String> output = new HashSet<>();
+        output = new HashSet<>();
         IStaminaCalculatorService staminaCalculatorService = new StaminaCalculatorService();
         new SubstitutePlayerService(staminaCalculatorService);
         output.addAll(staminaCalculatorService.computeStamina(team1));

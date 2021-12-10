@@ -189,7 +189,7 @@ public class Game implements IGame {
 
 				outputStream.println("***** Injured Players ******");
 				for(Map.Entry<PlayerModel, Integer> injury: injuries.entrySet()){
-					outputStream.print(String.format("%s - %s matches, ",injury.getKey(), injury.getValue()));
+					outputStream.print(String.format("%s - %s matches, ",injury.getKey().getPlayerName(), injury.getValue()));
 				}
 
 				outputStream.println("");
