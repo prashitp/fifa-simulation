@@ -25,6 +25,6 @@ public class StaminaCalculatorServiceTest {
     @Test
     void getComputedStaminaTest(){
         IStaminaCalculatorService staminaCalculatorService = new StaminaCalculatorService();
-        assertEquals("ArrayList",staminaCalculatorService.computeStamina(team1).getClass().getSimpleName());
+        assertEquals("HashSet",staminaCalculatorService.computeStamina(team1).getClass().getSimpleName());
     }
 }

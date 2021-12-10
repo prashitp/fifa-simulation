@@ -28,6 +28,6 @@ public class StaminaCalculatorControllerTest {
     @Test
     void getComputedStaminaTest() {
         IStaminaCalculatorController staminaCalculatorController = new StaminaCalculatorController();
-        assertEquals("ArrayList",staminaCalculatorController.computeStamina(team1, team2).getClass().getSimpleName());
+        assertEquals("HashSet",staminaCalculatorController.computeStamina(team1, team2).getClass().getSimpleName());
     }
 }

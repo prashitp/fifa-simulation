@@ -10,12 +10,14 @@ import com.models.PlayingPosition;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class StaminaCalculatorController implements IStaminaCalculatorController {
+    Set<String> output;
     @Override
-    public List<String> computeStamina(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
-        List<String> output = new ArrayList<String>();
+    public Set<String> computeStamina(HashMap<PlayerModel, PlayingPosition> team1, HashMap<PlayerModel, PlayingPosition> team2) {
+        output = new HashSet<>();
         IStaminaCalculatorService staminaCalculatorService = new StaminaCalculatorService();
         new SubstitutePlayerService(staminaCalculatorService);
         output.addAll(staminaCalculatorService.computeStamina(team1));
