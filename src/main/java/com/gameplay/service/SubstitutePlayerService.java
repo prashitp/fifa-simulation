@@ -47,7 +47,6 @@ public class SubstitutePlayerService extends StaminaObserver {
                }
             }
         }
-        output.add("\n");
         return output;
     }
 
