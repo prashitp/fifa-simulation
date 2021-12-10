@@ -45,7 +45,7 @@ import com.models.PlayerModel;
 import com.models.SetPieceType;
 
 /**
- * @author Jay Patel, mayanksareen, pppatel, vasugamdha
+ * @author Jay Patel, mayanksareen, prashitpatel, vasugamdha
  */
 public class Game implements IGame {
 
@@ -262,9 +262,6 @@ public class Game implements IGame {
 			standardOutput.println(String.format("Most goals: %s - %d\n",highestScoringClub.getClubName(),
 					maxGoalsClub));
 
-			gameService.resetPlayerGoals();
-			gameService.resetClubGoals();
-
 			List<ClubModel> clubsForPointsTable = Arrays.asList(Constants.CLUBS);
 			clubsForPointsTable.sort((c1, c2) -> (c2.points - c1.points));
 			StringBuilder pointsTable = new StringBuilder();
@@ -293,6 +290,9 @@ public class Game implements IGame {
 			}
 			outputStream.println("");
 			outputStream.println("");
+
+			gameService.resetPlayerGoals();
+			gameService.resetClubGoals();
 
 			standardOutput.println(String.format("Simulation completed for season %d", index));
 

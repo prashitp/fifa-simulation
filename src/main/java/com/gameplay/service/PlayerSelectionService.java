@@ -46,6 +46,9 @@ public class PlayerSelectionService implements IPlayerSelectionService {
 				} else {
 					player.injuredForMatches = Math.max(0,--player.injuredForMatches);
 				}
+				int playerStamina = player.skills.get(PlayerAttributes.POWER_STAMINA);
+				playerStamina = Math.min(playerStamina+40,70);
+				player.skills.put(PlayerAttributes.POWER_STAMINA,playerStamina);
 			}
 		}
 		return matchReadyPlayers;

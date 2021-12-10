@@ -6,7 +6,9 @@ import com.models.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * @author Jay Patel, mayanksareen, prashitpatel, vasugamdha
+ */
 public class Constants {
     public static final int DEFENDERS_MIN = 3;
     public static final int DEFENDERS_MAX = 5;

@@ -9,6 +9,9 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @author Vasu Gamdha
+ */
 public class RedCardControllerTest {
     HashMap<PlayerModel, PlayingPosition> team1 = new HashMap<>();
     HashMap<PlayerModel,PlayingPosition> team2 = new HashMap<>();
