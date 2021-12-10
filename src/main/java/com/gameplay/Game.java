@@ -178,11 +178,12 @@ public class Game implements IGame {
 
 				//substitution
 				IStaminaCalculatorController staminaCalculatorController = new StaminaCalculatorController();
-				List<String> substitutionList = staminaCalculatorController.computeStamina(lineups.get(0).getPlaying11(),lineups.get(1).getPlaying11());
+				Set<String> substitutionList = staminaCalculatorController.computeStamina(lineups.get(0).getPlaying11(), lineups.get(1).getPlaying11());
 				outputStream.println("***** Substituted Players ******");
-				for(String str : substitutionList){
+				for(String str : substitutionList) {
 					outputStream.print(String.format(str));
 				}
+				substitutionList.clear();
 				outputStream.println("");
 				outputStream.println("");
 

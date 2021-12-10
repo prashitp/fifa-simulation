@@ -6,7 +6,6 @@ import com.gameplay.PlayerTransfers.PlayerRearrangement.service.IReArrangePlayer
 import com.gameplay.PlayerTransfers.PlayerRearrangement.service.ReArrangePlayersByClubRanks;
 import com.models.*;
 import com.utils.Constants;
-
 import java.util.*;
 
 public class PlayerTransfersController {
@@ -53,24 +52,23 @@ public class PlayerTransfersController {
         List<String> output = new ArrayList<>();
         iForwardPlayerTransfers = ForwardPlayerTransfers.getInstance();
         List<PlayerModel> forwardsToBeTransferred = iForwardPlayerTransfers.computeBestSellingForwards(transferPlayerMap);
-       output.add("**** Player transfers ***");
         for (PlayerModel player: forwardsToBeTransferred) {
-            output.add(player.getPlayerName() + " transferred to " + player.club);
+            output.add(" " + player.getPlayerName() + " transferred to " + player.club);
         }
         iDefenderPlayerTransfers = DefenderPlayerTransfers.getInstance();
         List<PlayerModel> defendersToBeTransferred = iDefenderPlayerTransfers.computeBestSellingDefenders(transferPlayerMap);
         for (PlayerModel player: defendersToBeTransferred) {
-           output.add(player.getPlayerName() + " transferred to " + player.club);
+           output.add(" " + player.getPlayerName() + " transferred to " + player.club);
         }
         iGoalKeeperPlayerTransfers = GoalKeeperPlayerTransfers.getInstance();
         List<PlayerModel> goaliesToBeTransferred = iGoalKeeperPlayerTransfers.computeBestSellingGoalies(transferPlayerMap);
         for (PlayerModel player: goaliesToBeTransferred) {
-            output.add(player.getPlayerName() + " transferred to " + player.club);
+            output.add(" "+ player.getPlayerName() + " transferred to " + player.club);
         }
         iMidFielderPlayerTransfers = MidFielderPlayerTransfers.getInstance();
         List<PlayerModel> midFieldersToBeTransferred = iMidFielderPlayerTransfers.computeBestSellingMidFields(transferPlayerMap);
         for (PlayerModel player: midFieldersToBeTransferred) {
-           output.add(player.getPlayerName() + " transferred to " + player.club);
+           output.add(" "+player.getPlayerName() + " transferred to " + player.club);
         }
        return output;
     }

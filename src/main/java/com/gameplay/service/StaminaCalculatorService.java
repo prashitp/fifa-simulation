@@ -7,9 +7,8 @@ import com.models.PlayerAttributes;
 import com.models.PlayerModel;
 import com.models.PlayingPosition;
 import com.models.StaminaFactors;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
+import java.util.*;
 
 public class StaminaCalculatorService implements IStaminaCalculatorService {
     private static List<StaminaObserver> observers = new ArrayList<StaminaObserver>();
@@ -20,7 +19,7 @@ public class StaminaCalculatorService implements IStaminaCalculatorService {
     }
 
     @Override
-    public List<String> computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven) {
+    public Set<String> computeStamina(HashMap<PlayerModel, PlayingPosition> playingEleven) {
         for (PlayerModel player : playingEleven.keySet()) {
             HashMap<PlayerAttributes, Double> playerMap =
                     StaminaFactors.getMultiplicativeFactors().get(playingEleven.get(player));
@@ -29,7 +28,6 @@ public class StaminaCalculatorService implements IStaminaCalculatorService {
             Integer powerStamina = 0;
             for (PlayerAttributes playerAttributes : playerMap.keySet()) {
                 staminaLoss = (int) (player.skills.get(playerAttributes) - playerMap.get(playerAttributes));
-                player.skills.put(playerAttributes, staminaLoss);
                 sum += staminaLoss;
             }
             powerStamina = (int)((sum / (playerMap.keySet().size())) *
@@ -39,8 +37,8 @@ public class StaminaCalculatorService implements IStaminaCalculatorService {
         return notifyAllObservers(playingEleven);
     }
 
-    private List<String> notifyAllObservers(HashMap<PlayerModel, PlayingPosition> playingEleven){
-        List<String> outputOfAllObservers = new ArrayList<>();
+    private Set<String> notifyAllObservers(HashMap<PlayerModel, PlayingPosition> playingEleven){
+        Set<String> outputOfAllObservers = new HashSet<>();
         for (StaminaObserver observer : observers) {
             outputOfAllObservers.addAll(observer.notifyUpdate(playingEleven));
         }
